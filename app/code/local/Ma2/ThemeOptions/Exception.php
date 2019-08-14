@@ -1,6 +1,6 @@
 <?php
 /**
- * Magento
+ * MagenMarket.com
  *
  * NOTICE OF LICENSE
  *
@@ -8,29 +8,18 @@
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/osl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * Edit or modify this file with yourown risk.
  *
- * @category    Mage
- * @package     Mage_Adminhtml
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @category    Themes
+ * @package     Ma2_Default theme
+ * @copyright   Copyright (coffee) 2013 MagenMarket, http://www.magenmarket.com
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- */
+**/
+/* $Id: Exception.php 12 2013-11-05 10:00:22Z minhnv $ */
 
-
-/**
- * Magento adminhtml module exception
- *
- * @category   Mage
- * @package    OMG_ThemeOptions
- */
 class Ma2_ThemeOptions_Exception extends Mage_Core_Exception
 {
 }

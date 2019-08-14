@@ -1,5 +1,6 @@
 <?xml version="1.0" ?>
 <config>
+
 	<menu> 
 		<ma2 translate="title" module="ThemeOptions">
 			<title>MA2</title>

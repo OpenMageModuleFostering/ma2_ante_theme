@@ -22,7 +22,7 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
-                    <fields>						
+                    <fields>
                         <preset_styles translate="label">
                             <label>Preset styles</label>
                             <frontend_type>select</frontend_type>
@@ -32,10 +32,20 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </preset_styles>
+						<display_preset_styles translate="label">
+                            <label>Display preset styles button on front-end?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>Display preset styles button on front-end?</comment>
+                        </display_preset_styles>
 						<label1>
 							<label></label>
 							<frontend_type>label</frontend_type>
-                            <sort_order>2</sort_order>
+                            <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -44,28 +54,11 @@
 							<label>Custom logo?</label>
 							<frontend_type>select</frontend_type>
 							<source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>3</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-						</is_custom_logo>	
-						<default_logo_image translate="label">
-							<label>Default logo</label>
-							<comment>This is logo default.</comment>
-                            <frontend_type>image</frontend_type>
-                            <backend_model>adminhtml/system_config_backend_image</backend_model>
-                            <upload_dir config="system/filesystem/media" scope_info="1">ma2/images</upload_dir>
-                            <!-- would upload into media/uploaddir -->
-                            <base_url type="media" scope_info="1">ma2/images</base_url> 
-                            <!-- same as previous line -->
                             <sort_order>4</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-							<depends>
-                                <is_custom_logo>0</is_custom_logo>
-                            </depends>
-						</default_logo_image>						
+						</is_custom_logo>
 						<logo_image translate="label">
 							<label>Logo image</label>
 							<comment>
@@ -73,7 +66,8 @@
                                     Allowed file types: png, gif, jpg <br /> Not all browsers support all these formats! <br />Leave empty it will show the default.
                                 ]]>                                                      
                             </comment>
-                            <frontend_type>image</frontend_type>                            
+                            <frontend_type>image</frontend_type>
+                            
                             <backend_model>adminhtml/system_config_backend_image</backend_model>
                             <upload_dir config="system/filesystem/media" scope_info="1">ma2/images</upload_dir>
                             <!-- would upload into media/uploaddir -->
@@ -297,32 +291,6 @@
                             <show_in_store>1</show_in_store>
                             <comment>Type the selector list, comma separator. Example: h1, h2, div.your_class</comment>
 						</custom_list_2>
-						
-						<is_custom_css translate="label">
-							<label>Custom CSS?</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>17</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-						</is_custom_css>
-						<custom_css translate="label">
-							<label></label>
-							<frontend_type>textarea</frontend_type>
-                            <sort_order>18</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-							<comment>
-							<![CDATA[
-							Type your custom CSS code. Example: <br /><span style="border: 1px solid #DDD; padding: 0.5em;display:block;">h1{ color:#333; font-size: 18px;}<br /> div.your_class{ color: #666;}</span>
-							]]></comment>
-							<depends>
-								<is_custom_css>1</is_custom_css>
-							</depends>
-						</custom_css>
-						<!--Custom css end-->
 					</fields>
 				</typography>
 				
@@ -540,9 +508,7 @@
 							<frontend_type>image</frontend_type>
                             <backend_model>adminhtml/system_config_backend_image</backend_model>
                             <upload_dir config="system/filesystem/media" scope_info="1">ma2/images</upload_dir>
-                            <!-- would upload into media/uploaddir -->
                             <base_url type="media" scope_info="1">ma2/images</base_url>
-                            <!-- same as previous line -->
 							<comment>Allowed file types: png, gif, jpg, jpeg. Not all browsers support all these formats!</comment>
 							<sort_order>18</sort_order>
 							<show_in_default>1</show_in_default>
@@ -624,9 +590,7 @@
 							<frontend_type>image</frontend_type>
                             <backend_model>adminhtml/system_config_backend_image</backend_model>
                             <upload_dir config="system/filesystem/media" scope_info="1">ma2/images</upload_dir>
-                            <!-- would upload into media/uploaddir -->
                             <base_url type="media" scope_info="1">ma2/images</base_url>
-                            <!-- same as previous line -->
 							<comment>Allowed file types: png, gif, jpg, jpeg. Not all browsers support all these formats!</comment>
 							<sort_order>25</sort_order>
 							<show_in_default>1</show_in_default>
@@ -671,17 +635,19 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
 					<fields>
-						<right_widht translate="label">
+						<right_width translate="label">
 							<label>Right column width</label>
+							<sort_order>1</sort_order>
 							<frontend_type>text</frontend_type>
 							<comment>Example: 250px. Leave empty it will be applied by default CSS file.</comment>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
-						</right_widht>
+						</right_width>
 						
 						<left_width translate="label">
 							<label>Left column width</label>
+							<sort_order>2</sort_order>
 							<frontend_type>text</frontend_type>
 							<comment>Example: 250px. Leave empty it will be applied by default CSS file.</comment>
 							<show_in_default>1</show_in_default>
@@ -691,14 +657,493 @@
 						
 						<theme_width translate="label">
 							<label>Site width</label>
+							<sort_order>3</sort_order>
 							<frontend_type>text</frontend_type>
 							<comment>Example: 980px. Leave empty it will be applied by default CSS file.</comment>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
-						</theme_width>						
+						</theme_width>
 					</fields>
 				</layouts>
+				<blocks_layout>
+					<label>Blocks layout</label>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+					
+						<!-- Main Top 1 Area -->
+						<create_column_maintop1 translate="label">
+							<label>Create column for blocks in Main Top 1 Area</label>
+							<sort_order>10</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>Each block or widget in this structure block will be displayed as a column.</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</create_column_maintop1>
+						<default_column_maintop1 translate="label">
+							<label>Use default block column layout for Main Top 1 Area</label>
+							<sort_order>11</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>
+							<![CDATA[Choose Yes to display blocks or widgets in this structure block as columns with default Width.<br>
+							Choose No to use bellow definition.]]> 
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_maintop1>1</create_column_maintop1>
+							</depends>
+						</default_column_maintop1>
+						<maintop1 translate="label">
+							<label>Width definition for columns in Main Top 1 Area</label>
+							<sort_order>12</sort_order>
+							<frontend_type>textarea</frontend_type>
+							<comment>
+							<![CDATA[Number in percent unit. Example:<br>
+							100; // 1 column will be 100% width.<br>
+							50,50; // 2 columns, each will be 50% width.<br>
+							33,33,33; // 3 columns, each will be 33% width.<br>
+							25,25,25,25;<br>
+							20,20,20,20,20;
+							]]>
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_maintop1>1</create_column_maintop1>
+								<default_column_maintop1>0</default_column_maintop1>
+							</depends>
+						</maintop1>
+						<label9>
+							<label></label>
+							<frontend_type>label</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</label9>
+						
+						<!-- Main Top 1 Area -->
+						<create_column_maintop2 translate="label">
+							<label>Create column for blocks in Main Top 2 Area</label>
+							<sort_order>16</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>Each block or widget in this structure block will be displayed as a column.</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</create_column_maintop2>
+						<default_column_maintop2 translate="label">
+							<label>Use default block column layout for Main Top 2 Area</label>
+							<sort_order>17</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>
+							<![CDATA[Choose Yes to display blocks or widgets in this structure block as columns with default Width.<br>
+							Choose No to use bellow definition.]]> 
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_maintop2>1</create_column_maintop2>
+							</depends>
+						</default_column_maintop2>
+						<maintop2 translate="label">
+							<label>Width definition for columns in Main Top 2 Area</label>
+							<sort_order>18</sort_order>
+							<frontend_type>textarea</frontend_type>
+							<comment>
+							<![CDATA[Number in percent unit. Example:<br>
+							100; // 1 column will be 100% width.<br>
+							50,50; // 2 columns, each will be 50% width.<br>
+							33,33,33; // 3 columns, each will be 33% width.<br>
+							25,25,25,25;<br>
+							20,20,20,20,20;
+							]]>
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_maintop2>1</create_column_maintop2>
+								<default_column_maintop2>0</default_column_maintop2>
+							</depends>
+						</maintop2>
+						<label11>
+							<label></label>
+							<frontend_type>label</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</label11>
+						
+						<!-- Main Top 1 Area -->
+						<create_column_maintop3 translate="label">
+							<label>Create column for blocks in Main Top 3 Area</label>
+							<sort_order>21</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>Each block or widget in this structure block will be displayed as a column.</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</create_column_maintop3>
+						<default_column_maintop3 translate="label">
+							<label>Use default block column layout for Main Top 3 Area</label>
+							<sort_order>22</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>
+							<![CDATA[Choose Yes to display blocks or widgets in this structure block as columns with default Width.<br>
+							Choose No to use bellow definition.]]> 
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_maintop3>1</create_column_maintop3>
+							</depends>
+						</default_column_maintop3>
+						<maintop3 translate="label">
+							<label>Width definition for columns in Main Top 3 Area</label>
+							<sort_order>23</sort_order>
+							<frontend_type>textarea</frontend_type>
+							<comment>
+							<![CDATA[Number in percent unit. Example:<br>
+							100; // 1 column will be 100% width.<br>
+							50,50; // 2 columns, each will be 50% width.<br>
+							33,33,33; // 3 columns, each will be 33% width.<br>
+							25,25,25,25;<br>
+							20,20,20,20,20;
+							]]>
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_maintop3>1</create_column_maintop3>
+								<default_column_maintop3>0</default_column_maintop3>
+							</depends>
+						</maintop3>
+						<label12>
+							<label></label>
+							<frontend_type>label</frontend_type>
+                            <sort_order>27</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</label12>
+						
+						<!-- Main Bottom 1 Area -->
+						<create_column_mainbottom1 translate="label">
+							<label>Create column for blocks in Main Bottom 1 Area</label>
+							<sort_order>28</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>Each block or widget in this structure block will be displayed as a column.</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</create_column_mainbottom1>
+						<default_column_mainbottom1 translate="label">
+							<label>Use default block column layout for Main Bottom 1 Area</label>
+							<sort_order>29</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>
+							<![CDATA[Choose Yes to display blocks or widgets in this structure block as columns with default Width.<br>
+							Choose No to use bellow definition.]]> 
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_mainbottom1>1</create_column_mainbottom1>
+							</depends>
+						</default_column_mainbottom1>
+						<mainbottom1 translate="label">
+							<label>Width definition for columns in Main Bottom 1 Area</label>
+							<sort_order>30</sort_order>
+							<frontend_type>textarea</frontend_type>
+							<comment>
+							<![CDATA[Number in percent unit. Example:<br>
+							100; // 1 column will be 100% width.<br>
+							50,50; // 2 columns, each will be 50% width.<br>
+							33,33,33; // 3 columns, each will be 33% width.<br>
+							25,25,25,25;<br>
+							20,20,20,20,20;
+							]]>
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_mainbottom1>1</create_column_mainbottom1>
+								<default_column_mainbottom1>0</default_column_mainbottom1>
+							</depends>
+						</mainbottom1>
+						<label13>
+							<label></label>
+							<frontend_type>label</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</label13>
+						
+						<!-- Main Bottom 2 Area -->
+						<create_column_mainbottom2 translate="label">
+							<label>Create column for blocks in Main Bottom 2 Area</label>
+							<sort_order>36</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>Each block or widget in this structure block will be displayed as a column.</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</create_column_mainbottom2>
+						<default_column_mainbottom2 translate="label">
+							<label>Use default block column layout for Main Bottom 2 Area</label>
+							<sort_order>37</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>
+							<![CDATA[Choose Yes to display blocks or widgets in this structure block as columns with default Width.<br>
+							Choose No to use bellow definition.]]> 
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_mainbottom2>1</create_column_mainbottom2>
+							</depends>
+						</default_column_mainbottom2>
+						<mainbottom2 translate="label">
+							<label>Width definition for columns in Main Bottom 2 Area</label>
+							<sort_order>38</sort_order>
+							<frontend_type>textarea</frontend_type>
+							<comment>
+							<![CDATA[Number in percent unit. Example:<br>
+							100; // 1 column will be 100% width.<br>
+							50,50; // 2 columns, each will be 50% width.<br>
+							33,33,33; // 3 columns, each will be 33% width.<br>
+							25,25,25,25;<br>
+							20,20,20,20,20;
+							]]>
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_mainbottom2>1</create_column_mainbottom2>
+								<default_column_mainbottom2>0</default_column_mainbottom2>
+							</depends>
+						</mainbottom2>
+						<label14>
+							<label></label>
+							<frontend_type>label</frontend_type>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</label14>
+						
+						<!-- Main Bottom 3 Area -->
+						<create_column_mainbottom3 translate="label">
+							<label>Create column for blocks in Main Bottom 3 Area</label>
+							<sort_order>43</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>Each block or widget in this structure block will be displayed as a column.</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</create_column_mainbottom3>
+						<default_column_mainbottom3 translate="label">
+							<label>Use default block column layout for Main Bottom 3 Area</label>
+							<sort_order>44</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>
+							<![CDATA[Choose Yes to display blocks or widgets in this structure block as columns with default Width.<br>
+							Choose No to use bellow definition.]]> 
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_mainbottom3>1</create_column_mainbottom3>
+							</depends>
+						</default_column_mainbottom3>
+						<mainbottom3 translate="label">
+							<label>Width definition for columns in Main Bottom 3 Area</label>
+							<sort_order>45</sort_order>
+							<frontend_type>textarea</frontend_type>
+							<comment>
+							<![CDATA[Number in percent unit. Example:<br>
+							100; // 1 column will be 100% width.<br>
+							50,50; // 2 columns, each will be 50% width.<br>
+							33,33,33; // 3 columns, each will be 33% width.<br>
+							25,25,25,25;<br>
+							20,20,20,20,20;
+							]]>
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_mainbottom3>1</create_column_mainbottom3>
+								<default_column_mainbottom3>0</default_column_mainbottom3>
+							</depends>
+						</mainbottom3>
+						<label15>
+							<label></label>
+							<frontend_type>label</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</label15>
+						
+						<!-- Main Footer 1 Area -->
+						<create_column_footer1 translate="label">
+							<label>Create column for blocks in Main Footer 1 Area</label>
+							<sort_order>51</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>Each block or widget in this structure block will be displayed as a column.</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</create_column_footer1>
+						<default_column_footer1 translate="label">
+							<label>Use default block column layout for Main Footer 1 Area</label>
+							<sort_order>52</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>
+							<![CDATA[Choose Yes to display blocks or widgets in this structure block as columns with default Width.<br>
+							Choose No to use bellow definition.]]> 
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_footer1>1</create_column_footer1>
+							</depends>
+						</default_column_footer1>
+						<footer1 translate="label">
+							<label>Width definition for columns in Main Footer 1 Area</label>
+							<sort_order>53</sort_order>
+							<frontend_type>textarea</frontend_type>
+							<comment>
+							<![CDATA[Number in percent unit. Example:<br>
+							100; // 1 column will be 100% width.<br>
+							50,50; // 2 columns, each will be 50% width.<br>
+							33,33,33; // 3 columns, each will be 33% width.<br>
+							25,25,25,25;<br>
+							20,20,20,20,20;
+							]]>
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_footer1>1</create_column_footer1>
+								<default_column_footer1>0</default_column_footer1>
+							</depends>
+						</footer1>
+						<label17>
+							<label></label>
+							<frontend_type>label</frontend_type>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</label17>
+						
+						<!-- Main Footer 2 Area -->
+						<create_column_footer2 translate="label">
+							<label>Create column for blocks in Footer 2 Area</label>
+							<sort_order>60</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>Each block or widget in this structure block will be displayed as a column.</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</create_column_footer2>
+						<default_column_footer2 translate="label">
+							<label>Use default block column layout for Footer 2 Area</label>
+							<sort_order>61</sort_order>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<comment>
+							<![CDATA[Choose Yes to display blocks or widgets in this structure block as columns with default Width.<br>
+							Choose No to use bellow definition.]]> 
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_footer2>1</create_column_footer2>
+							</depends>
+						</default_column_footer2>
+						<footer2 translate="label">
+							<label>Width definition for columns in Footer 2 Area</label>
+							<sort_order>62</sort_order>
+							<frontend_type>textarea</frontend_type>
+							<comment>
+							<![CDATA[Number in percent unit. Example:<br>
+							100; // 1 column will be 100% width.<br>
+							50,50; // 2 columns, each will be 50% width.<br>
+							33,33,33; // 3 columns, each will be 33% width.<br>
+							25,25,25,25;<br>
+							20,20,20,20,20;
+							]]>
+							</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<create_column_footer2>1</create_column_footer2>
+								<default_column_footer2>0</default_column_footer2>
+							</depends>
+						</footer2>
+					</fields>
+				</blocks_layout>
+				<custom_css>
+					<label>Custom css</label>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						<css_code translate="label">
+							<label></label>
+							<frontend_type>textarea</frontend_type>
+                            <sort_order>18</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>
+							<![CDATA[
+							Type your custom CSS code. Example: <br /><span style="border: 1px solid #DDD; padding: 0.5em;display:block;">h1{ color:#333; font-size: 18px;}<br /> div.your_class{ color: #666;}</span>
+							]]></comment>
+						</css_code>
+					</fields>
+				</custom_css>
             </groups>
         </theme_options>                
     </sections>

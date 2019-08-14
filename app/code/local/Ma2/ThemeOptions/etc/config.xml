@@ -5,6 +5,7 @@
             <version>1.0.0</version>
         </Ma2_ThemeOptions>
     </modules>
+	
     <frontend>
         <routers>
             <ThemeOptions>
@@ -15,27 +16,38 @@
                 </args>
             </ThemeOptions>
         </routers>
+        <layout>
+            <updates>
+                <ThemeOptions>
+                    <file>ma2themeoptions.xml</file>
+                </ThemeOptions>
+            </updates>
+        </layout>
     </frontend>
+
 	<adminhtml>
         <layout>
             <updates>
                 <ThemeOptions>
-                    <file>ma2_options.xml</file>
+                    <file>ma2themeoptions.xml</file>
                 </ThemeOptions>
             </updates>
         </layout>
     </adminhtml>
+	
 	<global>
 		<models>
             <ThemeOptions>
                 <class>Ma2_ThemeOptions_Model</class>
             </ThemeOptions>
         </models>
+		
 		<helpers>
             <ThemeOptions>
                 <class>Ma2_ThemeOptions_Helper</class>
             </ThemeOptions>
         </helpers>
+		
 	    <events>
 	      <adminhtml_controller_action_predispatch_start>
 	        <observers>
@@ -47,7 +59,9 @@
 	        </observers>
 	      </adminhtml_controller_action_predispatch_start>  		  
 	    </events> 
+       
 	    <extraconfig /> 
+		
 		<page>
 			<layouts>
 				<two_columns module="page" translate="label">
@@ -57,17 +71,20 @@
 				</two_columns>
 			</layouts>
 		</page>
+		
 	    <blocks>
 	    	<ThemeOptions>
                 <class>Ma2_ThemeOptions_Block</class>
             </ThemeOptions>
 		</blocks>
 	</global>
+
 	<default>
+	
 		<theme_options>
 			<general>
+				<display_preset_styles>1</display_preset_styles>
 				<preset_styles></preset_styles>
-				<default_logo_image>default/logo.gif</default_logo_image>
 				<is_custom_logo>0</is_custom_logo>
 				<logo_image></logo_image>
 				<logo_width></logo_width>
@@ -82,12 +99,15 @@
 				<body_text_color_change>0</body_text_color_change>
 				<body_text_color>#333333</body_text_color>
 				<body_line_height></body_line_height>
+				
 				<is_custom_font_1>0</is_custom_font_1>
 				<custom_font_family_1></custom_font_family_1>
 				<custom_list_1></custom_list_1>
+				
 				<is_custom_font_2>0</is_custom_font_2>
 				<custom_font_family_2></custom_font_family_2>
 				<custom_list_2></custom_list_2>
+				
 				<is_custom_css>0</is_custom_css>
 				<custom_css></custom_css>
 			</typography>
@@ -98,18 +118,21 @@
 				<body_background_image></body_background_image>
 				<body_background_image_repeat></body_background_image_repeat>
 				<body_background_image_position></body_background_image_position>
+				
 				<header_background_change>0</header_background_change>
 				<header_background_color_change>0</header_background_color_change>
 				<header_background_color></header_background_color>
 				<header_background_image></header_background_image>
 				<header_background_image_repeat></header_background_image_repeat>
 				<header_background_image_position></header_background_image_position>
+				
 				<main_background_change>0</main_background_change>
 				<main_background_color_change>0</main_background_color_change>
 				<main_background_color></main_background_color>
 				<main_background_image></main_background_image>
 				<main_background_image_repeat></main_background_image_repeat>
 				<main_background_image_position></main_background_image_position>
+				
 				<footer_background_change>0</footer_background_change>
 				<footer_background_color_change>0</footer_background_color_change>
 				<footer_background_color></footer_background_color>
@@ -120,8 +143,46 @@
 			<layouts>
 				<theme_width></theme_width>
 				<left_width></left_width>
-				<right_widht></right_widht>
+				<right_width></right_width>
 			</layouts>
+			
+			<blocks_layout>
+				<create_column_maintop1>1</create_column_maintop1>
+				<default_column_maintop1>1</default_column_maintop1>
+				<maintop1>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</maintop1>
+				
+				<create_column_maintop2>1</create_column_maintop2>
+				<default_column_maintop2>1</default_column_maintop2>
+				<maintop2>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</maintop2>
+				
+				<create_column_maintop3>1</create_column_maintop3>
+				<default_column_maintop3>1</default_column_maintop3>
+				<maintop3>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</maintop3>
+				
+				<create_column_mainbottom1>1</create_column_mainbottom1>
+				<default_column_mainbottom1>1</default_column_mainbottom1>
+				<mainbottom1>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</mainbottom1>
+				
+				<create_column_mainbottom2>1</create_column_mainbottom2>
+				<default_column_mainbottom2>1</default_column_mainbottom2>
+				<mainbottom2>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</mainbottom2>
+				
+				<create_column_mainbottom3>1</create_column_mainbottom3>
+				<default_column_mainbottom3>1</default_column_mainbottom3>
+				<mainbottom3>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</mainbottom3>
+				
+				<create_column_footer1>1</create_column_footer1>
+				<default_column_footer1>1</default_column_footer1>
+				<footer1>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</footer1>
+				
+				<create_column_footer2>1</create_column_footer2>
+				<default_column_footer2>1</default_column_footer2>
+				<footer2>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</footer2>
+			</blocks_layout>
+			
+			<custom_css>
+				<css_code></css_code>
+			</custom_css>
 		</theme_options>
 	</default>
 </config>

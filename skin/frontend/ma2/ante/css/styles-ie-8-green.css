@@ -94,7 +94,7 @@ ol#products-list, ol.products-list { margin-left:0px; }
 .item-content{width:90%; padding-bottom:0px;}
 .products-grid{margin-bottom:0px;}
 .info-products{padding: 10px 18px 0 0; position: relative;}
-.ma2-preset-style-green ul#nav level0 ul.level0 li{background: url(../images/menuactive-green.png) #ff4c29 repeat-x 0px 0px;}
+.ma2-preset-style-green ul#nav level0 ul.level0 li{background: url(../images/menuactive-green.png) #ff4c29 repeat 0px 0px;}
 .img-product { width:100%; float:left; display: block; margin-bottom:10px; }
 .product-title { width:100%; float:left; display: block; min-height:36px; margin-bottom:10px; }
 .short-description-product { width:100%; float:left; display: block; margin-bottom:10px; }
@@ -107,7 +107,7 @@ input.radio { width:13px; height:13px; }
 input.checkbox { width:13px; height:13px; }
 button.button { height:26px; }
 button.button span,
-.ma2-preset-style-green button.button span { padding-bottom:0px; padding-top:2px; } 
+.ma2-preset-style-green button.button span { padding-bottom:2px; padding-top:2px; } 
 button.btn-checkout { height:40px; }
 #opc-review .sp-methods .input-box { float:left; }
 .form-list label { position:relative; z-index:0; }

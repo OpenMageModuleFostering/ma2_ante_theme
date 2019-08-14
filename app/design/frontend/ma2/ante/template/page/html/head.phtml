@@ -220,11 +220,11 @@ endif;
 $PresetSession = Mage::getSingleton('core/session')->getData('PresetSession');	
 if(isset($PresetSession) && !empty($PresetSession)): 	
 	$faviSrc = $this->getSkinUrl('images/favicon-'.$PresetSession.'.png'); 
-	$style = 'styles-'.$PresetSession.'.css';
+	$style = $PresetSession.'.css';
 else:  	
 	$preStyle = Mage::getStoreConfig("theme_options/general/preset_styles");
 	if(isset($preStyle) && !empty($preStyle)):
-		$style = 'styles-'.$preStyle.'.css';	
+		$style = $preStyle.'.css';	
 		if($themeOptions->favicon != '') : 
 			$faviSrc = $mediaUrl.'ma2/images/'.$themeOptions->favicon;			
 		else: 

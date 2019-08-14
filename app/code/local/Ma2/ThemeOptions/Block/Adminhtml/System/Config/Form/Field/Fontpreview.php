@@ -1,4 +1,25 @@
 <?php
+/**
+ * MagenMarket.com
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Edit or modify this file with yourown risk.
+ *
+ * @category    Themes
+ * @package     Ma2_Default theme
+ * @copyright   Copyright (coffee) 2013 MagenMarket, http://www.magenmarket.com
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+**/
+/* $Id: Fontpreview.php 14 2013-11-19 05:08:04Z linhnt $ */
+
 class Ma2_ThemeOptions_Block_Adminhtml_System_Config_Form_Field_FontPreview extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
     /**
@@ -100,9 +121,10 @@ class Ma2_ThemeOptions_Block_Adminhtml_System_Config_Form_Field_FontPreview exte
 							fcs.href = "'.($isSecure ? 'https:' : 'http:').'//fonts.googleapis.com/css?family=" + fontfamily;
 							document.getElementsByTagName("head")[0].appendChild(fcs);
 
-							this.updatePreview();
+							//this.updatePreview();
 							this.loadedFonts += this.fontSelect.value + ",";
 						}
+            this.updatePreview();
 					},
 					updatePreview : function()
 					{

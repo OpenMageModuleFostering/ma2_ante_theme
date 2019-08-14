@@ -106,7 +106,7 @@
 				<ul class="featured-grid" id="featured-grid-<?php echo $idx+1 ?>">
 			<?php endif; ?>
 					<li class="item<?php if($idx%$_columnCount==0): ?> first<?php elseif(($idx+1)%$_columnCount==0): ?> last<?php endif; ?>" <?php echo $inlineStyle; ?>>
-						<div class="item-content">
+						<div class="item-content-product">
 							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
 								<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(158); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
 							</a>
@@ -172,18 +172,16 @@
 							<div class="actions">
 								<?php if($show_addtocart == 1): ?>
 								<div class="ma2-addtocart">
-									<?php if($_product->isSaleable()): ?>
-										<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-									<?php else: ?>
-										<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-									<?php endif; ?>
+                <?php if($_product->isSaleable()): ?>
+                  <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                <?php else: ?>
+                  <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                <?php endif; ?>
 								</div>
 								<?php endif; ?>
 								<?php if($show_details == 1):?>
 								<div class="ma2-detail">
-									<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class="btn-detail">
-										<?php echo $this->__('Details');?>
-									</a>
+                  <button type="button" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class=" btn-detail" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Details') ?></span></span></button>
 								</div>   
 								<?php endif;?>
 							</div>
@@ -199,17 +197,16 @@
 		<div class="toolbar-bottom">
 			<?php echo $this->getToolbarHtml() ?>
 		</div>
-        <script type="text/javascript">
-			Event.observe(window, 'load', function() {
+    <script type="text/javascript">
+			/* Event.observe(window, 'load', function() {
 				var tallest = 0;
-				$$('.item-content').each(function(element){
+				$$('.item-content-product').each(function(element){
 					if (element.getHeight() > tallest) tallest = element.getHeight();
 				});
-				$$('.item-content').each(function(element){
+				$$('.item-content-product').each(function(element){
 					element.setStyle({height: tallest+'px'});
 				});
-			});
-			
+			}); */
 			decorateGeneric($$('ul.products-grid'), ['odd','even','first','last']);
 		</script>
 	</div>

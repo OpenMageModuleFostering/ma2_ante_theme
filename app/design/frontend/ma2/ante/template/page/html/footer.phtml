@@ -1,47 +1,27 @@
 <?php
 /**
- * Magento
+ * MagenMarket.com
  *
  * NOTICE OF LICENSE
  *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
+ * http://opensource.org/licenses/osl-3.0.php
  *
  * DISCLAIMER
  *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
+ * Edit or modify this file with yourown risk.
  *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
+ * @category    Themes
+ * @package     Ma2_Default theme
+ * @copyright   Copyright (coffee) 2013 MagenMarket, http://www.magenmarket.com
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+**/
+/* $Id: footer.phtml 12 2013-11-05 10:00:22Z minhnv $ */
 ?>
-<div class="footer-container">
-    <div class="footer">
-        <div class="footer-top"> 
-			<div class="footer-top-top">
-				<?php echo $this->getChildHtml('newsletter') ?>
-				<?php echo $this->getChildHtml('call-toll-free') ?>
-				<?php echo $this->getChildHtml('block-free-shipping') ?>          
-			</div>
-			<div class="footer-top-bottom">
-				<?php echo $this->getChildHtml('block-footer-social') ?>		
-			</div>
-        </div>
-        <div class="footer-bottom">       
-		   <?php echo $this->getChildHtml('footer-block-one')?>
-		   <?php echo $this->getChildHtml('footer-block-two')?>
-		   <?php echo $this->getChildHtml('footer-block-three')?>
-		   <?php echo $this->getChildHtml('i-footer-right') ?>
-	    </div>	
-    </div>
-	<div class="bottom-footer"></div>
+<div class="footer">  
+  <div class="container container-inner">
+      <?php echo $this->getChildHtml() ?>
+  </div>
 </div>

@@ -1,0 +1,85 @@
+/* Document CSS*/
+.ma2-slideshow{
+	/* overflow: hidden; */
+  position: relative;
+	width: 450px;
+	height: 420px;
+}
+.transition-slide .show-window {
+    overflow: hidden;
+    position: relative;
+}
+.ma2-slideshow .show {
+    color: #FFFFFF;
+    height: 350px;
+    margin: 0 auto;
+}
+.transition-slide .show {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 999999px;
+}
+.protoshow, 
+.protoshow .show {
+	overflow: hidden;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  min-width: 450px;
+}
+.proto-controls li{
+	height: auto;
+	width: 5%;
+}
+.proto-controls li.start-stop{
+	background: none;
+	left: 48%;
+}
+.proto-controls li.start-stop a{
+  background-color: transparent;
+  color: #FFFFFF;
+  font-size: 66px;
+  font-weight: bold;
+  line-height: 100%;
+  text-decoration: none;
+  text-indent: 0;
+}
+.proto-controls a:link, 
+.proto-controls a:visited, 
+.proto-navigation a:link, 
+.proto-navigation a:visited {
+	text-align: left;
+}
+.proto-controls,
+.proto-navigation{
+  list-style: none outside none !important
+}
+.ma2-slideshow .show .slide{
+	width: 980px;
+	position: relative;
+}
+.ma2-slideshow .show .slide .img-slide{
+	width: 100%;
+}
+.ma2-slideshow .show .slide .item-desc{
+	background-image: url("images/desc-bg.png");
+	width: 96%;
+	position: absolute;
+	padding: 10px 2%;
+	bottom: 0;
+	left: 0;
+	line-height: normal;
+	text-align: left;
+}
+.show .slide .item-desc h1.title {
+	line-height: normal;
+}
+.show .slide .item-desc h1.title a {
+  font-family: oswald;
+  font-size: 18pt;
+  font-weight: normal;
+  line-height: normal;
+  text-decoration: none;
+}
