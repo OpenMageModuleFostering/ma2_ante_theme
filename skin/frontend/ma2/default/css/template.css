@@ -1,0 +1,373 @@
+/**
+ * MagenMarket.com
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Edit or modify this file with yourown risk.
+ *
+ * @category    Themes
+ * @package     Ma2_Default theme
+ * @copyright   Copyright (coffee) 2013 MagenMarket, http://www.magenmarket.com
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+**/
+/* $Id: template.css 12 2013-11-05 10:00:22Z minhnv $ */
+
+* { 
+	margin: 0;
+	padding: 0;
+	outline: none!important;
+}
+
+body  { 
+	background: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333; 
+	line-height: normal;
+	text-align: left;
+}
+
+/* Layout ================================================================================ */
+.wrapper{
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+.page{
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+.main{
+	margin: 10px 0 0 0;
+	padding: 10px 0 0 0;
+	overflow: hidden;
+}
+.container{
+	width: 1024px;
+	margin: 0 auto;
+	padding: 0 0;
+}
+.main-page{
+	margin: 0 0 20px 0;
+	padding: 0;
+	overflow: hidden;
+}
+.col-content{
+	background: #FFFFFF;
+    margin: 0 0;
+    padding: 0 0;
+	overflow: hidden;
+}
+
+/* Header ================================================================================ */
+.header { 
+	border: none;
+	border: 1px solid #DDDDDD;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	z-index: 9999;
+}
+.header .container { 
+	
+}
+.header .logo { 
+	padding: 10px;
+}
+.header .logo strong { 
+	
+}
+.header h1.logo { 
+	margin:0;
+	padding: 0;
+}
+.header .top-blocks .ma2-navMain{
+	width: 100%;
+	float: left;
+}
+
+.ma2-navMain{
+	border: none;
+	float: left;
+	width: 100%;
+}
+
+/* 1 Column Layout */
+.col1-layout{
+	
+}
+.col1-layout .container{
+	
+}
+.col1-layout .main-page{
+	
+}
+.col1-layout .col-content {
+    overflow: hidden;
+    padding: 10px 0;
+    width: 100%;
+}
+
+/* 2 Columns Left Layout */
+.col2-left-layout .col-content {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+.col2-left-layout .col-left{
+	
+}
+
+/* 2 Columns Right Layout */
+.col2-right-layout .col-content {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+.col2-right-layout .col-right{
+	
+}
+
+/* 3 Columns Layout */
+.col3-layout { 
+	
+}
+.col3-layout .container{
+	
+}
+.col3-layout .main-page{
+	
+}
+.col3-layout .content { 
+	
+}
+.col3-layout .col-left { 
+	
+}
+.col3-layout .col-right { 
+	
+}
+
+/* Base Columns */
+.col-left, 
+.col-right {
+    width: 210px;
+}
+.col-left { 
+	float:left; 
+	margin-right: 20px; 
+}
+.col-right { 
+	float:right;
+	margin-left: 20px;
+}
+
+/* HEADER TOP BLOCKS ================================================================================ */
+.header .top-blocks { 
+	overflow: hidden;
+	padding: 10px 0 0 10px;
+}
+.top-blocks .top1Area,
+.top-blocks .top2Area{
+	overflow: hidden;
+}
+.top1Area .widget-block,
+.top2Area .widget-block{
+	float: left;
+}
+.top1Area .block-first .widget,
+.top2Area .block-first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.top1Area .block-last .widget,
+.top2Area .block-last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.top-blocks .top1Area{
+	
+}
+.top-blocks .top2Area{
+	
+}
+
+/* MAIN TOP BLOCKS ================================================================================ */
+.maintop1Area,
+.maintop2Area,
+.maintop3Area{
+	overflow: hidden;
+}
+.maintop1Area .widget-block,
+.maintop2Area .widget-block,
+.maintop3Area .widget-block{
+	float: left;
+}
+.maintop1Area .block-first .widget,
+.maintop2Area .block-first .widget,
+.maintop3Area .block-first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.maintop1Area .block-last .widget,
+.maintop2Area .block-last .widget,
+.maintop3Area .block-last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.maintop1Area{
+	
+}
+.maintop2Area{
+	
+}
+.maintop3Area{
+	
+}
+
+/* MAIN BOTTOM BLOCKS ================================================================================ */
+.mainbottom1Area,
+.mainbottom2Area,
+.mainbottom3Area{
+	overflow: hidden;
+}
+.mainbottom1Area .widget-block,
+.mainbottom2Area .widget-block,
+.mainbottom3Area .widget-block{
+	float: left;
+}
+.mainbottom1Area .block-first .widget,
+.mainbottom2Area .block-first .widget,
+.mainbottom3Area .block-first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.mainbottom1Area .block-last .widget,
+.mainbottom2Area .block-last .widget,
+.mainbottom3Area .block-last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.mainbottom1Area{
+	
+}
+.mainbottom2Area{
+	
+}
+.mainbottom3Area{
+	
+}
+
+/* CONTENT TOP BLOCKS ================================================================================ */
+.contenttop1Area,
+.contenttop2Area{
+	overflow: hidden;
+}
+.contenttop1Area .widget-block,
+.contenttop2Area .widget-block{
+	float: left;
+}
+.contenttop1Area .block-first .widget,
+.contenttop2Area .block-first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.contenttop1Area .block-last .widget,
+.contenttop2Area .block-last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.contenttop1Area{
+	
+}
+.contenttop2Area{
+	
+}
+
+/* CONTENT BOTTOM BLOCKS ================================================================================ */
+.contentbottom1Area,
+.contentbottom2Area{
+	overflow: hidden;
+}
+.contentbottom1Area .widget-block,
+.contentbottom2Area .widget-block{
+	float: left;
+}
+.contentbottom1Area .block-first .widget,
+.contentbottom2Area .block-first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.contentbottom1Area .block-last .widget,
+.contentbottom2Area .block-last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.contentbottom1Area{
+	
+}
+.contentbottom2Area{
+	
+}
+
+/* Footer ================================================================================ */
+.footer {
+	padding: 10px 0 0 0;
+	margin: 0px 0;
+}
+.footer .container { 
+	
+}
+.footer .footer1Area { 
+	
+}
+.footer .footer2Area { 
+	
+}
+.footer .widget-block { 
+	float: left;
+}
+.footer p{
+	text-align: left;
+}
+/* CONTENT BOTTOM BLOCKS ================================================================================ */
+.footer1Area,
+.footer2Area{
+	overflow: hidden;
+}
+.footer1Area .widget-block,
+.footer2Area .widget-block{
+	float: left;
+}
+.footer1Area .block-first .widget,
+.footer2Area .block-first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.footer1Area .block-last .widget,
+.footer2Area .block-last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.footer1Area{
+	
+}
+.footer2Area{
+	
+}
+/* ======================================================================================= */
+
+.widget{
+	background: #999!important;
+	color: #FFF!important;
+	display: block!important;
+	padding: 10px;
+}

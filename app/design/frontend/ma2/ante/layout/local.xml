@@ -1,49 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout>
-  <default>		
-    <reference name="head">
-      <action method="addJs"><script>prototype/prototype.js</script></action>
-      <action method="addJs"><script>lib/ccard.js</script></action>
-      <action method="addJs"><script>prototype/validation.js</script></action>
-      <action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>
-      <action method="addJs"><script>scriptaculous/builder.js</script></action>
-      <action method="addJs"><script>scriptaculous/effects.js</script></action>
-      <action method="addJs"><script>scriptaculous/dragdrop.js</script></action>
-      <action method="addJs"><script>scriptaculous/controls.js</script></action>
-      <action method="addJs"><script>scriptaculous/slider.js</script></action>
-      <action method="addJs"><script>varien/js.js</script></action>
-      <action method="addJs"><script>varien/form.js</script></action>
-      <action method="addJs"><script>varien/menu.js</script></action>
-      <action method="addJs"><script>mage/translate.js</script></action>
-      <action method="addJs"><script>mage/cookies.js</script></action>
-
-      <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
-
-      <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
-      
-      <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 9</if></action>      
-      <block type="page/html" name="skin_css_ie7_ie8" as="skin_css_ie7_ie8" template="page/html/ie7ie8.phtml" />
-      
-      <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
-      <action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
+    <default>		
+		<reference name="head">
+			<action method="addJs"><script>prototype/prototype.js</script></action>
+			<action method="addJs"><script>lib/ccard.js</script></action>
+			<action method="addJs"><script>prototype/validation.js</script></action>
+			<action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>
+			<action method="addJs"><script>scriptaculous/builder.js</script></action>
+			<action method="addJs"><script>scriptaculous/effects.js</script></action>
+			<action method="addJs"><script>scriptaculous/dragdrop.js</script></action>
+			<action method="addJs"><script>scriptaculous/controls.js</script></action>
+			<action method="addJs"><script>scriptaculous/slider.js</script></action>
+			<action method="addJs"><script>varien/js.js</script></action>
+			<action method="addJs"><script>varien/form.js</script></action>
+			<action method="addJs"><script>varien/menu.js</script></action>
+			<action method="addJs"><script>mage/translate.js</script></action>
+			<action method="addJs"><script>mage/cookies.js</script></action>
             
-      <action method="addCss"><stylesheet>css/template.css</stylesheet></action>
-      <action method="addCss"><stylesheet>css/custom.css</stylesheet></action>
-      
-      <action method="addItem"><type>skin_js</type><name>js/ma2function.js</name><params/></action>
-      <action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
-      <action method="addItem"><type>skin_js</type><name>js/ie6.js</name><params/><if>lt IE 7</if></action>
-    </reference>
+            <action method="addItem"><type>skin_js</type><script>lib/carousel-min.js</script></action>
+            
+			<block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
+
+			<action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
+			<action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 9</if></action>
+			<action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
+			
+			<action method="addCss"><stylesheet>css/navmain.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/template.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/custom.css</stylesheet></action>
+			
+			<action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
+			<action method="addItem"><type>skin_js</type><name>js/ie6.js</name><params/><if>lt IE 7</if></action>
+		</reference>
 		
 		<reference name="root">
-			<action method="setTemplate"><template>page/1column.phtml</template></action>
-			<action method="setIsHandle"><applied>1</applied></action>
+			<action method="setTemplate">
+				<template>page/1column.phtml</template>
+			</action>
+			<action method="setIsHandle">
+				<applied>1</applied>
+			</action>
 			
+			<block type="ThemeOptions/html_ma2blocks" name="slideshow" as="slideshow" template="page/html/ma2blocks_simple.phtml">
+				<label>Slideshow</label>
+			</block>
+            
 			<block type="ThemeOptions/html_ma2blocks" name="maintop1" as="maintop1Area">
 				<label>Main Top 1 Area</label>
 			</block>
 			
-			<block type="ThemeOptions/html_ma2blocks" name="maintop2" as="maintop2Area" template="page/html/ma2blocks_simple.phtml">
+			<block type="ThemeOptions/html_ma2blocks" name="maintop2" as="maintop2Area">
 				<label>Main Top 2 Area</label>
 			</block>
 			
@@ -71,249 +78,800 @@
 			<block type="ThemeOptions/html_ma2blocks" name="mainbottom2" as="mainbottom2Area">
 				<label>Main Bottom 2 Area</label>
 			</block>
-			<block type="ThemeOptions/html_ma2blocks" name="mainbottom3" as="mainbottom3Area" template="page/html/ma2blocks_simple.phtml">
+			<block type="ThemeOptions/html_ma2blocks" name="mainbottom3" as="mainbottom3Area">
 				<label>Main Bottom 3 Area</label>
 			</block>
-      
-      <block type="ThemeOptions/html_ma2blocks" after="right" name="rightbottom1Area" as="rightbottom1Area" translate="label" template="page/html/ma2blocks_simple.phtml">
-        <label>Right Bottom 1 Area</label>
-      </block>
+			
 		</reference>
-    
-    <reference name="mainbottom2">
-      <block type="newsletter/subscribe" name="newsletter" template="newsletter/subscribe.phtml"></block>
-      
-      <block type="cms/block" name="i_call_toll_free" as="i_call_toll_free">
-        <action method="setBlockId"><block_id>i_call_toll_free</block_id></action>
-      </block>
-      
-      <block type="cms/block" name="ma2_block_free_shipping" as="ma2_block_free_shipping">
-        <action method="setBlockId"><block_id>ma2_block_free_shipping</block_id></action>
-      </block>
-    </reference>
-    
-    <reference name="mainbottom3">
-      <block type="cms/block" name="block_footer_social" as="block_footer_social">
-        <action method="setBlockId"><block_id>block_footer_social</block_id></action>
-      </block>      
-    </reference>
+
+		<reference name="maintop1">
+			
+		</reference>
+
+		<reference name="maintop2">
+			
+		</reference>
+        
+        <reference name="maintop3">
+        	
+        </reference>
+
+        <reference name="mainbottom1">
+            
+        </reference>
+        
+        <reference name="mainbottom2">
+            
+        </reference>
+        
+        <reference name="mainbottom3">
+			
+			<block type="newsletter/subscribe" name="newsletter" as="newsletter" template="newsletter/subscribe.phtml"/>
+
+            <block type="page/html_wrapper" name="cms.mainbottom32.wrapper">
+                <action method="setElementClass"><value>widget block</value></action>
+                <block type="cms/block" name="mainbottom3-2">
+                    <!-- Static Block Title: Call toll free -->
+                    <action method="setBlockId"><block_id>mainbottom3-2</block_id></action>
+                </block>
+            </block>
+            <block type="page/html_wrapper" name="cms.mainbottom33.wrapper">
+                <action method="setElementClass"><value>widget block</value></action>
+                <block type="cms/block" name="mainbottom3-3">
+                    <!-- Static Block Title: Free shipping -->
+                    <action method="setBlockId"><block_id>mainbottom3-3</block_id></action>
+                </block>
+            </block>
+        </reference>
 		
 		<reference name="header">
 			<block type="core/template" name="preset.styles.box" as="presetStylesBox" template="page/html/presetstyles.phtml"/>
 			
-      <block type="cms/block" name="i_block_header_top_links" as="i_block_header_top_links">
-        <action method="setBlockId"><block_id>i_block_header_top_links</block_id></action>
-      </block>
-      
 			<block type="ThemeOptions/html_ma2blocks" name="top1" as="top1Area" template="page/html/ma2blocks_simple.phtml">
 				<label>Top 1 Area</label>
 			</block>
 			<block type="ThemeOptions/html_ma2blocks" name="top2" as="top2Area" template="page/html/ma2blocks_simple.phtml">
 				<label>Top 2 Area</label>
-			</block>
+			</block>            
 		</reference>
-    
-    <reference name="top.links">      
-      <remove name="wishlist_link"/>
-      <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>        
-    </reference>
+        
+        <reference name="top1">
+        	<block type="page/html_wrapper" name="cms.top11.wrapper">
+                <action method="setElementClass"><value>widget block block-top11</value></action>
+                <block type="cms/block" name="top1-1">
+                    <!-- Static Block Title: Earn 3% back on purchases just for having an account!  -->
+                    <action method="setBlockId"><block_id>top1-1</block_id></action>
+                </block>
+            </block>
+        </reference>
+
+        <reference name="top2">
+            <block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+            <block type="checkout/cart_sidebar" name="header.cart_sidebar" as="cartSidebar" template="checkout/cart/sidebar.phtml"/>
+        </reference>
 		
-		<reference name="left">        
-      <remove name="left.permanent.callout"/>
-      <remove name="tags_popular"/>
-      <remove name="left.newsletter"/>
-    </reference>
-    
-    <reference name="right">
-      <remove name="paypal.partner.right.logo"/>
-      <remove name="catalog.product.related"/>
-      <remove name="catalog.compare.sidebar"/>
-      <remove name="right.permanent.callout"/>
-      <!-- 
-      <remove name="cart_sidebar"/> 
-      -->
-      <remove name="right.poll"/> 					
-    </reference>	
+		<reference name="left">
+            <remove name="left.permanent.callout"/>
+			<remove name="catalog.leftnav"/>
+			<remove name="left.newsletter"/>
+        </reference>
 		
-    <reference name="rightbottom1Area">	
-      <block type="page/html_wrapper" name="rightbottom11Area" as="rightbottom11Area" after="-">
-        <action method="setElementClass"><value>right-bottom</value></action>        
-        <block type="core/template" name="i-right-adv" as="i-right-adv" template="page/html/block-right-adv.phtml" after="-" />	
-      </block>
-    </reference>
+		<reference name="right">
+            <remove name="cart_sidebar"/>
+			<remove name="catalog.compare.sidebar"/>
+			<remove name="right.permanent.callout"/>
+			<remove name="right.poll"/>
+			<remove name="paypal.partner.right.logo"/>
+
+			<block type="checkout/cart_sidebar" name="header.cart_sidebar" as="cartSidebar" template="checkout/cart/sidebar.phtml"/>
+
+    		<block type="WidgetProductList/Custom" name="ma2.custom.sidebar.products" as="ma2_custom_products_sidebar" template="ma2_widgetproductlist/custom/default.phtml">
+    			<action method="setWidgetTitle"><widget_title>Special</widget_title></action>
+    			<action method="setShowWidgetTitle"><show_widget_title>1</show_widget_title></action>
+    			<action method="setIds"><ids>{50}</ids></action>
+    			<action method="setListType"><list_type>list</list_type></action>
+    			<action method="setShowShortDescription"><show_short_description>1</show_short_description></action>
+    			<action method="setShowPrice"><show_price>1</show_price></action>
+    			<action method="setShowAddtocart"><show_addtocart>1</show_addtocart></action>
+    			<action method="setThumbnailHeight"><thumbnail_height>400</thumbnail_height></action>
+    			<action method="setThumbnailWidth"><thumbnail_width>400</thumbnail_width></action>
+    		</block>
+
+    		<block type="page/html_wrapper" name="cms.right.adv.wrapper">
+                <action method="setElementClass"><value>widget block</value></action>
+                <block type="cms/block" name="right-adv">
+                    <!-- Static Block Title: Right Advertising   -->
+                    <action method="setBlockId"><block_id>right-adv</block_id></action>
+                </block>
+            </block>
+        </reference>
+		
+		<reference name="content">
+            
+        </reference>
 		
 		<reference name="footer">
 			<remove name="store_switcher"/>
 			<remove name="footer_links"/>
-      <remove name="cms_footer_links"/>
 			
-			<block type="ThemeOptions/html_ma2blocks" name="footer1" as="footer1Area" template="page/html/ma2blocks_simple.phtml">
+			<block type="ThemeOptions/html_ma2blocks" name="footer1" as="footer1Area">
 				<label>Footer 1 Area</label>
 			</block>
-			<block type="ThemeOptions/html_ma2blocks" name="footer2" as="footer2Area" template="page/html/ma2blocks_simple.phtml">
+			<block type="ThemeOptions/html_ma2blocks" name="footer2" as="footer2Area">
 				<label>Footer 2 Area</label>
 			</block>
 		</reference>
         
-    <reference name="footer1">
-      <block type="page/html_wrapper" name="footer11Area" as="footer11Area" after="-">
-        <action method="setElementClass"><value>footer1-1</value></action>
-        <block type="cms/block" name="footer_block_one" as="footer_block_one">
-          <action method="setBlockId"><block_id>footer_block_one</block_id></action>
-        </block>
-      </block>
-      
-      <block type="page/html_wrapper" name="footer12Area" as="footer12Area" after="-">
-        <action method="setElementClass"><value>footer1-2</value></action>
-        <block type="cms/block" name="footer_block_two" as="footer_block_two">
-          <action method="setBlockId"><block_id>footer_block_two</block_id></action>
-        </block>
-      </block>
-
-      <block type="page/html_wrapper" name="footer13Area" as="footer123Area" after="-">
-        <action method="setElementClass"><value>footer1-3</value></action>
-        <block type="cms/block" name="footer_block_three" as="footer_block_three">
-          <action method="setBlockId"><block_id>footer_block_three</block_id></action>
-        </block>
-      </block>
-
-      <block type="page/html_wrapper" name="footer14Area" as="footer14Area" after="-">
-        <action method="setElementClass"><value>footer1-4</value></action>
-        <block type="cms/block" name="ma2_i_footer_right" as="ma2_i_footer_right">
-          <action method="setBlockId"><block_id>ma2_i_footer_right</block_id></action>
-        </block>
-      </block>
-    </reference>
+        <reference name="footer1">
+        	<block type="page/html_wrapper" name="cms.footer11.wrapper">
+                <action method="setElementClass"><value>widget block</value></action>
+                <block type="cms/block" name="footer1-1">
+                    <!-- Static Block Title: Question?  -->
+                    <action method="setBlockId"><block_id>footer1-1</block_id></action>
+                </block>
+            </block>
+            <block type="page/html_wrapper" name="cms.footer12.wrapper">
+                <action method="setElementClass"><value>widget block</value></action>
+                <block type="cms/block" name="footer1-2">
+                    <!-- Static Block Title: Other Services  -->
+                    <action method="setBlockId"><block_id>footer1-2</block_id></action>
+                </block>
+            </block>
+        	<block type="page/html_wrapper" name="cms.footer13.wrapper">
+                <action method="setElementClass"><value>widget block</value></action>
+                <block type="cms/block" name="footer1-3">
+                    <!-- Static Block Title: Carda & Discounts  -->
+                    <action method="setBlockId"><block_id>footer1-3</block_id></action>
+                </block>
+            </block>
+            <block type="page/html_wrapper" name="cms.footer14.wrapper">
+                <action method="setElementClass"><value>widget block</value></action>
+                <block type="cms/block" name="footer1-4">
+                    <!-- Static Block Title: Payment - Copyright  -->
+                    <action method="setBlockId"><block_id>footer1-4</block_id></action>
+                </block>
+            </block>
+        </reference>
         
-    <reference name="footer2">
-      <block type="page/html_wrapper" name="footer21Area" as="footer21Area" after="-">
-        <action method="setElementClass"><value>footer2-1</value></action>
-      </block>  
-    </reference>
-  </default>
+        <reference name="footer2">
+            
+        </reference>
+    </default>
 	
-  <!--
-	CMS Home Page
-	-->
-	<cms_index_index>
-		<reference name="maintop1">
-      <block type="page/html_wrapper" name="maintop11" as="maintop11">
-        <action method="setElementClass"><value>banner-maintop1</value></action>
-        <block type="page/html" name="banner-img" as="banner-img" template="page/html/bannerimg.phtml"/>
-      </block>      
-    </reference>	
-    <reference name="maintop2"> 
-      <block type="page/html_wrapper" name="maintop21" as="maintop21">
-        <action method="setElementClass"><value>banner-maintop2</value></action>
-        <block type="page/html" name="banner-bottom" as="banner-bottom" template="page/html/banner-bottom.phtml"/>
-      </block>
-    </reference>	
-    <reference name="maintop3">
-      <block type="page/html_wrapper" name="maintop31" as="maintop31">
-        <action method="setElementClass"><value>manufacturers-maintop3</value></action>
-        <block type="manufacturers/list" name="manu_grid" as="manu_grid" grid_col="7" template="ma2_manufacturers/grid.phtml" title="Brands" after="manu_slider" />
-      </block>  
-    </reference>			
-  </cms_index_index>
-  
-	<!--
-	CMS page default layout, loads most of the pages
-	-->
-	<cms_page>
-		<reference name="root">
-      <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
-    </reference>
-  </cms_page>
-  
 	<!--
 	Category default layout
 	-->
 	<catalog_category_default>
 		<reference name="root">
-      <action method="setTemplate"><template>page/2columns-right.phtml</template></action>									
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+            
+		</reference>
+		
+		<reference name="right">
+			<remove name="sale.reorder.sidebar"/>
+			<remove name="wishlist_sidebar"/>
+			<remove name="catalog.compare.sidebar"/>
+			<remove name="catalog.product.related"/>
+			<remove name="right.reports.product.viewed"/>
+			<remove name="left.reports.product.viewed"/>
+		</reference>
+		
+		<reference name="content">
+			
+		</reference>
+        
+        <reference name="product_list">
+
+		</reference>
+		
+		<reference name="product_list_toolbar">
+			<action method="setDefaultListPerPage"><limit>3</limit></action>
+			<action method="addPagerLimit"><mode>list</mode><limit>3</limit></action>
+			<action method="addPagerLimit"><mode>list</mode><limit>6</limit></action>
+			<action method="addPagerLimit"><mode>list</mode><limit>9</limit></action>
+			<action method="addPagerLimit"><mode>list</mode><limit>12</limit></action>
+			<action method="addPagerLimit" translate="label"><mode>list</mode><limit>all</limit><label>All</label></action>
+			<action method="addPagerLimit"><mode>grid</mode><limit>6</limit></action>
+			<action method="addPagerLimit"><mode>grid</mode><limit>9</limit></action>
+			<action method="addPagerLimit"><mode>grid</mode><limit>12</limit></action>
+			<action method="addPagerLimit"><mode>grid</mode><limit>15</limit></action>
+			<action method="addPagerLimit" translate="label"><mode>grid</mode><limit>all</limit><label>All</label></action>
+		</reference>
+		
+		<reference name="footer">
+			
 		</reference>
 	</catalog_category_default>
 
 	<!--
 	Category layered navigation layout
 	-->
-	<catalog_category_layered translate="label">
-		<reference name="root">
-      <action method="setTemplate"><template>page/2columns-right.phtml</template></action>								
+	<catalog_category_layered>
+		 <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		
+		<reference name="head">
+			
 		</reference>
-	</catalog_category_layered>	
+		
+		<reference name="header">
+			
+		</reference>
+
+		<reference name="left">
+			
+		</reference>
+
+		<reference name="right">
+			<remove name="catalog.product.related"/>
+			<remove name="right.reports.product.viewed"/>
+		</reference>
+
+        <reference name="content">
+            
+        </reference>
+
+		<reference name="footer">
+			
+		</reference>
+	</catalog_category_layered>
+	
+	<!--
+	Compare products page
+	-->
+    <catalog_product_compare_index>
+        <!-- Mage_Catalog -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/popup.phtml</template></action>
+        </reference>
+		
+        <reference name="head">
+            <action method="addJs"><script>varien/product.js</script></action>
+        </reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		
+		<reference name="right">
+			<remove name="catalog.product.related"/>
+			<remove name="right.reports.product.viewed"/>
+		</reference>
+		
+        <reference name="content">
+            
+        </reference>
+		
+		<reference name="footer">
+			
+		</reference>
+    </catalog_product_compare_index>
 	
 	<!--
 	Product view page
 	-->
-  <catalog_product_view>
-    <reference name="content">                    
-      <block type="catalog/product_list_related" name="catalog.product.vesion2.related" after="product.description" template="catalog/product/list/related.phtml"/>            
-      <remove name="product_tag_list"/>
-      <remove name="product.info.upsell"/>                    
-    </reference>     
-    <reference name="right"> 
-      <remove name="catalog.product.related"/> 
-    </reference>   
-    <reference name="product.info">
-      <remove name="product.info.additional"/>
-      <remove name="product.attributes"/>
-      <!-- 
-      <action method="unsetChild">
-        <child>product_additional_data</child>
-      </action>
-       -->
-    </reference>  
-  </catalog_product_view>
-  
-  <!--
-	Compare products page
-	-->
-  <catalog_product_compare_index>
-    <!-- Mage_Catalog -->
-    <reference name="root">
-      <action method="setTemplate"><template>page/popup.phtml</template></action>
-    </reference>
+    <catalog_product_view>
+        <!-- Mage_Catalog -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		
+        <reference name="head">
+            <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addJs"><script>varien/configurable.js</script></action>
+            
+            <action method="addJs"><script>ma2_all/ma2all.js</script></action>
+            <action method="addItem"><type>js_css</type><name>ma2_all/ma2all.css</name><params/></action>
 
-    <reference name="head">
-      <action method="addJs"><script>varien/product.js</script></action>
-    </reference>
-  </catalog_product_compare_index>
-  
-  <!--
-	Catalog search advanced page
-	-->
-	<catalogsearch_advanced_index>			
+            <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params/></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar.js</name></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name></action>
+            <action method="addItem"><type>skin_js</type><script>lib/fancyzoom.min.js</script></action>
+        </reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+			<remove name="sale.reorder.sidebar"/>
+			<remove name="catalog.product.related"/>
+			<remove name="right.reports.product.viewed"/>
+		</reference>
+		
 		<reference name="right">
-			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
-		</reference>		
-	</catalogsearch_advanced_index>
-  
+            
+		</reference>
+        
+        <block type="review/product_view_list" name="product.info.product_additional_data" as="reviews" template="review/product/view/list.phtml"/>
+		
+		<reference name="content">
+            <block type="reports/product_viewed" name="reports.home.product.viewed" after="-" template="reports/home_product_viewed.phtml">
+                <action method="setColumnCount"><columns>3</columns></action>
+            </block> 
+        </reference>
+        
+		<!-- <reference name="reports.home.product.viewed">
+			<action method="setColumnCount"><columns>4</columns></action>
+		</reference> -->
+        
+        <reference name="product.info.upsell">
+            <action method="setColumnCount"><columns>3</columns></action>
+            <action method="setItemLimit"><type>upsell</type><limit>3</limit></action>
+        </reference>
+        
+        <reference name="product.view.related">
+			<action method="setColumnCount"><columns>3</columns></action>
+		</reference>
+		
+		<reference name="footer">
+			
+		</reference>
+    </catalog_product_view>
+	
 	<!--
 	Catalog search result page
 	-->	
-	<catalogsearch_result_index>	
+	<catalogsearch_result_index>
 		<reference name="root">
-			<action method="setTemplate"><template>page/2columns-right.phtml</template></action>
-		</reference>		
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+		</reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+            
+		</reference>
+		
 		<reference name="right">
-			<action method="unsetChild"><name>currency</name></action>
-    </reference>	
-	</catalogsearch_result_index> 
-  
-  <!--
-	Product type simple
+			<remove name="sale.reorder.sidebar"/>
+			<remove name="catalog.product.related"/>
+			<remove name="right.reports.product.viewed"/>
+		</reference>
+		<!-- <remove name="right"/> -->
+		
+		<reference name="content">
+			
+		</reference>
+		
+		<reference name="footer">
+			
+		</reference>
+	</catalogsearch_result_index>
+	
+    <!--
+    Advanced search index
+    -->
+    <catalogsearch_advanced_index>
+        <reference name="root">
+			
+		</reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		
+		<reference name="right">
+			<remove name="sale.reorder.sidebar"/>
+			<remove name="catalog.product.related"/>
+			<remove name="right.reports.product.viewed"/>
+		</reference>
+		<!-- <remove name="right"/> -->
+		
+		<reference name="content">
+			
+		</reference>
+		
+		<reference name="footer">
+			
+		</reference>
+    </catalogsearch_advanced_index>
+
+    <!--
+    Advanced search results
+    -->
+    <catalogsearch_advanced_result>
+        <reference name="root">
+			
+		</reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		
+		<reference name="right">
+			<remove name="sale.reorder.sidebar"/>
+			<remove name="catalog.product.related"/>
+			<remove name="right.reports.product.viewed"/>
+		</reference>
+		<!-- <remove name="right"/> -->
+		
+		<reference name="content">
+			
+		</reference>
+		
+		<reference name="footer">
+			
+		</reference>
+    </catalogsearch_advanced_result>
+    
+	<!--
+	Checkout page default layout, loads most of the pages
 	-->
-  <PRODUCT_TYPE_simple translate="label" module="catalog">  
-		<label>Catalog Product View (Simple)</label>
-    <reference name="product.info">
-      <remove name="product.info.simple" />
-			<block type="catalog/product_view_type_simple" name="product.info.simple.onlyprice" as="product_type_data_onlyprice" template="catalog/product/view/type/onlyprice.phtml" />
-			<block type="catalog/product_view_type_simple" name="product.info.simple.override" as="product_type_data_override" template="catalog/product/view/type/default.phtml">
-        <block type="core/text_list" name="product.info.simple.extra" as="product_type_data_extra" translate="label">
-          <label>Product Extra Info</label>
-        </block>
-      </block>
-    </reference>
-  </PRODUCT_TYPE_simple>
+	<checkout_cart_index>
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		
+		<reference name="right">
+			<remove name="sale.reorder.sidebar"/>
+			<remove name="wishlist_sidebar"/>
+			<remove name="catalog.compare.sidebar"/>
+			<remove name="catalog.product.related"/>
+			<remove name="right.reports.product.viewed"/>
+			<remove name="left.reports.product.viewed"/>
+		</reference>
+		
+		<reference name="content">
+			
+		</reference>
+		
+		<reference name="footer">
+			
+		</reference>
+	</checkout_cart_index>
+	
+	<!--
+	Checkout onepage index page
+	-->	
+	<checkout_onepage_index>
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		<remove name="left"/>
+		
+		<reference name="right">
+			<block type="page/html_wrapper" name="cms.right.adv.wrapper">
+                <action method="setElementClass"><value>widget block</value></action>
+                <block type="cms/block" name="right-adv">
+                    <!-- Static Block Title: Right Advertising   -->
+                    <action method="setBlockId"><block_id>right-adv</block_id></action>
+                </block>
+            </block>
+		</reference>
+		
+		<reference name="content">
+			
+		</reference>
+		
+		<reference name="footer">
+			
+		</reference>
+	</checkout_onepage_index>
+	
+	<!--
+	Checkout onepage success page
+	-->	
+	<checkout_onepage_success>
+		<reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		
+		<reference name="right">
+			
+		</reference>
+		<remove name="right"/>
+		
+		<reference name="content">
+			
+		</reference>
+		
+		<reference name="footer">
+			
+		</reference>
+	</checkout_onepage_success>
+	
+	<!--
+	Product list page
+	-->
+	<review_product_list>
+		<reference name="root">
+			
+		</reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		
+		<reference name="right">
+			
+		</reference>
+		
+		<reference name="content">
+			
+		</reference>
+		
+		<reference name="footer">
+			
+		</reference>
+	</review_product_list>
+	
+	<!--
+	Wishlist page
+	-->
+	<wishlist_index_index>
+		<reference name="root">
+			
+		</reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		
+		<reference name="right">
+			
+		</reference>
+		
+		<reference name="content">
+			
+		</reference>
+		
+		<reference name="footer">
+			
+		</reference>
+	</wishlist_index_index>
+	
+    <!-- 
+    CMS Home Page 
+    -->
+    <cms_index_index>
+    	<reference name="right">
+    		
+    	</reference>
+
+        <reference name="maintop1">
+            <block type="page/html_wrapper" name="cms.maintop12.wrapper" after="-">
+                <action method="setElementClass"><value>widget block block-maintop-banners</value></action>
+                <block type="cms/block" name="maintop1-2">
+                    <!-- Static Block Title: Main top banners -->
+                    <action method="setBlockId"><block_id>maintop1-2</block_id></action>
+                </block>
+            </block>
+        </reference>
+        
+        <reference name="maintop2">
+            <block type="page/html_wrapper" name="cms.maintop21.wrapper">
+                <action method="setElementClass"><value>widget block block-ship-next-day</value></action>
+                <block type="cms/block" name="maintop2-1">
+                    <!-- Static Block Title: Ship next day -->
+                    <action method="setBlockId"><block_id>maintop2-1</block_id></action>
+                </block>
+            </block>
+        </reference>
+        
+        <reference name="maintop3">
+            <block type="page/html_wrapper" name="cms.manufacturers.wrapper">
+                <action method="setElementClass"><value>widget block-ma2-manufacturers</value></action>
+                <block type="cms/block" name="manufacturers">
+                    <!-- Static Block Title: Manufacturers  -->
+                    <action method="setBlockId"><block_id>manufacturers</block_id></action>
+                </block>
+            </block>
+        </reference>
+    </cms_index_index>
+    
+	<!--
+	CMS page default layout, loads most of the pages
+	-->
+	<cms_page>
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		
+		<reference name="right">
+			<remove name="sale.reorder.sidebar"/>
+			<remove name="wishlist_sidebar"/>
+			<remove name="catalog.compare.sidebar"/>
+			<remove name="catalog.product.related"/>
+			<remove name="right.reports.product.viewed"/>
+			<remove name="left.reports.product.viewed"/>
+		</reference>
+		
+        <reference name="content">
+            
+        </reference>
+		
+		<reference name="footer">
+			
+		</reference>
+    </cms_page>
+	
+	<!--
+	Load this update on every page when customer is logged in
+	-->
+    <customer_logged_in>
+		<reference name="root">
+            
+        </reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+
+		<reference name="top1">
+			<block type="page/html_wrapper" name="cms.top12.wrapper">
+                <action method="setElementClass"><value>widget block block-top12</value></action>
+                <block type="page/template_links" name="top_links" as="top_links" template="page/template/links.phtml">
+                	<action method="addLink" translate="label title" module="customer"><label>My account</label><url helper="customer/getAccountUrl"/><title>My account</title><prepare/><urlParams/><position>10</position></action>
+                	<action method="addLink" translate="label title" module="customer"><label>Log out</label><url helper="customer/getLogoutUrl"/><title>Log out</title><prepare/><urlParams/><position>100</position></action>
+                </block>
+            </block>
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		
+		<reference name="right">
+			
+		</reference>
+		
+        <reference name="content">
+            
+        </reference>
+		
+		<reference name="footer">
+			
+		</reference>
+    </customer_logged_in>
+
+	<!--
+	Load this update on every page when customer is logged out
+	-->
+    <customer_logged_out>
+		<reference name="root">
+            
+        </reference>
+		
+		<reference name="head">
+			
+		</reference>
+		
+		<reference name="header">
+			
+		</reference>
+
+		<reference name="top1">
+			<block type="page/html_wrapper" name="cms.top12.wrapper">
+                <action method="setElementClass"><value>widget block block-top12</value></action>
+                <block type="page/template_links" name="top_links" as="top_links" template="page/template/links.phtml">
+                	<action method="addLink" translate="label title" module="customer"><label>Customer login</label><url helper="customer/getLoginUrl"/><title>Customer login</title><prepare/><urlParams/><position>100</position></action>
+
+                	<action method="addLink" translate="label" module="customer"><name>Create new account</name><path>customer/account/create/</path><label>Create new account</label></action>
+                </block>
+            </block>
+		</reference>
+		
+		<reference name="left">
+			
+		</reference>
+		
+		<reference name="right">
+			
+		</reference>
+		
+        <reference name="content">
+            
+        </reference>
+		
+		<reference name="footer">
+			
+		</reference>
+    </customer_logged_out>
 </layout> 

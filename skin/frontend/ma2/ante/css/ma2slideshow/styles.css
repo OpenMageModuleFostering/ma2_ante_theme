@@ -1,13 +1,14 @@
 /* Document CSS*/
 .ma2-slideshow{
 	/* overflow: hidden; */
-  position: relative;
-	width: 450px;
-	height: 420px;
+    position: relative;
+	width: 100%;
+	height: 400px;
 }
 .transition-slide .show-window {
     overflow: hidden;
     position: relative;
+    width: 100%;
 }
 .ma2-slideshow .show {
     color: #FFFFFF;
@@ -23,11 +24,13 @@
 .protoshow, 
 .protoshow .show {
 	overflow: hidden;
-  list-style: none outside none;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  min-width: 450px;
+    height: 300px;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+	min-width: 100%;
+	width: 100%;
 }
 .proto-controls li{
 	height: auto;
@@ -38,10 +41,10 @@
 	left: 48%;
 }
 .proto-controls li.start-stop a{
-  background-color: transparent;
+  background: none repeat scroll 0 0 transparent;
   color: #FFFFFF;
-  font-size: 66px;
-  font-weight: bold;
+  font-size: 75px;
+  font-weight: normal;
   line-height: 100%;
   text-decoration: none;
   text-indent: 0;
@@ -57,14 +60,15 @@
   list-style: none outside none !important
 }
 .ma2-slideshow .show .slide{
-	width: 980px;
+	/* width: 980px; */
+	width: 100%;
 	position: relative;
 }
 .ma2-slideshow .show .slide .img-slide{
 	width: 100%;
 }
 .ma2-slideshow .show .slide .item-desc{
-	background-image: url("images/desc-bg.png");
+	background: url("images/desc-bg.png");
 	width: 96%;
 	position: absolute;
 	padding: 10px 2%;
@@ -76,10 +80,8 @@
 .show .slide .item-desc h1.title {
 	line-height: normal;
 }
-.show .slide .item-desc h1.title a {
-  font-family: oswald;
-  font-size: 18pt;
-  font-weight: normal;
-  line-height: normal;
-  text-decoration: none;
+.show .slide .item-desc h1.title a{
+	text-decoration: none;
+	font-size: 18px;
+	line-height: normal;
 }

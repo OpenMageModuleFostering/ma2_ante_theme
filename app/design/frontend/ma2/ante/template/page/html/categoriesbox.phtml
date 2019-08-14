@@ -1,0 +1,140 @@
+<?php
+
+$_helper = Mage::helper('catalog/category');
+$_categories = $_helper->getStoreCategories();
+$_defaultImageUrl = $this->getSkinUrl('images/catalog/product/placeholder/image.jpg');
+
+//get all children
+function subCategories($navBlock, $categries){
+	$_helper = Mage::helper('catalog/category');
+    $_defaultsubImageUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'frontend/base/default/images/catalog/product/placeholder/image.jpg';
+	if (count($categries) > 0){
+		//echo '<ul class="subcategory-list">';
+			foreach($categries as $_subcategory){
+				if($_subcategory->getIsActive()){
+					if($_subcategory->hasChildren()){
+						$parent = ' parent';
+					} else {
+						$parent = '';
+					}
+                    
+                    //get category image
+                    $_subcategory = Mage::getModel('catalog/category')
+								->load($_subcategory->getId());
+                    
+                    if ($_subcategory->getThumbnail() != null) {
+                        $_subcatImage = Mage::getBaseUrl('media').'catalog/category/'.$_subcategory->getThumbnail(); 
+                    } else {
+                        $_subcatImage = Mage::getModel('catalog/category')
+                                    ->setData($_subcategory->getData())
+                                    ->getImageUrl();
+                    }
+                    
+                    //------
+					echo '<div class="item'. $parent .'" id="item-'.$_subcategory->getId().'">';
+					echo '<div class="cat-name"><a href="'.$_helper->getCategoryUrl($_subcategory).'">
+							'.$_subcategory->getName().'
+						</a></div>';
+                    
+                    if($_subcatImage) {
+                        echo '<img alt="category image" src="' .$_subcatImage. '" />';
+                    } else {
+                        echo '<img alt="category image" src="' .$_defaultsubImageUrl. '" />';
+                    }
+					
+					$_subcategories = $_subcategory->getChildrenCategories(); 
+					subCategories($navBlock, $_subcategories);
+					echo '</div>';
+				}
+			}
+		//echo '</ul>';
+	}
+}
+?>
+<?php if(count($_categories)): ?>
+<div class="ma2toggle-categories">
+	<div class="container">
+		<div>
+			<div id="toggle-categories" class="toggle-categories">
+				<div id="fullheight-toggle-categories">
+				<?php foreach($_categories as $_category): ?>
+					<?php if($_category->getIsActive()): ?>
+					<div class="item<?php echo $_category->hasChildren() ? ' parent' : '' ?>" id="item-<?php echo $_category->getId(); ?>">
+						<?php 
+							$_category = Mage::getModel('catalog/category')
+											->load($_category->getId());
+							
+							if ($_category->getThumbnail() != null) {
+								$_catImage = Mage::getBaseUrl('media').'catalog/category/'.$_category->getThumbnail(); 
+							} else {
+								$_catImage = Mage::getModel('catalog/category')
+											->setData($_category->getData())
+											->getImageUrl();
+							}
+						?>
+						<div class="cat-name">
+							<a href="<?php echo $_helper->getCategoryUrl($_category) ?>">
+								<?php echo $_category->getName() ?>
+							</a>
+						</div>
+						<?php if($_catImage): ?>
+							<img src="<?php echo $_catImage ?>" alt="category image" />
+						<?php else: ?>
+							<img src="<?php echo $_defaultImageUrl ?>" alt="category image" />
+						<?php endif; ?>
+					</div>
+					<?php 
+					$_subcategories = $_category->getChildrenCategories(); 
+					subCategories($this, $_subcategories);
+					?>
+					<?php endif; ?>
+				<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+		<a id="show-categories-btn" class="show-categories-btn" title="category list" href="javascript:void(0)">show cat</a>
+		<a style="display: none" id="hide-categories-btn" class="hide-categories-btn" title="category list" href="javascript:void(0)">hide cat</a>
+		<script type="text/javascript">
+		//<![CDATA[
+		Event.observe(window, 'load', function() {
+			var fullHeight = $('fullheight-toggle-categories').getHeight();
+			$$('.show-categories-btn').each(function(element){
+				element.observe('click', function(event){
+					event.stop();
+					new Effect.Morph('toggle-categories',{
+						style:{
+							height: fullHeight + 'px'
+						},
+						duration: 0.6
+					}); 
+					$(this).setStyle({
+						display: 'none'
+					});
+					$('hide-categories-btn').setStyle({
+						display: 'inline-block'
+					});
+					return false;
+				});
+			});
+			$$('.hide-categories-btn').each(function(element){
+				element.observe('click', function(event){
+					event.stop();
+					new Effect.Morph('toggle-categories',{
+						style: 'height: 150px',
+						duration: 0.6
+					});
+					$(this).setStyle({
+						display: 'none'
+					})
+					$('show-categories-btn').setStyle({
+						display: 'inline-block'
+					});
+					return false;
+				});
+			});
+		});
+		//]]>
+		</script>
+	</div>
+</div>
+<?php endif; ?>

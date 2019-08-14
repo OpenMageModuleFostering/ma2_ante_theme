@@ -1,242 +1,118 @@
 <?php
 /**
- * Magento
+ * Display Custom Selected products template
+ * @see Ma2_WidgetProductList_Block_Custom
  *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magentocommerce.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
 <?php
-/**
- * Product list template
- *
- * @see Mage_Catalog_Block_Product_List
- */
+  $_helper = $this->helper('catalog/output');
+  $uniqId = Mage::helper('core')->uniqHash("ma2-widgetproductlist-");
 ?>
-<?php
-    $_helper = $this->helper('catalog/output');
-?>
-<div class="catalog-product-default">
-	<?php if(isset($show_widget_title) && $show_widget_title == 1): ?>
-	<div class="catalog-product-title">
-		<h2 class="heading-box-product">
-			<span class="format-span">
-				<span><?php echo $widget_title;?></span>
-			</span>
-		</h2>
-	</div>
-	<?php endif; ?>
-<?php if(!$WidgetProductProductCollection->count()): ?>
-<div class="note-message">	
-	<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
-</div>
-<?php else: ?>
-    <?php echo $this->getToolbarHtml() ?>
-    <?php // List mode ?>
-    <?php if($list_type!='grid'): ?>
-    <?php $_iterator = 0; ?>
-	<div class="category-products">
-		<ol class="products-list" id="products-list">
-		<?php foreach ($WidgetProductProductCollection as $_product): ?>
-			<li class="item<?php if( ++$_iterator == sizeof($WidgetProductProductCollection) ): ?> last<?php endif; ?>">
-				<?php // Product Image ?>
-				<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
-				<?php // Product description ?>
-				<div class="product-shop">
-					<div class="f-fix">
-						<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
-						<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
-						<?php if($_product->getRatingSummary()): ?>
-						<?php echo $this->getReviewsSummaryHtml($_product) ?>
-						<?php endif; ?>
-						<?php echo $this->getPriceHtml($_product, true) ?>
-						<?php if($_product->isSaleable()): ?>
-							<p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
-						<?php else: ?>
-							<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-						<?php endif; ?>
-						<div class="desc std">
-							<?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
-							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
-						</div>
-						<ul class="add-to-links">
-							<?php if ($this->helper('wishlist')->isAllow()) : ?>
-								<li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-							<?php endif; ?>
-							<?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-								<li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
-							<?php endif; ?>
-						</ul>
-					</div>
-				</div>
-			</li>
-		<?php endforeach; ?>
-		</ol>
-		<div class="toolbar-bottom">
-			<?php echo $this->getToolbarHtml() ?>
-		</div>
-	</div>
-    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+<div class="ma2-widgetproductlist widget widget-custom-products <?php echo $list_type; ?>-view" id="<?php echo $uniqId; ?>">
+  <div class="widget-inner">
+    <?php if (isset($show_widget_title) && (int)$show_widget_title == 1): ?>
+    <h3 class="widget-title">
+      <span class="format-span">
+        <span><?php echo $widget_title;?></span>
+      </span>
+    </h3>
+    <?php endif; ?>
+    
+    <?php if(!$WidgetProductProductCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
     <?php else: ?>
-	<div class="featured-products">
-		<?php
-			$_collectionSize = $WidgetProductProductCollection->count();
-			$idx=0; unset($idx);
-			$inlineStyle = 'style="width:'.$item_width.'%;"';
-			foreach ($WidgetProductProductCollection as $_product): ?>
-			<?php if ($idx==0 || ($idx%$_columnCount)==0): ?>		
-				<ul class="featured-grid" id="featured-grid-<?php echo $idx+1 ?>">
-			<?php endif; ?>
-					<li class="item<?php if($idx%$_columnCount==0): ?> first<?php elseif(($idx+1)%$_columnCount==0): ?> last<?php endif; ?>" <?php echo $inlineStyle; ?>>
-						<div class="item-content item-content-product">
-							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">						
-								<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(158); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-							<?php 
-								// Get the Special Price
-								$specialprice = Mage::getModel('catalog/product')->load($_product["entity_id"])->getSpecialPrice(); 
-								// Get the Special Price FROM date
-								$specialPriceFromDate = Mage::getModel('catalog/product')->load($_product["entity_id"])->getSpecialFromDate();
-								// Get the Special Price TO date
-								$specialPriceToDate = Mage::getModel('catalog/product')->load($_product["entity_id"])->getSpecialToDate();
-								// Get Current date
-								$today =  time();
-								if ($specialprice):
-									if($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)):
-										if($show_icon == 1):			
-												$srcSale = $this->getSkinUrl('css/ma2_widgetproductlists/images/sale.png');
-												$altSale = 	$this->__('Sale');
-								?>
-												<img src="<?php echo $srcSale;?>" alt="<?php echo $altSale; ?>" class="sticker sticker-top-right" height="55" />
-								<?php
-										endif;
-									endif;
-								endif;									
+    
+    <div class="product-items">
+      <div class="product-items-inner">
+        <?php 
+          $idx=0; 
+          $_collectionSize = $WidgetProductProductCollection->count();
+          $inlineStyle = ($list_type == 'grid') ? 'style="width:'.$item_width.'%;"' : '';
+          if ($list_type == 'grid' && ($column_count == null || (int)$column_count == 0)) $column_count = 3;
+          if ($list_type == 'list') $column_count = 1;
+          if (!intval($thumbnail_width)) $thumbnail_width = 135;
+          if (!intval($thumbnail_height)) $thumbnail_height = 135;          
+        ?>
+        <?php foreach ($WidgetProductProductCollection as $pid=> $_product): ?>
+          <div class="product-item product-<?php echo $pid; ?> <?php echo ($idx == 0) ? 'first' : (($idx+1) == $_collectionSize ? 'last' : ''); ?>" <?php echo $inlineStyle ?>>
+            <div class="product-item-inner">
+                <div class="product-image">
+                  <a class="product-image" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
+                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(intval($thumbnail_width), intval($thumbnail_height)); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                  </a>
+                  <?php
+                    //product sale-off
+                    $firstPrice = (float)$_product->getPrice();
+                    $finalPrice = (float)$_product->getFinalPrice();
+                    if ($firstPrice != $finalPrice) :
+                        if ($finalPrice < $firstPrice) {
+                            $percent = (($firstPrice - $finalPrice)/$firstPrice) * 100;
+                        } elseif ($finalPrice > $firstPrice) {
+                            $percent = (($finalPrice - $firstPrice)/$finalPrice) * 100;
+                        }
+                    ?>
+                    <div class="product-sale-off">
+                        <span class="sale-off-percent-num"><?php echo number_format($percent, 0); ?><span class="percent-char">%</span></span><br>
+                        <span class="sale-off-label"><?php echo $this->__('Off'); ?></span>
+                    </div>
+                    <?php endif; ?>
+                </div>
+              <div class="product-info">
+                <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                <h4 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h4>
+                
+                <?php if($show_short_description == 1):?>
+                  <div class="product-desc std">
+                    <?php
+                      $desc = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
+                      if(isset($short_description_limit) && !empty($short_description_limit)):
+                        $shortDesc = explode('|', wordwrap($desc, $short_description_limit, '|'));
+                      else:
+                        $shortDesc = explode('|', wordwrap($desc, 88, '|'));
+                      endif;
+                      echo $shortDesc[0] . '...';
+                    ?>
+                    <?php if($show_details == 1): ?>
+                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="view-detail"><?php echo $this->__('Details') ?></a>
+                    <?php endif;?>
+                  </div>
+                <?php endif;?>
 
-							?>
-							</a>
-							<div class="product-title">
-								<h5>
-									<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
-										<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
-									</a>
-								</h5>
-							</div>
-							<?php
-							if($show_short_description == 1):
-								if ($_product->getShortDescription()):
-							?>
-									<div class="short-description-product">
-										<?php
-										$desc = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
-										if(isset($short_description_limit) && !empty($short_description_limit)):
-										  $shortDesc = explode('|', wordwrap($desc, $short_description_limit, '|'));
-										else:
-											$shortDesc = explode('|', wordwrap($desc, 88, '|'));
-										endif;
-										echo $shortDesc[0] . '...';
-										?>
-									</div>
-							<?php
-								endif;
-							endif;
-							?>
-							<?php if($_product->getRatingSummary()): ?>
-								<?php echo $this->getReviewsSummaryHtml($_product, 'short'); ?>
-							<?php endif; ?>
-							<div class="border-style">
-								<div class="border-bottom">
-								<?php
-									if($show_price == 1):
-								?>
-									<div class="box-price">
-									<?php   
-										// Get the Special Price
-										$specialprice = Mage::getModel('catalog/product')->load($_product["entity_id"])->getSpecialPrice(); 
-										// Get the Special Price FROM date
-										$specialPriceFromDate = Mage::getModel('catalog/product')->load($_product["entity_id"])->getSpecialFromDate();
-										// Get the Special Price TO date
-										$specialPriceToDate = Mage::getModel('catalog/product')->load($_product["entity_id"])->getSpecialToDate();
-										// Get Current date
-										$today =  time();
-										// without currency sign
-										$_specialPrice = $_product->getFinalPrice();
-										$nonEscapableNbspChar = html_entity_decode('&#160;&#160;', ENT_NOQUOTES, 'UTF-8');
-										if ($specialprice):
-											if($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)):                        
-												echo '<div class="special-price"><span class="format-span-price1">'.$_formattedActualPrice = Mage::helper('core')->currency($_product->getPrice(),true,false).'</span>';                                                             
-												// with currency sign
-												echo $nonEscapableNbspChar.'<span><span class="format-span-price2">'.$_formattedSpecialPrice = Mage::helper('core')->currency($_product->getFinalPrice(),true,false).'</span></span></div>'; 
-											endif;	
-										else:
-											echo $this->getPriceHtml($_product, true);
-										endif;
-									?>
-									</div>
-								<?php
-									endif;
-								?>
-								</div>
-							</div>
-							<div class="actions">
-								<?php if($show_addtocart == 1): ?>
-								<div class="ma2-addtocart">
-									<?php if($_product->isSaleable()): ?>
-										<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-									<?php else: ?>
-										<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-									<?php endif; ?>
-								</div>
-								<?php endif; ?>
-								<?php if($show_details == 1):?>
-								<div class="ma2-detail">
-									<button type="button" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class=" btn-detail" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Details') ?></span></span></button>
-								</div>   
-								<?php endif;?>
-							</div>
-						</div>
-					</li>
-			<?php 
-				$idx++; 
-				if ($idx%$_columnCount==0 || $idx==$_collectionSize): 
-			?>
-				</ul>		
-			<?php endif ?>
-        <?php endforeach ?>
-		<div class="toolbar-bottom">
-			<?php echo $this->getToolbarHtml() ?>
-		</div>
-    <script type="text/javascript">
-			/* Event.observe(window, 'load', function() {
-				var tallest = 0;
-				$$('.item-content-product').each(function(element){
-					if (element.getHeight() > tallest) tallest = element.getHeight();
-				});
-				$$('.item-content-product').each(function(element){
-					element.setStyle({height: tallest+'px'});
-				});
-			}); */
-			
-			decorateGeneric($$('ul.products-grid'), ['odd','even','first','last']);
-		</script>
-	</div>
-    <?php endif; ?>   
-<?php endif; ?>
+                <?php if($_product->getRatingSummary()): ?>
+                <?php echo $this->getReviewsSummaryHtml($_product, 'short'); ?>
+                <?php endif; ?>
+
+                <?php if($show_price == 1): ?>
+                  <?php echo $this->getPriceHtml($_product, true) ?>
+                <?php endif;?>
+
+                <div class="actions">
+                  <?php if($show_addtocart == 1): ?>
+                    <?php if($_product->isSaleable()): ?>
+                      <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                    <?php else: ?>
+                      <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                  <?php endif; ?>
+                  <ul class="add-to-links">
+                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                      <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                    <?php endif; ?>
+                    <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                      <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                    <?php endif; ?>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php if (($idx+1) % $column_count == 0 || ($idx+1) == $_collectionSize) echo '<div class="clear"></div>'; ?>
+        <?php $idx++; ?>
+        <?php endforeach; ?>
+        
+      </div>
+    </div>
+    <?php endif; ?>
+  </div>
 </div>

@@ -1,242 +1,253 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
-<div class="item-title-view">
-	<h2 class="heading-box-product">
-		<span class="format-span">
-			<span>
-				<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
-			</span>
-		</span>
-	</h2>
-</div>
 <div class="product-view">
     <div class="product-essential">
-      <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
-        <div class="product-name" style="visibility: hidden; height:1px;">
-          <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-        </div>
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
         <div class="no-display">
-          <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
-          <input type="hidden" name="related_product" id="related-products-field" value="" />
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
         </div>
+
         <div class="product-shop">
-          <?php if ($_product->getShortDescription()):?>
-          <div class="short-description-product">   
-            <div class="std">
-            <?php 
-            $desc = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ;												
-            $shortDesc = explode('|', wordwrap($desc, 288, '|'));
-            echo $shortDesc[0] . '...';
-            ?>
-            </div>
-          </div>
-          <?php endif;?>
-          <div class="box-review6">
-            <div class="box-review2">
-            <?php echo $this->getChildHtml('product_type_data_onlyprice') ?>                        					
-            <?php $_product = $this->getProduct(); ?>
-            <?php if($_product->isSaleable()): ?>
-              <div class="add-to-cart">
-                <?php if(!$_product->isGrouped()): ?>
-                <label for="qty"><?php echo $this->__('Quatity:') ?></label>
-                <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
-                <?php endif; ?>
-              </div>
-            <?php endif; ?>										
-            <?php echo $this->getChildHtml('product_type_data_override') ?>                                            
-             <?php if (!$this->hasOptions()):?>
-              <div class="add-to-box">     
-                <div style="width:100%; float: left;">
-                  <?php echo $this->getChildHtml('addto') ?>
-                  <script>
-                    $('add-to-link').style.padding="0";
-                  </script>	
-                </div> 
-                <div class="box-review4">
-                  <?php if($_product->isSaleable()): ?> 
-                    <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
-                      <div style="width:100%; float: left;">
-                        <span class="or"><?php echo $this->__('OR') ?></span>
-                      </div>    
-                    <?php endif; ?>
-                    <div class="box-review5">
-                      <?php echo $this->getChildHtml('addtocart') ?>
-                    </div>												
-                  <?php endif; ?>
-                  <div class="clear"></div>  
-                </div>
-                <div class="clear"></div>
-              </div>
-            <?php echo $this->getChildHtml('extra_buttons') ?>
-            <?php elseif (!$_product->isSaleable()): ?>
-              <div class="add-to-box">
-                <?php echo $this->getChildHtml('addto') ?>
-              </div>
-            <?php endif; ?> 	
-            </div>
-            <div class="box-review3">                
-              <!--Review -->
-              <?php echo $this->getReviewsSummaryHtml($_product, 'short', true)?>
-              <div class="box-Email">
-                <?php if ($this->canEmailToFriend()): ?>
-                  <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
-                <?php endif; ?>                        
-              </div>
-            </div>
-            <div class="clear"></div>
-          </div>     
-          <div class="box-review8">             
-            <div class="social-view">
-              <?php $productName = $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
-              <?php $productUrl = $_helper->productAttribute($_product, $_product->getProductUrl(), 'product_url'); ?>
-              <?php $productImage = $_product->getImageUrl(); ?>
-              <fb:like href="<?php echo $productUrl; ?>" layout="button_count" width="450" show_faces="false" send="true"></fb:like>
-              <a href="//twitter.com/share" class="twitter-share-button">Tweet</a>
-              <g:plusone size="medium"></g:plusone>
-              <a href="//pinterest.com/pin/create/button/?url=<?php echo urlencode($productUrl); ?>&media=<?php echo urlencode($productImage); ?>&description=<?php echo urlencode($productName); ?>" data-pin-do="buttonPin" data-pin-config="beside"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>
-              <?php unset($productName, $productUrl, $productImage); ?>
-              <script>
-                (function(d, s, id) {
-                  var js, fjs = d.getElementsByTagName(s)[0];
-                  if (d.getElementById(id)) return;
-                  js = d.createElement(s); js.id = id;
-                  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-                  fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-                //twitter
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-                // g+
-                (function() {
-                  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                  po.src = '//apis.google.com/js/plusone.js';
-                  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-                })();
-                (function(d){
-                  var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
-                  p.type = 'text/javascript';
-                  p.async = true;
-                  p.src = '//assets.pinterest.com/js/pinit.js';
-                  f.parentNode.insertBefore(p, f);
-                }(document));
-              </script>
-            </div>
-          </div>
-          <div class="clear"></div> 
-          <div class="box-review9">  
-            <?php echo $this->getChildHtml('alert_urls') ?>
-            <?php echo $this->getChildHtml('product_type_data') ?>
-            <?php echo $this->getTierPriceHtml() ?>
-            <?php echo $this->getChildHtml('extrahint') ?> 
-          </div>
+			<div class="product-img-add">
+				<div class="product-img-box">
+					<?php echo $this->getChildHtml('media') ?>
+				</div>
+				<div class="product-addtocart-area">
+					<div class="product-name">
+						<h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+					</div>
+					<?php echo $this->getReviewsSummaryHtml($_product, false, true) ?>
+                    
+                    <?php if ($_product->getShortDescription()):?>
+						<div class="short-description">
+							<h2><?php echo $this->__('Quick Overview') ?></h2>
+							<div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+						</div>
+					<?php endif;?>
+                    
+                    <div class="price-addtobox">
+					<?php echo $this->getChildHtml('alert_urls') ?>
+					<?php echo $this->getChildHtml('product_type_data') ?>
+					<?php echo $this->getTierPriceHtml() ?>
+					<?php echo $this->getChildHtml('extrahint') ?>
+					
+					<?php if (!$this->hasOptions()):?>
+						<div class="add-to-box">
+							<?php if($_product->isSaleable()): ?>
+								<?php echo $this->getChildHtml('addtocart') ?>
+								<?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+									<span class="or"><?php echo $this->__('OR') ?></span>
+								<?php endif; ?>
+							<?php endif; ?>
+							<?php echo $this->getChildHtml('addto') ?>
+						</div>
+						<?php echo $this->getChildHtml('extra_buttons') ?>
+					<?php elseif (!$_product->isSaleable()): ?>
+						<div class="add-to-box">
+							<?php echo $this->getChildHtml('addto') ?>
+						</div>
+					<?php endif; ?>
+					<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+						<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+					<?php endif;?>
+                    </div>
+                    
+                    <?php if ($this->canEmailToFriend()): ?>
+						<p class="email-friend <?php echo $this->hasOptions() ? "has-options" : "no-options" ?>"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+					<?php endif; ?>
+					
+					<!-- Social sharing -->
+					<div class="productSocialSharing">
+						<!-- Facebook Button -->
+						<div class="socialSharing facebookButton">
+							<div id="fb-root"></div>
+							<script type="text/javascript">
+								(function(d, s, id) {
+								  var js, fjs = d.getElementsByTagName(s)[0];
+								  if (d.getElementById(id)) return;
+								  js = d.createElement(s); js.id = id;
+								  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+								  fjs.parentNode.insertBefore(js, fjs);
+								}(document, 'script', 'facebook-jssdk'));
+							</script>
+							<!--<div class="fb-like" data-send="false" data-width="100" data-show-faces="true"></div>-->
+							<fb:like href="<?php echo $this->getUrl(); ?>" layout="button_count" show_faces="false" send="false"></fb:like>
+						</div>
+						<!-- Twitter Button -->
+						<div class="socialSharing twitterButton">
+							<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="omegatheme">
+								<?php echo $this->__('Twitter'); ?>
+							</a>
+							<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+						</div>
+						<!-- Google +1 Button -->
+						<div class="socialSharing googlePlusOneButton">
+							<g:plusone annotation="bubble" width="100" size="medium"></g:plusone>
+							<script type="text/javascript">
+							  (function() {
+								window.___gcfg = {lang: 'en'}; // Define button default language here
+								var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+								po.src = 'https://apis.google.com/js/plusone.js';
+								var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+							  })();
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+            <?php echo $this->getChildHtml('other');?>
+
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+            <?php endif;?>
+
         </div>
-        <div class="product-img-box">
-          <?php echo $this->getChildHtml('media') ?>
-        </div>
+		
         <div class="clearer"></div>
-        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-          <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-        <?php endif;?>
-      </form>
-      <script type="text/javascript">
-      //<![CDATA[
+        
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
         var productAddToCartForm = new VarienForm('product_addtocart_form');
         productAddToCartForm.submit = function(button, url) {
-          if (this.validator.validate()) {
-            var form = this.form;
-            var oldUrl = form.action;
-            if (url) {
-             form.action = url;
-            }
-            var e = null;
-            try {
-              this.form.submit();
-            } catch (e) {
-            }
-            this.form.action = oldUrl;
-            if (e) {
-              throw e;
-            }
-            if (button && button != 'undefined') {
-              button.disabled = true;
-            }
-          }
-        }.bind(productAddToCartForm);
-        productAddToCartForm.submitLight = function(button, url){
-          if(this.validator) {
-            var nv = Validation.methods;
-            delete Validation.methods['required-entry'];
-            delete Validation.methods['validate-one-required'];
-            delete Validation.methods['validate-one-required-by-name'];
-            // Remove custom datetime validators
-            for (var methodName in Validation.methods) {
-              if (methodName.match(/^validate-datetime-.*/i)) {
-                delete Validation.methods[methodName];
-              }
-            }
             if (this.validator.validate()) {
-              if (url) {
-                this.form.action = url;
-              }
-              this.form.submit();
+                var form = this.form;
+                var oldUrl = form.action;
+
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
             }
-            Object.extend(Validation.methods, nv);
-          }
         }.bind(productAddToCartForm);
-      //]]>
-      </script>
+
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                // Remove custom datetime validators
+                for (var methodName in Validation.methods) {
+                    if (methodName.match(/^validate-datetime-.*/i)) {
+                        delete Validation.methods[methodName];
+                    }
+                }
+
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>
     </div>
+	<?php //var_dump($this->getChildGroup('detailed_info', 'getChildHtml')); ?>
     <div class="product-collateral">
-      <div class="box-review6">                                        
-        <?php echo $this->getChildHtml('other');?>                    
-        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-          <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-        <?php endif;?>                                    
-        <?php echo $this->getChildHtml('alert_urls') ?>
-      </div>
-      <?php echo $this->getTierPriceHtml() ?>
-      <?php echo $this->getChildHtml('extrahint') ?>
-      <?php 
-      $getChildGroup = $this->getChildGroup('detailed_info', 'getChildHtml');
-      $getChildInfo = $this->getChildGroup('product_options','getChildHtml');
-      ?>
-      <div class="info-tech-product">
-        <dl id="tabsDataSheet" class="tabsData">
-          <dt id="tab_details" class="tab"><span class="tab-title-view"><?php echo $this->__('Details');?></span></dt>
-          <dd id="tab_details_contents" class="tab-container">
-            <div class="tab-content-datasheet">		
-              <?php foreach ($getChildGroup as $alias => $html):?>
+        <dl id="product-collateral-tabs" class="collateral-tabs">
+            <?php if($this->getChildGroup('detailed_info', 'getChildHtml')) : ?>
+            <dt id="tab_1" class="tab desc-tab"><span><?php echo $this->__('Details') ?></span></dt>
+            <dd id="tab_1_contents" class="tab-container">
+                <div class="tab-content">
+                <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
                 <div class="box-collateral <?php echo "box-{$alias}"?>">
-                  <?php if ($title = $this->getChildData($alias, 'title')):?>
-                  <h2><?php echo $this->escapeHtml($title); ?></h2>
-                  <?php endif;?>
-                  <?php 
-                    echo str_replace('<h2>','<h2 class="tab-rev">',$html);
-                  ?>
+                    <?php if ($title = $this->getChildData($alias, 'title')):?>
+                    <h2><?php echo $this->escapeHtml($title); ?></h2>
+                    <?php endif;?>
+                    <?php echo $html; ?>
                 </div>
-              <?php endforeach;?>
-            </div>
-          </dd>
-          <dt id="tab_datasheet" class="tab"><span class="tab-title-view"><?php echo $this->__('DataSheet');?></span></dt>
-          <dd id="tab_datasheet_contents" class="tab-container">
-            <div class="tab-content-datasheet">             
-              <?php echo $this->getLayout()->createBlock('catalog/product_view_attributes')->setTemplate('catalog/product/view/attributes.phtml')->toHtml(); ?>
-            </div>
-          </dd>
+                <?php endforeach;?>
+                </div>
+            </dd>
+            <?php endif; ?>
+            
+            <?php if($_product->getRatingSummary()): ?>
+            <dt id="tab_2" class="tab review-tab"><span><?php echo $this->__('Reviews') ?></span></dt>
+            <dd id="tab_2_contents" class="tab-container">
+                <div class="tab-content">
+                <?php echo $this->getLayout()->getBlock('product.info.product_additional_data')->toHtml(); ?>
+                </div>
+            </dd>
+            <?php endif; ?>
+            
+            <?php if($this->getChildHtml('upsell_products') != '') : ?>
+            <dt id="tab_3" class="tab"><span><?php echo $this->__('Upsell products') ?></span></dt>
+            <dd id="tab_3_contents" class="tab-container">
+                <div class="tab-content">
+                <?php echo $this->getChildHtml('upsell_products') ?>
+                </div>
+            </dd>
+            <?php endif; ?>
+            
+            <dt id="tab_4" class="tab tags-tab"><span><?php echo $this->__('Additional info') ?></span></dt>
+            <dd id="tab_4_contents" class="tab-container">
+                <div class="tab-content">
+                <?php echo $this->getChildHtml('product_additional_data') ?>
+                </div>
+            </dd>
         </dl>
-      </div>
-      <script type="text/javascript">
-        //<![CDATA[
-          var Ma2TabsDataSheet = new Ma2All.Tabs('tabsDataSheet');
-          Event.observe(window, 'load', function() {
-            Ma2TabsDataSheet.select();
-          });
-        //]]>
-      </script>
-      <?php echo $this->getChildHtml('product_additional_data') ?>  
-      <?php echo $this->getChildHtml('upsell_products') ?>      
     </div>
+	<script type="text/javascript">
+	//<![CDATA[
+		var productTabs = new Ma2All.Tabs('product-collateral-tabs');
+		Event.observe(window, 'load', function() {
+			productTabs.select();
+		});
+	//]]>
+	</script>
 </div>

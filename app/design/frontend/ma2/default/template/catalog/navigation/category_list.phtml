@@ -1,0 +1,91 @@
+<?php
+/**
+ * MagenMarket.com
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Edit or modify this file with yourown risk.
+ *
+ * @category    Themes
+ * @package     Ma2_Default theme
+ * @copyright   Copyright (coffee) 2013 MagenMarket, NetQ Creative Software Co. (http://www.magenmarket.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+**/
+/* $Id: category_list.phtml 12 2013-11-05 10:00:22Z minhnv $ */
+
+//get all children
+function displaySubCategories($navBlock, $categries){
+	$_helper = Mage::helper('catalog/category');
+	if (count($categries) > 0){
+		echo '<ul class="list-category">';
+			foreach($categries as $_subcategory){
+				if($_subcategory->getIsActive()){
+                    $class = array();
+					if ($navBlock->isCategoryActive($_subcategory)) {
+						$class[] = 'current';
+					}
+					if($_subcategory->hasChildren()){
+						$class[] = 'parent';
+					}
+					echo '<li id="item-'.$_subcategory->getId().'" class="'. implode(' ', $class) .'">';
+					echo '	<a href="'.$_helper->getCategoryUrl($_subcategory).'">
+							'.$_subcategory->getName().'<span class="product-count">('.$_subcategory->getProductCount().')</span>
+						</a>';
+						
+					$_subcategories = $_subcategory->getChildrenCategories(); 
+					displaySubCategories($navBlock, $_subcategories);
+					echo '</li>';
+				}
+			}
+		echo '</ul>';
+	}
+}
+?>
+<?php 
+$_helper = Mage::helper('catalog/category');
+$_categories = $_helper->getStoreCategories();
+
+if (count($_categories) > 0): ?>
+<div class="block-title categories-title">
+    <h3>
+        <span>Categories</span>
+    </h3>
+</div>
+<div class="widget reference-block sidebar-categories">
+    <div class="sidebar-categories-inner">
+        <ul class="list-category">
+            <?php $i=0; foreach($_categories as $_category): ?>
+                <?php $i=$i+1; if($_category->getIsActive()): ?>
+                    <?php 
+                        $class = array();
+                        $class[] = 'level0 cate-'.$_category->getId();
+                        if ($this->isCategoryActive($_category)) {
+                            $class[] = 'current';
+                        }
+                        if($_category->hasChildren()){
+                            $class[] = 'parent';
+                        }
+                    ?>
+                    <li class="<?php echo implode(' ', $class); if($i==1){ echo ' first';}?>" id="item-<?php echo $_category->getId() ?>">
+                        <a href="<?php echo $_helper->getCategoryUrl($_category) ?>">
+                            <span><?php echo $_category->getName() ?></span>
+                        </a>
+                        <?php
+                        $_categories = Mage::getModel('catalog/category')->load($_category->getId());
+                        $_subcategories = $_categories->getChildrenCategories(); 
+                        displaySubCategories($this, $_subcategories);
+                        ?>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php endif; ?> 

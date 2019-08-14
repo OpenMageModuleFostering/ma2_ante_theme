@@ -1,0 +1,148 @@
+<?php
+/**
+ * @version    1.0.0
+ * @copyright  Copyright (c) 2013 by magenmarket.com
+ * @author     Team magenmarket.com 
+ */
+ 
+$store = Mage::app()->getStore();
+$currentId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();  
+$category = Mage::getModel("catalog/category")->load($currentId);
+
+$pageIdentifier = Mage::app()->getFrontController()->getAction()->getFullActionName(); 
+
+if($pageIdentifier == 'catalog_category_view'){
+	$filterPrice = Mage::getModel('catalog/layer_filter_price');
+} else {
+	$filterPrice = Mage::getModel('catalog/layer_filter_price')->setLayer(Mage::getModel('catalogsearch/layer'));
+}
+
+$maxPrice = $filterPrice->getMaxPriceInt();
+$priceRange = $filterPrice->getPriceRange();
+$stepPrice = (int)($maxPrice / $priceRange);
+$toPrice = $maxPrice;
+
+$defaultMin = 0;    
+$valuesPrice = array();
+for($i=0;$i<=$toPrice;$i++)
+{
+    if($i==0 || $i%$stepPrice==0)
+    {
+        $valuesPrice[]=$i;
+    }
+}
+
+// price from GET
+$paraPrice = $this->getRequest()->getParam('price');
+$paraRequest = array();
+if(isset($paraPrice)){
+    $paraRequest = explode('-',$paraPrice);
+}
+
+// url
+$allParas = $this->getRequest()->getParams();
+$builParaUrl = '';
+if(isset($allParas) && !empty($allParas)){
+    foreach($allParas as $paras=>$para){
+        if(!empty($paras) && !empty($para)){
+            if($paras != 'id' && $paras != 'price'){
+                $builParaUrl .= $paras.'='.$para.'&';
+            }
+        }
+    }
+}
+
+if($pageIdentifier == 'catalog_category_view'){
+	$cleanUrl = $category->getUrl().'?'.$builParaUrl;
+} else {
+	$cleanUrl = $this->getUrl('catalogsearch/result/').'?'.$builParaUrl;
+}
+
+
+if(!isset($paraPrice)){
+    $_session = Mage::getSingleton('core/session');
+    $_session->setData('ma2Price'.$currentId, array('to'=>$toPrice, 'step'=>$stepPrice, 'value'=>$valuesPrice));
+} else {
+    $_session = Mage::getSingleton('core/session');
+    $ma2Price = $_session->getData('ma2Price'.$currentId);
+    
+    $toPrice = $ma2Price['to'];
+    $stepPrice = $ma2Price['step'];
+    $valuesPrice = $ma2Price['value'];
+}
+?>
+<div class="block category-filter-price">
+    <div class="block-title">
+        <?php echo $this->__('Price'); ?>
+    </div>
+    <div class="block-content">
+        <div id="filter-price-message" class="filter-price-message">
+            <div class="filter-price">
+                <?php //echo $this->__('Current Price:');?>
+                <span id="filter-price-min">
+                    <span class="currency"><?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?></span>
+                    <span id="filter-valid-min" class="price">
+                    <?php echo (isset($paraRequest[0])  ?  $paraRequest[0] : 0) ?>
+                    </span>
+                </span>
+                <span class="separator">-</span>
+                <span id="filter-price-max">
+                    <span class="currency"><?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?></span>
+                    <span id="filter-valid-max" class="price">
+                    <?php echo (isset($paraRequest[1])  ?  $paraRequest[1] : $toPrice) ?>
+                    </span>
+                </span>
+            </div>
+            <?php //if(!isset($paraPrice)):?>
+            <button class="filter-submit-btn button" type="button" onclick="javascript:submitFormFilter();">
+                <?php echo $this->__("Submit");?>
+            </button>
+            <?php //endif;?>
+        </div>
+        <div id="track" class="category-filter-price-inner">
+            <div id="handle-min" class="selected category-filter-price-inner-scroll-min"></div>
+            <div id="handle-max" class="selected category-filter-price-inner-scroll-max"></div>
+        </div>
+        
+        <input type="hidden" id="ma2FilterPrice"  name="ma2FilterPrice" value="">
+        <div id="error-message" class="note-msg" style="position: relative; top: 10px;"><?php echo $this->__('<span>Note: fromPrice < toPrice!</span>');?></div>
+        <?php echo $this->getStateHtml() ?>
+    </div>
+</div>
+<script language="javascript" type="text/javascript">
+    function submitFormFilter(){
+        var valueInput = $('ma2FilterPrice').value;
+        var urlSubmit = '<?php echo $cleanUrl; ?>price='+valueInput;
+        window.location = urlSubmit;
+    }
+    // <![CDATA[
+    // Filter slider control with preset values
+    var loadPriceSlider = function () {
+        var valueHiddenLoad = $('ma2FilterPrice').innerHTML;
+        if(valueHiddenLoad == ''){
+            $('error-message').hide();
+        }
+        var handles = [$('handle-min'), $('handle-max')];
+        var priceSlider = new Control.Slider(handles, 'track', {
+            range: $R(0, <?php echo $toPrice; ?>),
+            sliderValue: [0, <?php echo $toPrice; ?>],      
+            values: <?php echo json_encode($valuesPrice); ?>,   
+            step: '<?php echo $stepPrice; ?>',
+            restricted: true,
+            onSlide: function(v){
+                $('filter-valid-max').innerHTML = v[1];
+                $('filter-valid-min').innerHTML = v[0];
+            },
+            onChange: function(v){
+                $('ma2FilterPrice').value = v.join("-");
+    
+            }
+        });
+        <?php if (isset($paraRequest[0]) && isset($paraRequest[1])): ?>
+            priceSlider.setValue(<?php echo $paraRequest[0] ?>, 0);
+            priceSlider.setValue(<?php echo $paraRequest[1] ?>, 1);
+        <?php endif;?>
+    };
+    loadPriceSlider();
+    // ]]>
+</script>

@@ -15,10 +15,10 @@
  *
  * @category    Extensions
  * @package     Ma2_WidgetProductList
- * @copyright   Copyright (c) 2013 MagenMarket, NetQ Creative Software Co. (http://www.magenmarket.com)
+ * @copyright   Copyright (c) 2013 MagenMarket. (http://www.magenmarket.com)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
 **/
-/* $Id: Chooser.php 2 2013-10-07 08:18:48Z linhnt $ */
+/* $Id: Chooser.php 18 2013-11-05 07:30:33Z linhnt $ */
 
 class Ma2_WidgetProductList_Block_Adminhtml_Catalog_Product_Widget_Chooser 
 extends Mage_Adminhtml_Block_Catalog_Product_Widget_Chooser 

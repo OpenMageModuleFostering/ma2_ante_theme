@@ -3,7 +3,7 @@
     <modules>
         <Ma2_Slideshow>
             <active>true</active>
-            <codePool>community</codePool>
+            <codePool>local</codePool>
         </Ma2_Slideshow>
     </modules>
 </config> 

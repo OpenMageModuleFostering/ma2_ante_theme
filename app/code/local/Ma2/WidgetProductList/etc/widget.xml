@@ -78,7 +78,7 @@
                 <required>0</required>
                 <visible>1</visible>
                 <label>Number of products per row</label>
-                <value>6</value>
+                <value>3</value>
                 <type>text</type>
                 <depends>
                   <list_type><value>grid</value></list_type>
@@ -88,35 +88,54 @@
                <visible>1</visible>
                 <label> Show Add To Cart button</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_addtocart>
             <show_details translate="label">
                <visible>1</visible>
                 <label> Show Details button</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_details>
             <show_price translate="label">
                <visible>1</visible>
                 <label>Show Price</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_price>
             <show_short_description translate="label">
                <visible>1</visible>
                 <label>Show short description</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_short_description>
             <short_description_limit>
               <required>0</required>
               <visible>1</visible>
-              <label>Short description words limit</label>
+              <label>Short description characters limit</label>
               <type>text</type>
+              <value>88</value>
               <depends>
                 <show_short_description><value>1</value></show_short_description>
               </depends>
             </short_description_limit>
+            <thumbnail_width>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Width of thumbnail image</label>
+              <type>text</type>
+              <value>135</value>
+            </thumbnail_width>
+            <thumbnail_height>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Height of thumbnail image</label>
+              <type>text</type>
+              <value>135</value>
+            </thumbnail_height>
             <template>
                 <required>1</required>
                 <visible>1</visible>
@@ -127,10 +146,6 @@
                         <value>ma2_widgetproductlist/featured/default.phtml</value>
                         <label>Default Template</label>
                     </default>
-                    <sidebar translate="label">
-                        <value>ma2_widgetproductlist/featured/sidebar.phtml</value>
-                        <label>sidebar</label>
-                    </sidebar>
                 </values>
             </template>
         </parameters>
@@ -214,7 +229,7 @@
                 <required>0</required>
                 <visible>1</visible>
                 <label>Number of products per row</label>
-                <value>6</value>
+                <value>3</value>
                 <type>text</type>
                 <depends>
                   <list_type><value>grid</value></list_type>
@@ -224,35 +239,54 @@
                <visible>1</visible>
                 <label> Show Add To Cart button</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_addtocart>
             <show_details translate="label">
                <visible>1</visible>
                 <label> Show Details button</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_details>
             <show_price translate="label">
                <visible>1</visible>
                 <label>Show Price</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_price>
             <show_short_description translate="label">
                <visible>1</visible>
                 <label>Show short description</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_short_description>
             <short_description_limit>
               <required>0</required>
               <visible>1</visible>
-              <label>Short description words limit</label>
+              <label>Short description characters limit</label>
               <type>text</type>
+              <value>88</value>
               <depends>
                 <show_short_description><value>1</value></show_short_description>
               </depends>
             </short_description_limit>
+            <thumbnail_width>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Width of thumbnail image</label>
+              <type>text</type>
+              <value>135</value>
+            </thumbnail_width>
+            <thumbnail_height>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Height of thumbnail image</label>
+              <type>text</type>
+              <value>135</value>
+            </thumbnail_height>
             <template>
                 <required>1</required>
                 <visible>1</visible>
@@ -268,7 +302,7 @@
         </parameters>
     </New>
     
-    <BestSelling type="WidgetProductList/BestSelling" translate="name description" module="WidgetProductList">
+    <BestSelling type="WidgetProductList/Bestselling" translate="name description" module="WidgetProductList">
         <name>Ma2 WidgetProductList - Best Selling</name>
         <description type="desc">List of best selling products</description>
         <parameters>
@@ -314,7 +348,7 @@
                 <required>0</required>
                 <visible>1</visible>
                 <label>Number of products per row</label>
-                <value>6</value>
+                <value>3</value>
                 <type>text</type>
                 <depends>
                   <list_type><value>grid</value></list_type>
@@ -324,35 +358,54 @@
                <visible>1</visible>
                 <label> Show Add To Cart button</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_addtocart>
             <show_details translate="label">
                <visible>1</visible>
                 <label> Show Details button</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_details>
             <show_price translate="label">
                <visible>1</visible>
                 <label>Show Price</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_price>
             <show_short_description translate="label">
                <visible>1</visible>
                 <label>Show short description</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_short_description>
             <short_description_limit>
               <required>0</required>
               <visible>1</visible>
-              <label>Short description words limit</label>
+              <label>Short description characters limit</label>
               <type>text</type>
+              <value>88</value>
               <depends>
                 <show_short_description><value>1</value></show_short_description>
               </depends>
             </short_description_limit>
+            <thumbnail_width>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Width of thumbnail image</label>
+              <type>text</type>
+              <value>135</value>
+            </thumbnail_width>
+            <thumbnail_height>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Height of thumbnail image</label>
+              <type>text</type>
+              <value>135</value>
+            </thumbnail_height>
             <template>
                 <required>1</required>
                 <visible>1</visible>
@@ -450,7 +503,7 @@
                 <required>0</required>
                 <visible>1</visible>
                 <label>Number of products per row</label>
-                <value>6</value>
+                <value>3</value>
                 <type>text</type>
                 <depends>
                   <list_type><value>grid</value></list_type>
@@ -460,41 +513,54 @@
                <visible>1</visible>
                 <label> Show Add To Cart button</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_addtocart>
             <show_details translate="label">
                 <visible>1</visible>
                 <label> Show Details button</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_details>
             <show_price translate="label">
                 <visible>1</visible>
                 <label>Show Price</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_price>
             <show_short_description translate="label">
                 <visible>1</visible>
                 <label>Show short description</label>
                 <type>select</type>
+                <value>1</value>
                 <source_model>adminhtml/system_config_source_yesno</source_model>
             </show_short_description>
             <short_description_limit>
               <required>0</required>
               <visible>1</visible>
-              <label>Short description words limit</label>
+              <label>Short description characters limit</label>
               <type>text</type>
+              <value>88</value>
               <depends>
                 <show_short_description><value>1</value></show_short_description>
               </depends>
             </short_description_limit>
-            <show_icon translate="label">
+            <thumbnail_width>
+              <required>0</required>
               <visible>1</visible>
-              <label>Show icon Sale</label>
-              <type>select</type>
-              <source_model>adminhtml/system_config_source_yesno</source_model>
-            </show_icon>
+              <label>Width of thumbnail image</label>
+              <type>text</type>
+              <value>135</value>
+            </thumbnail_width>
+            <thumbnail_height>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Height of thumbnail image</label>
+              <type>text</type>
+              <value>135</value>
+            </thumbnail_height>
             <template>
                 <required>1</required>
                 <visible>1</visible>

@@ -1,0 +1,64 @@
+<?php
+/**
+ * MagenMarket.com
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Edit or modify this file with yourown risk.
+ *
+ * @category    Themes
+ * @package     Ma2_Default theme
+ * @copyright   Copyright (coffee) 2013 MagenMarket, http://www.magenmarket.com
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+**/
+/* $Id: header.phtml 12 2013-11-05 10:00:22Z minhnv $ */
+
+$mediaUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+$generalOptions = json_decode(json_encode(Mage::getStoreConfig('theme_options/general')));
+
+$logoWidth = '';
+$logoHeight = '';
+
+if ( $generalOptions->is_custom_logo == 1 && $generalOptions->logo_image != '' ) {
+	$logoSrc = $mediaUrl.'ma2/images/'.$generalOptions->logo_image;
+	
+	//logo width
+	$logoWidth = ( trim($generalOptions->logo_width) != '' && intval($generalOptions->logo_width) > 0 ) ? 'width="'. $generalOptions->logo_width .'"' : '';
+	
+	//logo height
+	$logoHeight = ( trim($generalOptions->logo_height) != '' && intval($generalOptions->logo_height) > 0 ) ? 'height="'. $generalOptions->logo_height .'"' : '';
+}
+else
+{
+	// $logoSrc = $this->getLogoSrc();
+	// $logoSrc = $mediaUrl.'ma2/images/'.$generalOptions->default_logo_image;
+	// $logoSrc = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'/frontend/ma2/default/images/logo.gif';
+	$logoSrc = $this->getSkinUrl('images/logo.png');
+}
+$slogan = trim($generalOptions->slogan) != '' ? $generalOptions->slogan : $this->getLogoAlt();
+?>
+<div class="header">
+	<?php if ($generalOptions->display_preset_styles == 1) : ?>
+	<?php echo $this->getChildHtml('presetStylesBox'); ?>
+	<?php endif; ?>
+    <div class="container">
+		<?php if ($this->getIsHomePage()):?>
+		<h1 class="logo"><strong><?php echo $slogan  ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $slogan ?>" class="logo"><img src="<?php echo $logoSrc ?>" <?php echo $logoWidth; ?> <?php echo $logoHeight; ?> alt="<?php echo $slogan ?>" /></a></h1>
+		<?php else:?>
+		<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $slogan ?>" class="logo"><strong><?php echo $slogan ?></strong><img src="<?php echo $logoSrc ?>" <?php echo $logoWidth; ?> <?php echo $logoHeight; ?> alt="<?php echo $slogan ?>" /></a>
+		<?php endif?>
+
+        <div class="top-blocks">
+			<?php echo $this->getChildHtml('top1Area') ?>
+			<?php echo $this->getChildHtml('top2Area') ?>
+		</div>
+		<?php echo $this->getChildHtml('topMenu') ?>
+    </div>
+</div>

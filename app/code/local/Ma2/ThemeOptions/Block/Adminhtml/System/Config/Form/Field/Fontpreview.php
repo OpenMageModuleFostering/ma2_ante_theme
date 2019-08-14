@@ -18,7 +18,7 @@
  * @copyright   Copyright (coffee) 2013 MagenMarket, http://www.magenmarket.com
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
 **/
-/* $Id: Fontpreview.php 14 2013-11-19 05:08:04Z linhnt $ */
+/* $Id: Fontpreview.php 12 2013-11-05 10:00:22Z minhnv $ */
 
 class Ma2_ThemeOptions_Block_Adminhtml_System_Config_Form_Field_FontPreview extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
@@ -121,10 +121,9 @@ class Ma2_ThemeOptions_Block_Adminhtml_System_Config_Form_Field_FontPreview exte
 							fcs.href = "'.($isSecure ? 'https:' : 'http:').'//fonts.googleapis.com/css?family=" + fontfamily;
 							document.getElementsByTagName("head")[0].appendChild(fcs);
 
-							//this.updatePreview();
+							this.updatePreview();
 							this.loadedFonts += this.fontSelect.value + ",";
 						}
-            this.updatePreview();
 					},
 					updatePreview : function()
 					{

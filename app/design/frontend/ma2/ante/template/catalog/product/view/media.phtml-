@@ -1,0 +1,152 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+<div class="product-large-image">
+    <span class="large-image">
+        <?php
+            $_img = '<img id="product-large-image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(500, 500).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+            echo '<a href="#product-image-zoom">'. $_helper->productAttribute($_product, $_img, 'image') .'<span class="zoom-icon"></span></a>';
+        ?>
+    </span>
+    <div id="product-image-zoom">
+        <?php
+            $_img_zoom = '<img id="product-large-image-zoom" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(500, 500).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+            echo $_helper->productAttribute($_product, $_img_zoom, 'image'); 
+        ?>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+    Event.observe(window, "load", function() {
+        $$(".large-image a").each(function(el) { new FancyZoom(el); })
+        new FancyZoom('medium_box_link');
+        //new FancyZoom('large_box_link');
+        //new FancyZoom('flash_box_link');
+    }); 
+    //]]>
+    </script>
+</div>
+<?php else: ?>
+<div class="product-large-image">
+    <span  class="large-image">
+        <?php
+            $_img = '<img id="product-large-image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(500, 500).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+            echo '<a href="#product-image-zoom">'. $_helper->productAttribute($_product, $_img, 'image'). '<span class="zoom-icon"></span></a>';
+        ?>
+    </span>
+    <div id="product-image-zoom">
+        <?php
+            $_img_zoom = '<img id="product-large-image-zoom" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(500, 500).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+            echo $_helper->productAttribute($_product, $_img_zoom, 'image'); 
+        ?>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+    Event.observe(window, "load", function() {
+        $$(".large-image a").each(function(el) { new FancyZoom(el); })
+        new FancyZoom('medium_box_link');
+        //new FancyZoom('large_box_link');
+        //new FancyZoom('flash_box_link');
+    }); 
+    //]]>
+    </script>
+</div>
+<?php endif; ?>
+<?php $idx = 0; ?>
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<div id="product-small-images" class="small-images small-images-slider carousel">
+    <div class="controls">
+        <a rel="next" class="carousel-control ico-next" href="javascript:">Next</a>
+        <a rel="prev" class="carousel-control ico-prev" href="javascript:">Previous</a>
+    </div>
+    <div id="thumbs-list-slider" class="middle">
+        <ol class="thumbs-list inner">
+        <?php foreach ($this->getGalleryImages() as $_image): ?>
+            <?php if($idx++%3 == 0) : ?>
+            <ul class="thumbs-slide">
+            <?php endif; ?>
+                <li>
+                    <a class="item <?php echo ($idx == 0) ? 'first active' : ''; ?>" href="javascript:void(0)"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(500, 500); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a>
+                </li>
+            <?php if($idx%3 == 0 || $idx==count($this->getGalleryImages())) : ?>
+            </ul>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </ol>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    Event.observe(window, "load", function() {
+		var slideWidth = $('thumbs-list-slider').getWidth();
+		$$('.inner .thumbs-slide').each(function(element){
+			element.setStyle({
+				width	:	slideWidth + 'px'
+			});
+		});
+	});
+    new Carousel($('product-small-images').down('.middle'), 
+        $('product-small-images').select('.thumbs-slide'), 
+        $('product-small-images').select('.controls a'), 
+        { 
+            duration:		0.4,	//The duration of a full jump 
+            auto: 			false,	//When true the Carousel will move on it's own without needing triggers. Useful for slideshows 
+            frequency:		3, 		//When auto is true, this dictates how long a slides stays put before the next jump 
+            circular:		false,	//By default when the first/last slide is reached, calling prev/next does nothing. If you want the effect to continue, you must do two things: Set the circular parameter true and duplicate the first slide in the HTML. It's the only way of giving the impression of a continous movement. 
+            wheel:			false,	//Whether or not to slide when using the mouse wheel over the slides 
+            visibleSlides:	1,		//Even though multiple slides can be made visible at once by styling, this parameters is needed in some calculations 
+            effect:			"scroll",	//You can choose between scroll and fade. When using fade, circular and duplicating the first slide is no longer necessary (see Example 3 for the fade effect) 
+            transition: 	"sinoidal"	//The two supported transitions are sinoidal and spring (see Example 2 for spring) 
+        }
+    );
+//]]>
+</script>
+<?php endif; ?>
+<script type="text/javascript">
+//<![CDATA[
+    Event.observe(window, 'load', function(){
+		$$('.thumbs-list li a').each(function(element){
+			element.observe('click', function(event){
+				$$('.thumbs-list li a').each(function(ele){ele.removeClassName('active');});
+				var thisImgs = $(this).childElements('img');
+				$('product-large-image').writeAttribute('src', thisImgs[0].readAttribute('src'));
+                $('product-image-zoom').update($('product-large-image-zoom').writeAttribute('src', thisImgs[0].readAttribute('src')));
+                $('product-image-zoom').innerHTML;
+				$(this).addClassName('active');
+			});
+		});
+	});
+//]]>
+</script>

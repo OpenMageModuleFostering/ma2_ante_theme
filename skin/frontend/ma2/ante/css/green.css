@@ -1,165 +1,71 @@
-@import url(http://fonts.googleapis.com/css?family=Oswald);
--webkit-border-fit
-/* Reset ================================================================================= */
 /**
- * Top menu 
- * Preset Style 
- **/
-.nav-container { background:#0a263d url(../images/bkg_nav0.jpg) 50% 0 repeat-y; }
-.ma2-preset-style-green #nav { width: 929px; margin: 0 auto; margin-top: 30px; padding: 0 0 0 18px; height: 57px; background:url("../images/nav.png") no-repeat scroll 0 0 transparent; }
-.ma2-preset-style-green #nav ul { margin:0; padding: 0; line-height:30px; }
-.ma2-preset-style-green #nav span { font-family: oswald; font-size: 13pt; margin-left: 2px; font-weight: normal; margin-top: 22px; text-transform: none; }
-.ma2-preset-style-green #nav ul li a { text-align: left; font-family:Arial; text-decoration: none; height: 33px; display:block; color: #333333; border: 0px solid #ccc; padding-left: 10px; font-weight:normal; }
-.ma2-preset-style-green ul#nav li.home a, ul#nav li.home a:hover { color:#fff; }
-.ma2-preset-style-green #nav ul li ul li a { color: #fff; text-align: left; }
-.ma2-preset-style-green #nav ul ul { position: absolute; visibility: hidden; top: 32; }
-.ma2-preset-style-green #nav ul li:hover ul { visibility: visible; color:#fff; }
-.ma2-preset-style-green #nav li:hover { background:#f36d00; background-image: url(../images/menuactive-green.png); background-repeat: repeat; box-shadow: 1px 0px 2px 0px #7c7c7c; -o-box-shadow: 1px 0px 2px 0px #7c7c7c; -moz-box-shadow: 1px 0px 2px 0px #7c7c7c; -webkit-box-shadow: 1px 0px 2px 0px #7c7c7c; }
-.ma2-preset-style-green #nav ul li:hover ul li a:hover { background:#66443c; color:#fff;}
-#nav li.hover a,
-#nav li:hover > a,
-.ma2-preset-style-green #nav a:hover {color:#fff;}
-.ma2-preset-style-green #nav a { font-family: Arial; }
-/* 0 Level */
-.ma2-preset-style-green #nav li { margin:-12px 0 0 6px; padding:0; list-style: none; float:left; position: relative; height: 53px; line-height: 68px; }
-.ma2-preset-style-green ul#nav li.home { background: url(../images/menuactive-green.png) repeat scroll 0 0 #ff4c29; margin-left: 5px; }
-.ma2-preset-style-green #nav li.home-yellow { background: url("../images/menuactive-green.png") repeat scroll 0 0 transparent; }
-.ma2-preset-style-green #nav li.active a { color:#fff; }
-.ma2-preset-style-green ul#nav li.active { background: url("../images/menuactive-green.png") repeat scroll 0 0 transparent; }
-/* 1st Level */
-.ma2-preset-style-green #nav ul li { border-radius: 0px; -o-border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px; }
-.ma2-preset-style-green #nav ul li,
-#nav ul li.active { background: url(../images/menuactive.png) repeat scroll 0 0 #F4A910; float: none; margin: 0; padding-bottom: 1px; height:33px; }
-.ma2-preset-style-green #nav ul li.active { background: url(../images/menuactive-green.png) repeat scroll 0 0 #f36d00; float: none; margin: 0; padding-bottom: 1px; height:30px; }
-.ma2-preset-style-green #nav ul a,
-.ma2-preset-style-green #nav ul a:hover { float:none; padding-left:10px; background:none; }
-.ma2-preset-style-green #nav ul li a { font-weight:normal !important; }
-/* 2nd Level */
-.ma2-preset-style-green #nav ul,
-.ma2-preset-style-green #nav div { position:absolute; width:15em; top:53px; left:-10000px; border:0px solid #899ba5; }
-.ma2-preset-style-green #nav div ul { position:static; width:auto; border:none; }
-/* 3rd+ Level */
-.ma2-preset-style-green #nav ul ul,
-.ma2-preset-style-green #nav ul div { top:26px;}
-.ma2-preset-style-green #nav ul li a { background: url(../images/menuactive-green.png) repeat scroll 0 0 #f36d00; height: 26px; }
-.ma2-preset-style-green #nav ul li a:hover{ height:25px; background: url(../images/titlebane.png) repeat scroll 0 0 transparent; opacity:0.73;  -o-opacity:0.73; -moz-opacity:0.73; -webkit-opacity:0.73; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=73)"; }
-.ma2-preset-style-green #nav ul li a,
-.ma2-preset-style-green #nav ul li a:hover { color:#fff !important; line-height: 28px; }
-.ma2-preset-style-green #nav ul span { padding:3px 15px 4px; }
-#nav li ul li.first,
-#nav li ul li.first a, 
-#nav li ul li.first a:hover,
-#nav li.last ul.level0 li.first,
-#nav li.last ul.level0 li.first a,
-#nav li.last ul.level0 li.first a:hover,
-#nav li.parent ul.level0 li.parent ul li.first,
-#nav li.parent ul.level0 li.parent ul li.first a,
-#nav li.parent ul.level0 li.parent ul li.first a:hover { border-radius: 0 8px 0 0;  }
-#nav ul li.last li span,
-.ma2-preset-style-green #nav ul li.last li span { padding:3px 15px 4px; }
-.ma2-preset-style-green #nav ul li.last { background:#ff4c29; background-image: url(../images/menuactive-green.png); background-repeat: repeat; padding-bottom:0; border-radius: 0 0 8px 8px; -o-border-radius: 0 0 8px 8px; -moz-border-radius: 0 0 8px 8px; -webkit-border-radius: 0 0 8px 8px; }
-.ma2-preset-style-green #nav ul li.last a:hover { height:25px; background: url(../images/titlebane.png) repeat scroll 0 0 transparent; opacity:0.73; -o-opacity:0.73; -moz-opacity:0.73; -webkit-opacity:0.73; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=73)"; border-radius: 0 0 8px 8px; -o-border-radius: 0 0 8px 8px; -moz-border-radius: 0 0 8px 8px; -webkit-border-radius: 0 0 8px 8px; }
-.ma2-preset-style-green #nav ul li.last a,
-.ma2-preset-style-green #nav ul li.last a:hover { color:#fff !important; line-height: 28px; border-radius: 0 0 8px 8px; -o-border-radius: 0 0 8px 8px; -moz-border-radius: 0 0 8px 8px; -webkit-border-radius: 0 0 8px 8px; }
-.ma2-preset-style-green ul#nav li.last ul.level0 li.last a,
-.ma2-preset-style-green ul#nav li.last ul.level0 li.last a:hover { color:#fff !important; line-height: 28px; border-radius: 0 0 8px 8px; -o-border-radius: 0 0 8px 8px; -moz-border-radius: 0 0 8px 8px; -webkit-border-radius: 0 0 8px 8px; }
-.ma2-preset-style-green   #nav li.last ul li a,
-.ma2-preset-style-green   #nav li.last ul li a:hover { border-radius: 0; -o-border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; }
-.ma2-preset-style-green #nav li.home-yellow a span { color:#606060; }
-.ma2-preset-style-green #nav li.active a { height: 26px; }
-/* style for item menuTop */
-.ma2-preset-style-green ul#nav li.parent ul li.parent a { background: url("../images/bkg_nav2.gif") no-repeat scroll 170px 19px transparent; }
-.ma2-preset-style-green ul#nav li.parent ul li.parent { background: url("../images/menuactive-green.png") repeat scroll 0 0 #FF4C29; }
-.ma2-preset-style-green  ul#nav li.parent ul li.parent ul li a:hover { background: url(../images/titlebane.png) repeat scroll 0 0 transparent; }
-.ma2-preset-style-green  ul#nav li.parent ul li.parent ul li a { background: url("../images/menuactive-green.png") repeat scroll 0 0 #FF4C29; }
-.ma2-preset-style-green  ul#nav li.parent ul li.parent ul li.last a { border-radius: 0 0 8px 8px; -o-border-radius: 0 0 8px 8px; -moz-border-radius: 0 0 8px 8px; -webkit-border-radius: 0 0 8px 8px; }
-ul#nav li.parent ul li.parent a:hover { background: url("../images/titlebane.png") repeat scroll 0 0 transparent; opacity:0.73; -o-opacity:0.73; -moz-opacity:0.73; -webkit-opacity:0.73; }
-.products-grid-bar li.item { float: left; list-style: none outside none; text-align: left; width: 30%; }
-/* Show menu */
-#nav li ul.shown-sub,
-#nav li div.shown-sub { left:0; z-index:999; }
-#nav li .shown-sub ul.shown-sub,
-#nav li .shown-sub li div.shown-sub { left:136px; }
-/* Show menu green*/
-.ma2-preset-style-green #nav li ul.shown-sub,
-.ma2-preset-style-green #nav li div.shown-sub { left:0; z-index:999; }
-.ma2-preset-style-green #nav li .shown-sub ul.shown-sub,
-.ma2-preset-style-green #nav li .shown-sub li div.shown-sub { left:136px; }
-/* =========================================================== */
-/* Add to Cart */
-/* =================================================== */
-.add-to-cart-green-style5 button.button { border-radius: 18px 0 0 18px; padding-left: 10px; }
-.add-to-cart-green-style4 button.button { border-radius: 0px 8px 0px 8px; }
-.add-to-cart-green-style3 button.button { border-radius: 18px 18px 18px 18px; padding-left: 10px; padding-right: 10px; }
-.add-to-cart-green-style2 button.button { border-radius: 8px 0px 8px 0px; }
-.add-to-cart-green-style1 button.button { border-radius: 68px 5px 68px 5px; padding-left: 10px; padding-right: 10px; }
-.add-to-cart-green button.button,
-.add-to-cart-green-style1 button.button,
-.add-to-cart-green-style2 button.button,
-.add-to-cart-green-style3 button.button,
-.add-to-cart-green-style4 button.button,
-.add-to-cart-green-style5 button.button { background:url("../images/apptocart-green.png") repeat scroll 10% 0 transparent; border: none; line-height: 27px; height: 27px; }
-.add-to-cart-green button.button:hover,
-.add-to-cart-green-style1 button.button:hover,
-.add-to-cart-green-style2 button.button:hover,
-.add-to-cart-green-style3 button.button:hover,
-.add-to-cart-green-style4 button.button:hover,
-.add-to-cart-green-style5 button.button:hover { background:url("../images/menuactive-green.png") repeat scroll 10% 0 transparent; }
-.add-to-cart-green .button-shopping-cart button.button span span { height: 30px; line-height: 30px; padding-left: 30px; padding-right: 10px; } 
-/* ================ */
-.ma2-preset-style-green .header .links li a span.ma2-cart { font-weight: none; color: #e86900; }
-.ma2-preset-style-green .header .links li a span.ma2-cart { font-weight: none; color: #7ba62f; }
-.ma2-preset-style-green  button.button:hover { background:url("../images/menuactive-green.png") repeat scroll 0 0 transparent; }
-.ma2-preset-style-green  button.button { background:url("../images/apptocart-green.png") repeat scroll 0 0 transparent; }
-.ma2-preset-style-green .button-shopping-cart button.button span { background:url("../images/buttonshopcartgreenblue.png") repeat scroll 0 0 transparent; }
-.ma2-preset-style-green .slideshow-title,
-.ma2-preset-style-green .block-cart .empty,
-.ma2-preset-style-green .call-toll-free .call-title,
-.ma2-preset-style-green .free_shipping .free_shipping-left .free_shipping_title,
-.ma2-preset-style-green .free_shipping_onorder,
-.ma2-preset-style-green .block-title-subscribe { color:#79a42e; }
-.ma2-preset-style-green .cs-buttons a.cs-active { background:url("../images/itembaneactive-green.png") no-repeat scroll 0 0px transparent; }
-.ma2-preset-style-green .free_shipping-right,
-.ma2-preset-style-green .call-toll-free .number-call { color:#e96b07; }
-.ma2-preset-style-green .product-title h5 a,
-.ma2-preset-style-green .item-content .short-description-product { color:#333333; padding-bottom: 10px;}
-.ma2-preset-style-green .special-price .price, 
-.ma2-preset-style-green .regular-price .price,
-.ma2-preset-style-green .price-box .price { color:#E96B07; }
-.ma2-preset-style-green .item-content .box-price .format-span-price2 { color:#e96b07; }
-.ma2-preset-style-green .catalog-product-title .heading-box-product .format-span span,
-.ma2-preset-style-green .page-title h1, .ma2-preset-style-green .page-title h2,
-.ma2-preset-style-green .summary .amount a span,
-.ma2-preset-style-green .item-title-view .heading-box-product .format-span span { color:#7aa52f; }
-/* preset-style color for breadcrum */
-/* ================================== */
-.ma2-preset-style-green li.home a,
-.ma2-preset-style-green li strong,
-.ma2-preset-style-green li a,
-.ma2-preset-style-green .box-view { color:#333333; }
-.ma2-preset-style-green .products-list .product-name a { color:#333333; }
-.ma2-preset-style-green .f-fix-first .desc { color:#888888; }
-/* preset-style for Icon New and Icon Available */
-/* ================================================ */
-.ma2-preset-style-green .label-new { background-color:#f36d00; }
-/* preset-style for toolbar */
-/* ============================= */
-.ma2-preset-style-green .toolbar-bottom .toolbar .pager .amount,
-.ma2-preset-style-green .block p.block-subtitle { color:#666666; }
-.ma2-preset-style-green .toolbar-bottom .toolbar .pager .pages strong,
-.ma2-preset-style-green .toolbar-bottom .toolbar .pager .pages ol li a,
-.ma2-preset-style-green .product-shop { color:#666666; }
-.ma2-preset-style-green .toolbar-bottom .toolbar .pager .pages ol li.current { font-weight:bold; font-size:12px; }
-.ma2-preset-style-green .toolbar-bottom .toolbar .pager .pages ol li.current { color:#85ad3c; }
-.ma2-preset-style-green .a-center a,
-.ma2-preset-style-green .buttons-set a.f-left { color:#ff4c29; font-style: italic; }
-/* style for products details */
-/* =========================================== */
-.ma2-preset-style-green .product-collateral, 
-.ma2-preset-style-green .product-view .product-essential, 
-.ma2-preset-style-green .product-view .product-collateral { padding-left:0px; padding-right:10px; }
-/* style for footer */
-/* =========================================== */
-.ma2-preset-style-green .footer-top-top,
-.ma2-preset-style-green .footer-top-bottom { float:left; width:100%; text-align:left; }
-.ma2-preset-style-green .footer a { color: #79A42E; }
+ * MagenMarket.com
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Edit or modify this file with yourown risk.
+ *
+ * @category    Themes
+ * @package     Ma2_Default theme
+ * @copyright   Copyright (coffee) 2013 MagenMarket, http://www.magenmarket.com
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+**/
+/* $Id: green.css 13 2013-11-05 10:07:42Z minhnv $ */
+
+a{
+	color: #E96B07;
+}
+
+.block-account .block-title, 
+.widget-title, .block-title{
+	color: #79A42E;
+}
+.topblocks .block-cart .block-content {
+    background: url("../images/green/cart-icon.png") no-repeat scroll 100% 0 rgba(0, 0, 0, 0);
+}
+#nav ul,
+#nav li.over, #nav li.active {
+    background: url("../images/green/nav-active.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.mainbottom1Area .block-title, 
+.mainbottom1Area .block-title strong, 
+.mainbottom1Area h3, 
+.mainbottom2Area .block-title, 
+.mainbottom2Area .block-title strong, 
+.mainbottom2Area h3, 
+.mainbottom3Area .block-title, 
+.mainbottom3Area .block-title strong, 
+.mainbottom3Area h3{
+	color: #79A42E;
+}
+.footer ul li a:hover{
+    color: #79A42E;
+}
+.regular-price .price,
+div.price-box p.special-price span{
+	color: #E96B07;
+}
+button.button{
+    background: url(../images/green/btn-bg.png);
+    border: none;
+    border-radius: 0 0 0 0;    
+    padding: 5px 15px 5px 33px;
+}
+button.button:hover{
+    background: url(../images/green/nav-active.png);
+}
+.product-view .product-options p.required {
+	color: #E96B07;
+}
+.toolbar-top .pager li.current, 
+.toolbar-bottom .pager li.current{
+    background: none repeat scroll 0 0 #E96B07;
+    border: 1px solid #E96B07;
+}

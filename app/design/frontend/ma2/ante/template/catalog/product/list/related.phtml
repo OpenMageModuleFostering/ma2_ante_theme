@@ -25,82 +25,86 @@
  */
 ?>
 <?php if($this->getItems()->getSize()): ?>
-<div class="product-collateral">
-	<div class="item-title-view">
-		<h3 class="heading-box-product">
-			<span class="format-span">
-				<span><?php echo $this->__('SIMILAR PRODUCTS');?></span>
-			</span>
-		</h3>
-	</div>
-    <div class="block-content">
-        <?php foreach($this->getItems() as $_item): ?>                            
-			<div class="box-products-related">
-				<div class="item-content">
-					<div class="img-product-related">                    
-						<a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(158); ?>" width="158" height="158" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a>
-					</div>
-					<div class="content-product-related">
-						<div class="product-details">
-							<div class="product-title-relative">    
-								<h5>
-									<a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a>
-								</h5>
-							</div>								
-							<div class="box-name">
-								<div class="short-description-related">
-									<p>
-										<?php
-											$desc = Mage::getModel('catalog/product')->load($_item->getId())->getDescription();
-											$shortDesc = explode('|', wordwrap($desc, 68, '|'));
-											echo $shortDesc[0] . '...';
-										?>
-									</p>
-								</div>	
-							</div>
-							<?php   
-								// Get the Special Price
-								$specialprice = Mage::getModel('catalog/product')->load($_item["entity_id"])->getSpecialPrice(); 
-								// Get the Special Price FROM date
-								$specialPriceFromDate = Mage::getModel('catalog/product')->load($_item["entity_id"])->getSpecialFromDate();
-								// Get the Special Price TO date
-								$specialPriceToDate = Mage::getModel('catalog/product')->load($_item["entity_id"])->getSpecialToDate();
-								// Get Current date
-								$today =  time();
-								// without currency sign
-								$_specialPrice = $_item->getFinalPrice();
-								$nonEscapableNbspChar = html_entity_decode('&#160;&#160;', ENT_NOQUOTES, 'UTF-8');
-								if ($specialprice):
-								?>
-									<div class="border-bottom">
-										<div class="box-price">
-										<?php
-											if($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)):                        
-												echo '<div class="special-price"><span class="format-span-price1">'.$_formattedActualPrice = Mage::helper('core')->currency($_item->getPrice(),true,false).'</span>';                                                             
-												// with currency sign
-												echo $nonEscapableNbspChar.'<span><span class="format-span-price2">'.$_formattedSpecialPrice = Mage::helper('core')->currency($_item->getFinalPrice(),true,false).'</span></span></div>'; 
-											endif;
-										?>
-										</div>
-									</div>
-								<?php	
-								else:
-									echo $this->getPriceHtml($_item, true);
-								endif;
-							?>			
-							<?php if($_item->isSaleable()): ?>
-								<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-							<?php else: ?>
-								<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-							<?php endif; ?>
-							<div class="ma2-detail">
-								<a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->stripTags($_item->getName(), null, true) ?>" class="btn-detail">DETAIL</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-        <?php endforeach ?>
+<?php
+	$total = $this->getItems()->count();
+	$_columnCount = $this->getColumnCount();
+	$pwidth = ' width'. floor(100 / $_columnCount);
+	$i = 0;
+    $uniqId = Mage::helper('core')->uniqHash('');
+?>
+<div id="block-related-<?php echo $uniqId; ?>" class="block block-related">
+    <h3 class="block-title">
+        <strong><span><?php echo $this->__('Related Products') ?></span></strong>
+    </h3>
+    <?php if(!$total): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+    <?php else: ?>
+    <div id="related-slider-<?php echo $uniqId; ?>" class="block-content related-slider carousel">
+        <p class="block-subtitle"><?php echo $this->__('Check items to add to the cart or') ?>&nbsp;<a href="#" onclick="selectAllRelated(this); return false;"><?php echo $this->__('select all') ?></a></p>
+        <div class="controls">
+			<a rel="next" class="carousel-control ico-next" href="javascript:">Next</a>
+			<a rel="prev" class="carousel-control ico-prev" href="javascript:">Previous</a>
+		</div>
+        <div class="middle">
+            <ul class="related-products-list inner">
+            <?php foreach($this->getItems() as $_item): ?>
+                <li class="item related-slide<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                    <?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
+                        <?php if (!$_item->getRequiredOptions()): ?>
+                            <input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <div class="product product-item-inner">
+                        <?php // Product Image ?>
+                        <div class="product-image">
+                            <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_item, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(400, 400); ?>" width="400" height="400" alt="<?php echo $this->stripTags($this->getImageLabel($_item, 'small_image'), null, true) ?>" /></a>
+                            <?php
+                            //product sale-off
+                            $firstPrice = (float)$_item->getPrice();
+                            $finalPrice = (float)$_item->getFinalPrice();
+                            if ($firstPrice != $finalPrice) :
+                                if ($finalPrice < $firstPrice) {
+                                    $percent = (($firstPrice - $finalPrice)/$firstPrice) * 100;
+                                } elseif ($finalPrice > $firstPrice) {
+                                    $percent = (($finalPrice - $firstPrice)/$finalPrice) * 100;
+                                }
+                            ?>
+                            <div class="product-sale-off">
+                                <span class="sale-off-percent-num"><?php echo number_format($percent, 0); ?><span class="percent-char">%</span></span><br>
+                                <span class="sale-off-label"><?php echo $this->__('Off'); ?></span>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                        <?php // Product description ?>
+                        <div class="product-details">
+                            <p class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></p>
+                            <?php //if($_item->getRatingSummary()): ?>
+                            <?php echo $this->getReviewsSummaryHtml($_item) ?>
+                            <?php //endif; ?>
+                            <?php echo $this->getPriceHtml($_item, true, '-related') ?>
+                            <div class="actions">
+                            <?php if($_item->isSaleable()): ?>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                            <?php else: ?>
+                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                            <?php endif; ?>
+                            <ul class="add-to-links">
+                                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                    <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                                <?php endif; ?>
+                                <?php if($_compareUrl=$this->getAddToCompareUrl($_item)): ?>
+                                    <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                                <?php endif; ?>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+            <script type="text/javascript">decorateGeneric($$('ul.related-row-list'), ['odd','even','first','last'])</script>
+            <?php //endif; ?>
+            </ul>
+        </div>
         <script type="text/javascript">decorateList('block-related', 'none-recursive')</script>
     </div>
     <script type="text/javascript">
@@ -108,6 +112,7 @@
     $$('.related-checkbox').each(function(elem){
         Event.observe(elem, 'click', addRelatedToProduct)
     });
+
     var relatedProductsCheckFlag = false;
     function selectAllRelated(txt){
         if (relatedProductsCheckFlag == false) {
@@ -125,6 +130,7 @@
         }
         addRelatedToProduct();
     }
+
     function addRelatedToProduct(){
         var checkboxes = $$('.related-checkbox');
         var values = [];
@@ -135,7 +141,32 @@
             $('related-products-field').value = values.join(',');
         }
     }
+    
+    // carousel slider
+    Event.observe(window, "load", function() {
+		var slideWidth = $('block-related-<?php echo $uniqId; ?>').getWidth();
+		$$('.inner .related-slide').each(function(element){
+			element.setStyle({
+				width	:	slideWidth - 60 + 'px'
+			});
+		});
+	});
+	new Carousel($('related-slider-<?php echo $uniqId; ?>').down('.middle'), 
+		$('related-slider-<?php echo $uniqId; ?>').select('.related-slide'), 
+		$('related-slider-<?php echo $uniqId; ?>').select('.controls a'), 
+		{ 
+			duration:		0.4,	//The duration of a full jump 
+			auto: 			false,	//When true the Carousel will move on it's own without needing triggers. Useful for slideshows 
+			frequency:		3, 		//When auto is true, this dictates how long a slides stays put before the next jump 
+			circular:		false,	//By default when the first/last slide is reached, calling prev/next does nothing. If you want the effect to continue, you must do two things: Set the circular parameter true and duplicate the first slide in the HTML. It's the only way of giving the impression of a continous movement. 
+			wheel:			false,	//Whether or not to slide when using the mouse wheel over the slides 
+			visibleSlides:	1,		//Even though multiple slides can be made visible at once by styling, this parameters is needed in some calculations 
+			effect:			"scroll",	//You can choose between scroll and fade. When using fade, circular and duplicating the first slide is no longer necessary (see Example 3 for the fade effect) 
+			transition: 	"sinoidal"	//The two supported transitions are sinoidal and spring (see Example 2 for spring) 
+		}
+	);
     //]]>
     </script>
+    <?php endif; ?>
 </div>
 <?php endif ?>

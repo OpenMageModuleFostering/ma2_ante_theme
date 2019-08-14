@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <config>
-  <modules>
-    <Ma2_WidgetProductList>
-      <active>true</active>
-      <codePool>local</codePool>
-      <depends>            
-        <Mage_Catalog />   
-        <Mage_Cms />       
-        <Mage_Adminhtml />
-        <Mage_Widget />	
-      </depends>
-    </Ma2_WidgetProductList>
-  </modules>
+    <modules>
+        <Ma2_WidgetProductList>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>            
+                <Mage_Catalog />   
+                <Mage_Cms />       
+                <Mage_Adminhtml />
+                <Mage_Widget />	
+            </depends>
+        </Ma2_WidgetProductList>
+    </modules>
 </config>

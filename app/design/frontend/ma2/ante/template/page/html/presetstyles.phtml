@@ -1,27 +1,80 @@
-<form name="formpreset" id="formpreset" method="POST" action="<?php echo Mage::helper('core/url')->getCurrentUrl();?>">
-	<div id="smenu" class="navbar navbar-fixed-top">	
-		<ul id="devices" class="nav visible-desktop">
-			<?php
-				$presetstyles = Mage::getModel('ThemeOptions/presetstyles')->toOptionArray();	
-				foreach ($presetstyles as $idx=>$_style)
-				{
-			?>
-			<li id="item-<?php echo $_style['value'];?>-bg">			
-				<a href="javascript: void(0);" class="desktop" onclick="javascript:setColor('<?php echo $_style["value"];?>');" title="<?php echo $this->escapeHtml($_style['value']);?>"></a>
-			</li>
-			<li id="item-<?php echo $_style['value'];?>">			
-				<a href="javascript: void(0);" onclick="javascript:setColor('<?php echo $_style["value"];?>');" title="<?php echo $this->escapeHtml($_style['value'])?>">
-					<?php echo $this->escapeHtml($_style['value']);?>
-				</a>
-			</li>
-			<?php } ?>		
-		</ul>		
-		<input type="hidden" id="hiddenpreset"  name="hiddenpreset" value="">
-	</div>
-</form>
-<script type="text/javascript">		
-	function setColor(color){
-		document.forms['formpreset'].hiddenpreset.value = color;						
-		document.forms['formpreset'].submit();
-	}	
-</script>
+<?php
+/**
+ * MagenMarket.com
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Edit or modify this file with yourown risk.
+ *
+ * @category    Themes
+ * @package     Ma2_Default theme
+ * @copyright   Copyright (coffee) 2013 MagenMarket, http://www.magenmarket.com
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+**/
+/* $Id: presetstyles.phtml 12 2013-11-05 10:00:22Z minhnv $ */
+
+$presetstyle = Mage::getSingleton('core/session')->getData('presetstyle');
+if($presetstyle != null){
+    $current_style = $presetstyle;
+} else {
+    $current_style = Mage::getStoreConfig('theme_options/general/preset_styles');
+}
+?>
+<div id="ma2styles-control-box">
+    <div class="ma2styles-control-box">
+        <a class="presetstyles-btn" href="javascript:void(0)" title="Choose color"></a>
+        <div id="ma2-theme-styles" style="display: none;">
+            <form id="template_demo" method="post" action="<?php echo $this->getCurrentUrl(); ?>">
+                <h3 id="params_demo_preset-lbl"><?php echo $this->__('Choose color'); ?></h3>
+                <fieldset id="params_demo_preset" class="radio">
+                <?php
+                $presetstyles = Mage::getModel('ThemeOptions/presetstyles')->toOptionArray();
+                foreach ($presetstyles as $idx=>$_style)
+                    {
+                ?>
+                    <input onclick="javascript:presetStyle()" id="params_demo_preset<?php echo $idx;?>" class="<?php echo $this->escapeHtml($_style['value']); ?>" type="radio" <?php echo ($this->escapeHtml($_style['value']) == $presetstyle) || ($this->escapeHtml($_style['value']) == $current_style) ? 'checked="checked"' : ''; ?> title="<?php echo $_style['label']; ?>" value="<?php echo $this->escapeHtml($_style['value']); ?>" name="params_demo_preset" />
+                    <label class="<?php echo $this->escapeHtml($_style['value']); ?>" title="<?php echo $_style['label']; ?>" for="params_demo_preset<?php echo $idx;?>">
+                        <?php echo $_style['label']; ?>
+                    </label>
+                <?php } ?>
+				<input value="1" name="submit_preset" type="hidden" />
+                </fieldset>
+                <!--<button class="apply-btn" value="1" name="submit_preset" type="submit">Apply</button>-->
+            </form>
+        </div>
+        <script type="text/javascript">
+        //<![CDATA[
+            function presetStyle(){
+                var presetForm = $('template_demo');
+                presetForm.submit();
+            } 
+            
+            Event.observe(window, 'load', function() {
+                $$('.presetstyles-btn').each(function(element){
+                    element.observe('click', function(event){
+                        event.stop();
+                        Effect.toggle('ma2-theme-styles', 'appear', { duration: 0.4 });
+                    });
+                });
+            });
+        //]]>
+        </script>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

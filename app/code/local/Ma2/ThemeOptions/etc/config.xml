@@ -168,12 +168,12 @@
 				<mainbottom2>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</mainbottom2>
 				
 				<create_column_mainbottom3>1</create_column_mainbottom3>
-				<default_column_mainbottom3>1</default_column_mainbottom3>
-				<mainbottom3>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</mainbottom3>
+				<default_column_mainbottom3>0</default_column_mainbottom3>
+				<mainbottom3>100; 50,50; 40,30,30; 40,20,20,20; 20,20,20,20,20;</mainbottom3>
 				
 				<create_column_footer1>1</create_column_footer1>
-				<default_column_footer1>1</default_column_footer1>
-				<footer1>100; 50,50; 33,33,33; 25,25,25,25; 20,20,20,20,20;</footer1>
+				<default_column_footer1>0</default_column_footer1>
+				<footer1>100; 50,50; 33,33,33; 20,20,20,40; 20,20,20,20,20;</footer1>
 				
 				<create_column_footer2>1</create_column_footer2>
 				<default_column_footer2>1</default_column_footer2>

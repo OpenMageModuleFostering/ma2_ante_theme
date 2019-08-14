@@ -24,18 +24,21 @@
 function displaySubCategories($navBlock, $categries){
 	$_helper = Mage::helper('catalog/category');
 	if (count($categries) > 0){
-		echo '<ul class="list-category">';
+		echo '<ul class="toggle-content">';
 			foreach($categries as $_subcategory){
 				if($_subcategory->getIsActive()){
-                    $class = array();
 					if ($navBlock->isCategoryActive($_subcategory)) {
-						$class[] = 'current';
+						$current = 'class="current"';
+					} else {
+						$current = '';
 					}
 					if($_subcategory->hasChildren()){
-						$class[] = 'parent';
+						$parent = 'class="parent"';
+					} else {
+						$parent = '';
 					}
-					echo '<li id="item-'.$_subcategory->getId().'" class="'. implode(' ', $class) .'">';
-					echo '	<a href="'.$_helper->getCategoryUrl($_subcategory).'">
+					echo '<li id="item-'.$_subcategory->getId().'" '. $parent .'>';
+					echo '	<a '. $current .' href="'.$_helper->getCategoryUrl($_subcategory).'">
 							'.$_subcategory->getName().'<span class="product-count">('.$_subcategory->getProductCount().')</span>
 						</a>';
 						
@@ -48,44 +51,53 @@ function displaySubCategories($navBlock, $categries){
 	}
 }
 ?>
-<?php 
-$_helper = Mage::helper('catalog/category');
-$_categories = $_helper->getStoreCategories();
-
-if (count($_categories) > 0): ?>
-<div class="block-title categories-title">
-    <h3>
-        <span>Categories</span>
-    </h3>
-</div>
-<div class="widget reference-block sidebar-categories">
-    <div class="sidebar-categories-inner">
-        <ul class="list-category">
-            <?php $i=0; foreach($_categories as $_category): ?>
-                <?php $i=$i+1; if($_category->getIsActive()): ?>
-                    <?php 
-                        $class = array();
-                        $class[] = 'level0 cate-'.$_category->getId();
-                        if ($this->isCategoryActive($_category)) {
-                            $class[] = 'current';
-                        }
-                        if($_category->hasChildren()){
-                            $class[] = 'parent';
-                        }
-                    ?>
-                    <li class="<?php echo implode(' ', $class); if($i==1){ echo ' first';}?>" id="item-<?php echo $_category->getId() ?>">
-                        <a href="<?php echo $_helper->getCategoryUrl($_category) ?>">
-                            <span><?php echo $_category->getName() ?></span>
-                        </a>
-                        <?php
-                        $_categories = Mage::getModel('catalog/category')->load($_category->getId());
-                        $_subcategories = $_categories->getChildrenCategories(); 
-                        displaySubCategories($this, $_subcategories);
-                        ?>
-                    </li>
+<?php $_helper = Mage::helper('catalog/category') ?>
+<?php $_categories = $_helper->getStoreCategories() ?>
+<?php $uniqId = Mage::helper('core')->uniqHash(''); ?>
+<?php if (count($_categories) > 0): ?>
+<div class="widget block-categories">
+	<h3 class="block-title">
+		<span>Shop by Category</span>
+	</h3>
+	<ul id="categories_accordion-<?php echo $uniqId; ?>" class="list-category accordion">
+		<?php foreach($_categories as $_category): ?>
+			<?php if($_category->getIsActive()): ?>
+			<li id="item-<?php echo $_category->getId(); ?>" <?php echo $_category->hasChildren() ? 'class="parent"' : '' ?>>
+				<?php $_category = Mage::getModel('catalog/category')
+									->load($_category->getId()) ?>
+									
+				<a href="<?php echo $_helper->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="current"<?php endif; ?>>
+					<?php echo $_category->getName() ?><span class="product-count">(<?php echo $_category->getProductCount() ?>)</span>
+				</a>
+                <?php if($_category->hasChildren()) : ?>
+                <span class="toggle">toggle</span>
                 <?php endif; ?>
-            <?php endforeach; ?>
-        </ul>
-    </div>
+				<?php 
+				$_subcategories = $_category->getChildrenCategories(); 
+				displaySubCategories($this, $_subcategories);
+				?>
+			</li>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</ul>
+    <script type="text/javascript">
+    //<![CDATA[
+    document.observe("dom:loaded", function(){
+        //$$('.accordion .toggle-content').each(function(el){el.hide();});
+        $$('.toggle-content').invoke('hide');
+        
+        /* Effect.toggle($$('.accordion .toggle-content').first(), 'slide');
+        $$('.accordion .toggle').first().toggleClassName('toggle-active'); */
+        
+        $$('.accordion .toggle').each(function(el){
+            el.observe('click', function(event){
+                Event.stop(event);
+                Effect.toggle(el.next('.toggle-content'), 'slide', {delay: 0.3 , duration: 0.3});
+                this.toggleClassName('toggle-active');
+            });
+        });
+	});
+    //]]>
+    </script>
 </div>
 <?php endif; ?> 

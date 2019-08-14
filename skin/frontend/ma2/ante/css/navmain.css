@@ -1,0 +1,224 @@
+/**
+ * Ma2 document CSS
+ *
+ */
+
+.nav-container {
+	/* background: #284358;
+	border-top:1px solid #2d444f; 
+	border-bottom:1px solid #2d444f; */
+	padding:0 0px; 
+}
+#nav { 
+    border: none;
+	float:left; 
+    margin: 0;
+    padding: 0 10px 10px 10px;
+}
+/************** ALL LEVELS *************/ /* Style consistent throughout all nav levels */
+#nav li { 
+	position:relative; 
+	text-align:left; 
+}
+#nav li.over,
+#nav li.active {
+	z-index:100; 
+} /* to prevent the li separator from showing through on mouseover on li */
+#nav a,
+#nav a:hover { 
+	display:block; 
+	text-decoration:none; 
+}
+#nav span { 
+	display:block; /*cursor:pointer;*/ 
+}
+#nav a { 
+	line-height: 40px; 
+}
+/************ 1ST LEVEL ***************/
+#nav li { 
+	float:left;
+	margin: 0 1px;
+	/* background:url(images/nav1_sep.gif) no-repeat 100% 0;  */
+}
+#nav > li{
+    padding: 0;
+    margin-top: -15px; 
+}
+#nav > li a{
+	padding-bottom: 0;
+    padding-top: 20px;
+}
+#nav li.home {
+	margin-left: 0;
+}
+#nav li.over,
+#nav li.active { 
+	background:url(../images/nav-active.png);
+	font-weight: normal; 
+}
+#nav li.active em { 
+	display: block;
+	position: absolute; 
+	top: 0; 
+	right: -1px; 
+	width: 3px; 
+	height: 40px; 
+	/* background:url(images/nav1_active.gif) no-repeat 100% 0;  */
+}
+#nav a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+	float: left; 
+	padding: 0 20px; 
+	line-height: 40px; 
+}
+#nav li a{
+	color: #333333;
+    font-weight: normal;
+}
+#nav li.active a ,
+#nav li.over a { 
+	color: #ffffff;
+}
+/************ 1ST LEVEL RESET ************/
+#nav ul li,
+#nav ul li.active { 
+	float:none; 
+	height:auto; 
+	margin:0; 
+}
+#nav ul a,
+#nav ul a:hover { 
+	float:none; 
+	padding:0; 
+	line-height: 40px; 
+}
+/************ 2ND LEVEL ************/
+#nav ul { 
+    background: url("../images/nav-active.png");
+    border: medium none;
+    display: none;
+    left: -10000px;
+    position: absolute;
+    top: 60px;
+    width: 200px;
+}
+#nav ul ul {  
+	/* background:url(images/nav3_bg.png) 0 0 no-repeat;  */
+    display: none;
+	padding-top: 0px;
+	left: -10000px; 
+	top: 0px; 
+}
+/* Show menu */
+#nav li.over ul {
+    border: medium none;
+    border-radius: 0 8px 8px 8px;
+    display: block;
+    margin-top: 0 !important;
+    padding: 0 0px!important;
+	left: 0px; 
+}
+#nav li.over ul ul { 
+    display: none;
+	left: -10000px; 
+}
+#nav li.over ul li.over ul { 
+    display: block;
+	left: 200px; 
+	top: 0;
+}
+#nav ul li { 
+	/* background:url(images/nav2_li_bg.png) repeat-y; */
+    border: none;
+	padding:0 0px;
+    margin: 0 0px;
+}
+#nav ul li.first { 
+    border-radius: 0 8px 0px 0px;
+}
+#nav ul li.last { 
+	/* background:url(images/nav2_last_li_bg.png) no-repeat 0 100%; */
+	border-radius: 0 0px 8px 8px;
+}
+#nav ul li.over,
+#nav ul li.over li.over,
+#nav ul li.active,
+#nav ul li.active li.active{
+	background: url(../images/menusub-overbg.png);
+}
+#nav ul li.over li,
+#nav ul li.over li.over li,
+#nav ul li.active li,
+#nav ul li.active li.active li{
+	
+}
+#nav ul li.over a ,
+#nav ul li.over li.over a ,
+#nav ul li.active a ,
+#nav ul li.active li.active a { 
+	color: #FE5C69;
+}
+#nav ul li.over li a,
+#nav ul li.active li a {
+    color: #FFFFFF;
+}
+#nav ul span,
+#nav ul li.last li span { 
+	padding: 0px 0px; 
+	/* background:url(images/nav2_link_bg.gif) repeat-x 0 100%;  */
+}
+#nav ul li.last span,
+#nav ul li.last li.last span { 
+	background:none; 
+}
+#nav ul li.parent a,
+#nav ul li.parent li.parent a { 
+	background-image:url("../images/bkg_nav2.gif");
+	background-position: 100% 16px; 
+	background-repeat:no-repeat;
+}
+#nav ul li.parent li a,
+#nav ul li.parent li.parent li a { 
+	background-image:none; 
+}
+/************ 3RD+ LEVEL ************/
+/* Cursors */
+#nav li.parent a,
+#nav li.parent li.parent a,
+#nav li.parent li.parent li.parent a {
+	cursor:pointer;
+}
+#nav li.parent li a,
+#nav li.parent li.parent li a,
+#nav li.parent li.parent li.parent li a { 
+	/* background: url("../images/arrow-fragile.png") no-repeat scroll 8px 14px transparent; */
+    color: #FFFFFF !important;
+    font-size: 12px;
+	line-height: normal;
+    padding: 11px 10px 11px 20px;
+    text-transform: none;
+	cursor: pointer; 
+}
+/* Show menu */
+#nav ul ul ul { 
+	left: -10000px; 
+}
+#nav li.over ul li.over ul ul { 
+	left: -10000px;
+}
+#nav li.over ul li.over ul li.over ul { 
+	left: -10000px;
+}
+.nav-container:after { 
+	/* content:"."; 
+	display:block; 
+	clear:both; 
+	font-size:0; 
+	line-height:0; 
+	height:0; 
+	overflow:hidden;  */
+}
+
