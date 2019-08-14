@@ -1,0 +1,19 @@
+<?php
+	$PresetSession = Mage::getSingleton('core/session')->getData('PresetSession');
+	if(isset($PresetSession) && !empty($PresetSession)): 
+		$style_ie = 'styles-ie-'.$PresetSession.'-';
+	else:
+		$preStyle = Mage::getStoreConfig("theme_options/general/preset_styles");
+		if(isset($preStyle) && !empty($preStyle)):
+			$style_ie = 'styles-ie-'.$preStyle.'-';
+		else:
+			$style_ie = 'styles-ie-8';
+		endif;	
+	endif;
+?>
+<!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/'.$style_ie.'8.css');?>">
+<![endif]-->	
+<!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/'.$style_ie.'7.css');?>" />
+<![endif]-->

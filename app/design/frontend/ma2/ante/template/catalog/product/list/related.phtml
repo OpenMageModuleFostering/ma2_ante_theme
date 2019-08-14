@@ -1,0 +1,141 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if($this->getItems()->getSize()): ?>
+<div class="product-collateral">
+	<div class="products-right">
+		<h3 class="heading-box-product">
+			<span class="format-span">
+				<span><?php echo $this->__('SIMILAR PRODUCTS');?></span>
+			</span>
+		</h3>
+	</div>
+    <div class="block-content">
+        <?php foreach($this->getItems() as $_item): ?>                            
+			<div class="box-products-related">
+				<div class="item-content">
+					<div class="img-product-related">                    
+						<a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(158); ?>" width="158" height="158" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a>
+					</div>
+					<div class="content-product-related">
+						<div class="product-details">
+							<div class="product-title-relative">    
+								<h5>
+									<a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a>
+								</h5>
+							</div>								
+							<div class="box-name">
+								<div class="short-description-related">
+									<p>
+										<?php
+											$desc = Mage::getModel('catalog/product')->load($_item->getId())->getDescription();
+											$shortDesc = explode('|', wordwrap($desc, 68, '|'));
+											echo $shortDesc[0] . '...';
+										?>
+									</p>
+								</div>	
+							</div>
+							<?php   
+								// Get the Special Price
+								$specialprice = Mage::getModel('catalog/product')->load($_item["entity_id"])->getSpecialPrice(); 
+								// Get the Special Price FROM date
+								$specialPriceFromDate = Mage::getModel('catalog/product')->load($_item["entity_id"])->getSpecialFromDate();
+								// Get the Special Price TO date
+								$specialPriceToDate = Mage::getModel('catalog/product')->load($_item["entity_id"])->getSpecialToDate();
+								// Get Current date
+								$today =  time();
+								// without currency sign
+								$_specialPrice = $_item->getFinalPrice();
+								$nonEscapableNbspChar = html_entity_decode('&#160;&#160;', ENT_NOQUOTES, 'UTF-8');
+								if ($specialprice):
+								?>
+									<div class="border-bottom">
+										<div class="box-price">
+										<?php
+											if($today >= strtotime( $specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)):                        
+												echo '<div class="special-price"><span class="format-span-price1">'.$_formattedActualPrice = Mage::helper('core')->currency($_item->getPrice(),true,false).'</span>';                                                             
+												// with currency sign
+												echo $nonEscapableNbspChar.'<span><span class="format-span-price2">'.$_formattedSpecialPrice = Mage::helper('core')->currency($_item->getFinalPrice(),true,false).'</span></span></div>'; 
+											endif;
+										?>
+										</div>
+									</div>
+								<?php	
+								else:
+									echo $this->getPriceHtml($_item, true);
+								endif;
+							?>			
+							<?php if($_item->isSaleable()): ?>
+								<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<?php else: ?>
+								<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+							<?php endif; ?>
+							<div class="ma2-detail">
+								<a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->stripTags($_item->getName(), null, true) ?>" class="btn-detail">DETAIL</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        <?php endforeach ?>
+        <script type="text/javascript">decorateList('block-related', 'none-recursive')</script>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+    $$('.related-checkbox').each(function(elem){
+        Event.observe(elem, 'click', addRelatedToProduct)
+    });
+    var relatedProductsCheckFlag = false;
+    function selectAllRelated(txt){
+        if (relatedProductsCheckFlag == false) {
+            $$('.related-checkbox').each(function(elem){
+                elem.checked = true;
+            });
+            relatedProductsCheckFlag = true;
+            txt.innerHTML="<?php echo $this->__('unselect all') ?>";
+        } else {
+            $$('.related-checkbox').each(function(elem){
+                elem.checked = false;
+            });
+            relatedProductsCheckFlag = false;
+            txt.innerHTML="<?php echo $this->__('select all') ?>";
+        }
+        addRelatedToProduct();
+    }
+    function addRelatedToProduct(){
+        var checkboxes = $$('.related-checkbox');
+        var values = [];
+        for(var i=0;i<checkboxes.length;i++){
+            if(checkboxes[i].checked) values.push(checkboxes[i].value);
+        }
+        if($('related-products-field')){
+            $('related-products-field').value = values.join(',');
+        }
+    }
+    //]]>
+    </script>
+</div>
+<?php endif ?>

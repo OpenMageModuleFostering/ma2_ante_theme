@@ -1,0 +1,22 @@
+<?php
+$i_call_toll_free = $this->getLayout()->createBlock("cms/block")->setBlockId("i_call_toll_free")->toHtml();
+if(!isset($i_call_toll_free) || $i_call_toll_free == ""):
+?>
+<div class="call-toll-free">
+    <div class="call-title">
+        <span><?php echo $this->__('Call toll free');?></span>
+    </div>
+    <div class="number-call">
+        <span>
+            <?php 
+                echo '+0123-456-789-00';
+            ?>
+        </span>
+    </div>
+    <p><?php echo $this->__('Lorem ipsum dolor sit amet');?></p>
+</div>
+<?php
+else:
+	echo $i_call_toll_free;
+endif;
+?>

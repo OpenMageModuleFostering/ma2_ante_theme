@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wru_HomeTop>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Wru_HomeTop>
+    </modules>
+</config>

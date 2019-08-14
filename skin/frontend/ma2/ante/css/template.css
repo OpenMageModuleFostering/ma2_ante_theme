@@ -1,0 +1,357 @@
+/**
+ * Ma2 DOCUMENT CSS
+ *
+ */
+* { 
+	margin: 0;
+	padding: 0;
+	outline: none!important;
+}
+
+body  { 
+	background: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333; 
+	line-height: normal;
+	text-align: left;
+}
+
+/* Layout ================================================================================ */
+.wrapper{
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+.page{
+	margin: 0;
+	padding: 0;
+	width: auto;
+}
+.main{
+	margin: 10px 0;
+	padding: 10px 0;
+	overflow: hidden;
+}
+.container{
+	width: 980px;
+	margin: 0 auto;
+	padding: 0 0;
+}
+.main-page{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+.col-content{
+	background: #FFFFFF;
+    margin: 0 0;
+    padding: 0 0;
+	overflow: hidden;
+}
+
+/* Header ================================================================================ */
+.header { 
+	border: none;
+	border: 1px solid #DDDDDD;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	z-index: 9999;
+}
+.header .container { 
+	
+}
+.header .logo { 
+	padding: 10px;
+}
+.header .logo strong { 
+	
+}
+.header h1.logo { 
+	margin:0;
+	padding: 0;
+}
+.header .top-blocks .ma2-navMain{
+	width: 100%;
+	float: left;
+}
+
+.ma2-navMain{
+	border: none;
+	float: left;
+	width: 100%;
+}
+
+/* 1 Column Layout */
+.col1-layout{
+	
+}
+.col1-layout .container{
+	
+}
+.col1-layout .main-page{
+	
+}
+.col1-layout .col-content {
+    overflow: hidden;
+    padding: 10px 0;
+    width: 100%;
+}
+
+/* 2 Columns Left Layout */
+.col2-left-layout .col-content {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+.col2-left-layout .col-left{
+	
+}
+
+/* 2 Columns Right Layout */
+.col2-right-layout .col-content {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+.col2-right-layout .col-right{
+	
+}
+
+/* 3 Columns Layout */
+.col3-layout { 
+	
+}
+.col3-layout .container{
+	
+}
+.col3-layout .main-page{
+	
+}
+.col3-layout .content { 
+	
+}
+.col3-layout .col-left { 
+	
+}
+.col3-layout .col-right { 
+	
+}
+
+/* Base Columns */
+.col-left, 
+.col-right {
+    width: 210px;
+}
+.col-left { 
+	float:left; 
+	margin-right: 20px; 
+}
+.col-right { 
+	float:right;
+	margin-left: 20px;
+}
+
+/* HEADER TOP BLOCKS ================================================================================ */
+.header .top-blocks { 
+	overflow: hidden;
+	padding: 10px;
+}
+.top-blocks .topBlock1,
+.top-blocks .topBlock2{
+	overflow: hidden;
+}
+.topBlock1 .widget-block,
+.topBlock2 .widget-block{
+	float: left;
+}
+.topBlock1 .first .widget,
+.topBlock2 .first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.topBlock1 .last .widget,
+.topBlock2 .last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.top-blocks .topBlock1{
+	margin-bottom: 15px;
+}
+.top-blocks .topBlock2{
+	
+}
+
+/* MAIN TOP BLOCKS ================================================================================ */
+.maintopBlock1,
+.maintopBlock2,
+.maintopBlock3{
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.maintopBlock1 .widget-block,
+.maintopBlock2 .widget-block,
+.maintopBlock3 .widget-block{
+	float: left;
+}
+.maintopBlock1 .first .widget,
+.maintopBlock2 .first .widget,
+.maintopBlock3 .first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.maintopBlock1 .last .widget,
+.maintopBlock2 .last .widget,
+.maintopBlock3 .last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.maintopBlock1{
+	
+}
+.maintopBlock2{
+	
+}
+.maintopBlock2{
+	
+}
+
+/* MAIN BOTTOM BLOCKS ================================================================================ */
+.bottomBlock1,
+.bottomBlock2,
+.bottomBlock3{
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.bottomBlock1 .widget-block,
+.bottomBlock2 .widget-block,
+.bottomBlock3 .widget-block{
+	float: left;
+}
+.bottomBlock1 .first .widget,
+.bottomBlock2 .first .widget,
+.bottomBlock3 .first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.bottomBlock1 .last .widget,
+.bottomBlock2 .last .widget,
+.bottomBlock3 .last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.bottomBlock1{
+	
+}
+.bottomBlock2{
+	
+}
+.bottomBlock2{
+	
+}
+
+/* CONTENT TOP BLOCKS ================================================================================ */
+.contenttopBlock1,
+.contenttopBlock2{
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.contenttopBlock1 .widget-block,
+.contenttopBlock2 .widget-block{
+	float: left;
+}
+.contenttopBlock1 .first .widget,
+.contenttopBlock2 .first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.contenttopBlock1 .last .widget,
+.contenttopBlock2 .last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.contenttopBlock1{
+	
+}
+.contenttopBlock2{
+	
+}
+
+/* CONTENT BOTTOM BLOCKS ================================================================================ */
+.contentbottomBlock1,
+.contentbottomBlock2{
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.contentbottomBlock1 .widget-block,
+.contentbottomBlock2 .widget-block{
+	float: left;
+}
+.contentbottomBlock1 .first .widget,
+.contentbottomBlock2 .first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.contentbottomBlock1 .last .widget,
+.contentbottomBlock2 .last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.contentbottomBlock1{
+	
+}
+.contentbottomBlock2{
+	
+}
+
+/* Footer ================================================================================ */
+.footer {
+	padding: 10px 0;
+	margin: 10px 0;
+}
+.footer .container { 
+	
+}
+.footer .footerBlock1 { 
+	
+}
+.footer .footerBlock2 { 
+	
+}
+.footer .widget-block { 
+	float: left;
+}
+
+/* CONTENT BOTTOM BLOCKS ================================================================================ */
+.footerBlock1,
+.footerBlock2{
+	overflow: hidden;
+}
+.footerBlock1 .widget-block,
+.footerBlock2 .widget-block{
+	float: left;
+}
+.footerBlock1 .first .widget,
+.footerBlock2 .first .widget{
+	display: inline-block;
+	margin-right: 10px;
+}
+.footerBlock1 .last .widget,
+.footerBlock2 .last .widget{
+	display: inline-block;
+	margin-left: 10px;
+}
+.footerBlock1{
+	margin-bottom: 15px;
+}
+.footerBlock1{
+	
+}
+/* ======================================================================================= */
+
+.widget{
+	background: #999!important;
+	color: #FFF!important;
+	padding: 10px;
+}

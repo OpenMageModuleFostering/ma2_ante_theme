@@ -1,0 +1,34 @@
+<?php
+	$img1 = '';
+	$img2 = '';
+	$pathSrc = '';	
+	$PresetSession = Mage::getSingleton('core/session')->getData('PresetSession');
+	if(isset($PresetSession) && !empty($PresetSession)):	
+		$img1 = '3-'.$PresetSession.'.png';
+		$img2 = '4-'.$PresetSession.'.png';	
+	else:	
+		$preStyle = Mage::getStoreConfig("theme_options/general/preset_styles");
+		if(isset($preStyle) && !empty($preStyle)):
+			$img1 = '3-'.$preStyle.'.png';
+			$img2 = '4-'.$preStyle.'.png';		
+		else:		
+			$img1 = '3.png';
+			$img2 = '4.png';
+		endif;
+	endif;	
+$i_banner_img = $this->getLayout()->createBlock("cms/block")->setBlockId("i_banner_img")->toHtml();                    
+if(!isset($i_banner_img) || $i_banner_img == ""):
+?>
+<div class="netq-img">
+    <a href="#">
+        <img src="<?php echo $this->getSkinUrl('images/banner'.$img1);?>" alt="The new heritage" style="margin-bottom: 10px;" width="448" height="237" />
+    </a> 
+    <a href="#">
+        <img src="<?php echo $this->getSkinUrl('images/banner'.$img2);?>" alt="Save 10% to 30%" width="448" height="172" />
+    </a>
+</div>
+<?php
+else:
+	echo $i_banner_img;
+endif;
+?>

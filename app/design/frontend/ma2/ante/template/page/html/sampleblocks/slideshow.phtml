@@ -1,0 +1,28 @@
+<?php  
+$i_slide_show = $this->getLayout()->createBlock("cms/block")->setBlockId("i_slide_show")->toHtml();                    
+if(!isset($i_slide_show) || $i_slide_show == ""):
+	$pathSrc = '';
+?>
+	<a href="#" target="_blank"> 
+		<img src="<?php echo $this->getSkinUrl('images/banner1.png');?>" alt="6 Styles new colors" /> 
+		<span>
+			<h1 class="slideshow-title slidetitle">6 Styles new colors</h1>
+			<p>	
+				Lorem ipsum dolor sit amet, consectetue elit. Quisque eleLorem ipsum dolor sit amet 
+			</p>	
+		</span> 
+	</a> 
+	<a href="#" target="_blank"> 
+		<img src="<?php echo $this->getSkinUrl('images/banner2.png');?>" alt="6 Styles new colors" /> 
+		<span>
+			<h1 class="slideshow-title slidetitle">6 Styles new colors</h1>
+			<p>		
+				Lorem ipsum dolor sit amet, consectetue elit. Quisque eleLorem ipsum dolor sit amet 
+			</p>		
+		</span> 
+	</a> 
+<?php
+else:
+	echo $i_slide_show;
+endif;
+?>

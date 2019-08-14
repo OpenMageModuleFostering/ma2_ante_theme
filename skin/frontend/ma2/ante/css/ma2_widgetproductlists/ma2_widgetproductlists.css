@@ -1,0 +1,20 @@
+/**
+ *	Copyright 2013 NetQ
+ *	Created by NetQ
+ */
+ul.products-grid, ul.featured-grid { padding:0px; }
+.item-content { padding: 8px 20px 20px 0; position: relative; }
+.category-products-widget { margin-top: 5px; }
+.catalog-product-title { float: left; width: 98%; border-top: 1px solid #ededed; border-bottom: 1px solid #ededed; color: #6f5651; text-transform: uppercase; margin-bottom: 6px; margin-top:-5px; font-family:Arial; font-size: 26px; padding-bottom: 3px; padding-top: 3px; }
+.note-message { float: left; width: 98%; color: #6f5651; text-transform: uppercase; margin-bottom: 6px; margin-top:-5px; font-family:Arial; font-size: 26px; padding-bottom: 3px; padding-top: 3px; }
+.catalog-product-default { width: 100%; margin-top: 5px; display: inline-block; }
+.short-description-product { overflow: hidden; }	
+.border-style { padding-top:3px; border-top: 1px solid #ededed; width:100%; margin-top:10px; }
+.cart-style { border-bottom: 1px solid #ededed; width:96%; float:left; }
+.featured-products  ul.featured-grid li.item { float:left; list-style: none outside none; }
+.product-title { min-height:36px; margin-top:15px; }
+/* button.button span.details { background: none repeat scroll 0 0 #EEEEEE; border: 1px solid #DDDDDD; color: #333333; display: block; font: bold 12px/19px Arial,Helvetica,sans-serif; height: 19px; padding: 0 8px; text-align: center; white-space: nowrap; margin-top: 4px; } */
+.btn-detail { background-color: #CACDD1; background-image: url("images/bg-btn-details.gif"); border: 1px solid #DDDDDD;  color: #6D6D6D; display: inline-block; padding: 0 10px 0 15px; margin-top:4px; text-decoration:none; }
+img.sticker-top-right { position: absolute; right: 9px; z-index: 6; }
+.format-span-price1 { color: #CCCCCC; text-decoration: line-through; }
+.format-span-price2 { font-family: oswald; font-size: 13pt; font-weight: normal; color:#333; }

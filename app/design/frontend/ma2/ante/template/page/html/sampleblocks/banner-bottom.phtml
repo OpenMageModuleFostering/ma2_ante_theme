@@ -1,0 +1,38 @@
+<?php  
+$i_banner_bottom = $this->getLayout()->createBlock("cms/block")->setBlockId("i_banner_bottom")->toHtml();                    
+if(!isset($i_banner_bottom) || $i_banner_bottom == ""):	
+?>	
+<?php
+	$classbanner = "" ;
+	$PresetSession = Mage::getSingleton('core/session')->getData('PresetSession');
+	if(isset($PresetSession) && !empty($PresetSession)):
+		if($PresetSession == "blue"):
+			$classbanner = "banner-bottom-blue" ;
+		else:
+			$classbanner="banner-bottom";
+		endif;
+	else:	
+		$preStyle = Mage::getStoreConfig("theme_options/general/preset_styles");
+		if(isset($preStyle) && !empty($preStyle)):
+			if($preStyle == "blue"):
+				$classbanner="banner-bottom-blue";
+			else:
+				$classbanner="banner-bottom";
+			endif;
+		else:
+			$classbanner="banner-bottom";
+		endif;	
+	endif;	
+?>	
+	<div class="<?php echo $classbanner; ?>">	
+		<?php echo $this->__('Shop all adidas accessories ...'); ?>     
+		<a href="<?php echo $this->getInputLink();?>">
+			<?php echo $this->__('Most items'); ?>           
+		</a> 
+		<?php echo $this->__('ship next day') ?> 	
+	</div>
+<?php	
+else:
+	echo $i_banner_bottom;
+endif;
+?>

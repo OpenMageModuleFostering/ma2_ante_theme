@@ -1,0 +1,27 @@
+<form name="formpreset" id="formpreset" method="POST" action="<?php echo Mage::helper('core/url')->getCurrentUrl();?>">
+	<div id="smenu" class="navbar navbar-fixed-top">	
+		<ul id="devices" class="nav visible-desktop">
+			<?php
+				$presetstyles = Mage::getModel('ThemeOptions/presetstyles')->toOptionArray();	
+				foreach ($presetstyles as $idx=>$_style)
+				{
+			?>
+			<li id="item-<?php echo $_style['value'];?>-bg">			
+				<a href="javascript: void(0);" class="desktop" onclick="javascript:setColor('<?php echo $_style["value"];?>');" title="<?php echo $this->escapeHtml($_style['value']);?>"></a>
+			</li>
+			<li id="item-<?php echo $_style['value'];?>">			
+				<a href="javascript: void(0);" onclick="javascript:setColor('<?php echo $_style["value"];?>');" title="<?php echo $this->escapeHtml($_style['value'])?>">
+					<?php echo $this->escapeHtml($_style['value']);?>
+				</a>
+			</li>
+			<?php } ?>		
+		</ul>		
+		<input type="hidden" id="hiddenpreset"  name="hiddenpreset" value="">
+	</div>
+</form>
+<script type="text/javascript">		
+	function setColor(color){
+		document.forms['formpreset'].hiddenpreset.value = color;						
+		document.forms['formpreset'].submit();
+	}	
+</script>

@@ -1,0 +1,13 @@
+<?php  
+$block_header_top_links = $this->getLayout()->createBlock("cms/block")->setBlockId("block_header_top_links")->toHtml();                    
+if(!isset($block_header_top_links) || $block_header_top_links == ""):
+?>
+	<div class="header-top-link">    
+		Earn 3% back on purchases just for having an account! Data demo
+		<a href="#">Learn more...</a>
+	</div>
+<?php    
+else:
+    echo $block_header_top_links;
+endif;
+?>

@@ -1,0 +1,29 @@
+<?php
+$ma2_block_free_shipping = $this->getLayout()->createBlock("cms/block")->setBlockId("ma2_block_free_shipping")->toHtml();
+if(!isset($ma2_block_free_shipping) || $ma2_block_free_shipping == ""):   
+?>
+	<div class="free_shipping">
+		<div class="free_shipping-left">
+			<div class="free_shipping_title">
+				<span>                
+				   <?php echo $this->__(' free shipping');?>                
+				</span>
+			</div>
+			<div class="free_shipping_onorder">
+				<span>
+					<?php echo $this->__('on order over');?>
+				</span>
+			</div>
+			<p><?php echo $this->__('Lorem ipsum dolor sit'); ?></p>
+		</div>
+		<div class="free_shipping-right">
+			<span>
+				<?php  echo '$99'; ?>
+			</span>
+		</div>
+	</div>
+<?php    
+else:
+    echo $ma2_block_free_shipping;
+endif;
+?>

@@ -1,0 +1,23 @@
+/**
+ *	Coin Slider jQuery plugin CSS styles
+ **/
+.coin-slider { overflow: hidden; zoom: 1; position: relative; }
+.coin-slider a{ text-decoration: none; outline: none; border: none; text-align: left; }
+.cs-buttons { font-size: 0px; padding: 10px; margin-top: -45px; z-index: 99999; }
+.cs-buttons a { margin-left: 5px; height: 22px; width: 20px; float: left; text-indent: -1000px; background:url("../images/itembane.png") no-repeat scroll 0 0px transparent; }
+.cs-buttons a.cs-active { background:url("../images/itembaneactive.png") no-repeat scroll 0 0px transparent; }
+.cs-title { width: 390px; padding: 25px; background:url("../images/titlebane.png") repeat scroll 0 0px transparent; color: #FFFFFF; height: 60px; text-align: left; }
+.cs-title p { width: 300px; height: 70px; overflow: hidden; text-align: left; }
+.cs-title p b { color: #f4a910; text-transform: uppercase; float: left; font-size: 20px; width: 100%; text-align: left; }
+.cs-prev, .cs-next { display: none; }
+/**
+ *	preset style	
+ *  custom css for add-to-cart
+ **/    
+.add-to-cart-yellow .cs-buttons a.cs-active { background:url("../images/itembaneactive-yellow.png") no-repeat scroll 0 0px transparent; }
+.add-to-cart-blue .cs-buttons a.cs-active { background:url("../images/itembaneactive-blue.png") no-repeat scroll 0 0px transparent; }   
+.add-to-cart-green .cs-buttons a.cs-active { background:url("../images/itembaneactive-green.png") no-repeat scroll 0 0px transparent; }  
+.add-to-cart-yellow .title-slideshow,.add-to-cart-green .title-slideshow,.add-to-cart-blue .title-slideshow { font-size:18px; }
+.add-to-cart-yellow .title-slideshow { color:#f4a810; }
+.add-to-cart-green .title-slideshow { color:#679027; }
+.add-to-cart-blue .title-slideshow { color: #039DE6; }

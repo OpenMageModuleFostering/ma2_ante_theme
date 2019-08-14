@@ -1,0 +1,26 @@
+<?php
+$urlSocial = '';
+$PresetSession = Mage::getSingleton('core/session')->getData('PresetSession');
+if(isset($PresetSession) && !empty($PresetSession)):
+	$urlSocial = $this->getSkinUrl('images/right-adv-'.$PresetSession.'.png');	
+else:	
+	$preStyle = Mage::getStoreConfig("theme_options/general/preset_styles");						
+	if(isset($preStyle) && !empty($preStyle)):
+		$urlSocial = $this->getSkinUrl('images/right-adv-'.$preStyle.'.png');			
+	else:	
+		$urlSocial = $this->getSkinUrl('images/right-adv.png');
+	endif;
+endif;	
+$i_right_adv= $this->getLayout()->createBlock("cms/block")->setBlockId("i_right_adv")->toHtml();
+if(!isset($i_right_adv) || $i_right_adv == ""):
+?>
+	<div class="right-adv">
+		<a href="#"> 
+			<img src="<?php echo $urlSocial;?>" alt="<?php echo 'advantures';?>" width="220" /> 
+		</a>
+	</div>
+<?php
+else:
+	echo $i_right_adv;
+endif;
+?>

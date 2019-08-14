@@ -1,0 +1,23 @@
+/* CSS Select device */
+#smenu{ position:fixed; right: -60px; top: 26%; z-index:9999; padding-top:4px; padding-bottom:4px; background-color: #FFFFF2; border-radius: 5px 0 0 5px; -o-border-radius: 5px 0 0 5px; -moz-border-radius: 5px 0 0 5px; -webkit-border-radius: 5px 0 0 5px; box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.1); -o-box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.1); -moz-box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.1); -webkit-box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.1); }
+#smenu:hover { position:fixed; right: 0px; top: 26%; z-index:9999; transition: all 0.5s ease; -o-transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; }
+.below-menu { display:none; position:relative; width:99%; background-color:#EBEBEB; }
+ul#devices  { list-style: none outside none; position: relative; padding-right:15px; padding-top:20px; padding-bottom:20px; background:url("images/nav-item.gif") no-repeat 0 0 transparent; }
+ul#devices li a { display: inline-block; height: 28px; padding-left: 2px; text-decoration: none; }
+ul#devices li#item-yellow a,
+ul#devices li#item-blue a,
+ul#devices li#item-green a { font-family:Arial: font-size:12px; font-weight:bold; }
+ul#devices li#item-yellow a { color:#e96b07; }
+ul#devices li#item-blue a { color:#00468C; }
+ul#devices li#item-green a { color:#7ba62f; }
+ul#devices li#item-blue-bg a { width:28px; background: url("images/blue.gif") no-repeat scroll 0 0 transparent; }
+ul#devices li#item-blue-bg a:hover { background: url("images/blue.gif") no-repeat scroll 0 -30px transparent; }
+ul#devices li#item-green-bg a { width:28px; background: url("images/green.gif") no-repeat scroll 0 0 transparent; }
+ul#devices li#item-green-bg a:hover { background: url("images/green.gif") no-repeat scroll 0 -30px transparent; }
+ul#devices li#item-yellow-bg a { width:28px; background: url("images/yellow.gif") no-repeat scroll 0 0 transparent; }
+ul#devices li#item-yellow-bg a:hover { background: url("images/yellow.gif") no-repeat scroll 0 -30px transparent; }
+/* ul#devices li#item-4 a { width:15px; background: url("images/smartphone-portraint.gif") no-repeat scroll 0 0 transparent; }
+ul#devices li#item-4 a:hover { background: url("images/smartphone-portraint.gif") no-repeat scroll 0 -30px transparent; }
+ul#devices li#item-5 a { width:22px; background: url("images/smartphone-landspace.gif") no-repeat scroll 0 0 transparent; }
+ul#devices li#item-5 a:hover { background: url("images/smartphone-landspace.gif") no-repeat scroll 0 -30px transparent; } */
+/* ======================================== */

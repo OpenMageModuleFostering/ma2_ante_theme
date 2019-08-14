@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Ma2_Ante_Theme",
+    "type": "magento-module",
+    "license": "OSL-v3.0",
+    "homepage": "",
+    "description": "MA2 Ante free theme for Magento is a nice theme for any kind of eCommerce store with modern and clean design.",
+    "authors": [
+    {
+        "name": "Magenmarket.com",
+        "email": "trungdt@omegatheme.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

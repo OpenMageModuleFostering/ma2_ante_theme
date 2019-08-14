@@ -1,0 +1,21 @@
+<?php
+$i_data_sheet = $this->getLayout()->createBlock("cms/block")->setBlockId("i_data_sheet")->toHtml();
+if(!isset($i_data_sheet) || $i_data_sheet == ""):
+?>
+	<ul>
+		<li>
+			<a href="<?php echo $this->getSkinUrl('images/demo-datasheet.jpg');?>" title="Find datasheet">
+				<img height="26" src="<?php echo $this->getSkinUrl('images/download-ante-yellow.png');?>" alt="download datasheet" />
+			</a>
+		</li>		
+		<li>
+			<a href="<?php echo $this->getSkinUrl('images/demo-datasheet.jpg');?>" title="Find datasheet">
+				<img src="<?php echo $this->getSkinUrl('images/demo-datasheet.jpg');?>" alt="datasheet" class="ma2-img-demo" />
+			</a>
+		</li>
+	</ul>			
+<?php    
+else:
+    echo $i_data_sheet;
+endif;
+?>

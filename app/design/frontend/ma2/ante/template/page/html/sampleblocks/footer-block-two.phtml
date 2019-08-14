@@ -1,0 +1,20 @@
+<?php
+$block_footer_two = $this->getLayout()->createBlock("cms/block")->setBlockId("footer_block_two")->toHtml();
+if(!isset($block_footer_two) || $block_footer_two == ""):    
+?>
+	<div class="footer-links-column-wrapper">    
+		<h6 class="heading">Lorem ipsum dolor 2</h6> 
+		<ul>
+			<li>Proin sed odio</li>
+			<li>Et ante adipiscing</li>
+			<li>Lobortis Quisque</li>
+			<li>eleLorem ipsum</li>
+			<li>Dolor siting elit</li>
+			<li>Data demo from template</li>
+		</ul>
+	</div>
+<?php    
+else:
+    echo $block_footer_two;
+endif;
+?>

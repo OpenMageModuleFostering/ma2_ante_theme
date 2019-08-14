@@ -1,0 +1,88 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ *
+ * @see Mage_Page_Block_Template_Links
+ getColorCheckout		getResultImgCart
+ */
+?>
+<?php $_links = $this->getLinks(); ?>
+<?php if(count($_links)>0): ?>
+<div class="omg-custom-link">
+    <div class="omg-link">
+        <ul class="links"<?php if($this->getName()): ?> id="<?php echo $this->getName() ?>"<?php endif;?>>
+            <?php foreach($_links as $_link): $i++; ?>
+                <?php if ($_link instanceof Mage_Core_Block_Abstract):?>
+                    <?php //echo $_link->toHtml() ?>
+                <?php else: ?>
+        		<?php if((2 < $i) && ($i < 5)){?>
+                    <li<?php if($_link->getIsFirst()||$_link->getIsLast()): ?> class="<?php if($_link->getIsFirst()): ?>first<?php endif; ?><?php if($_link->getIsLast()): ?> last<?php endif; ?>"<?php endif; ?> <?php echo $_link->getLiParams() ?>><?php echo $_link->getBeforeText() ?>
+                        <?php                           
+							$title_link = $_link->getTitle();
+							$span_id = "";
+                            if($title_link == "Checkout"):
+								$title_link =  $_link->getTitle();
+								$span_id = "ma2-checkout";
+                            else:
+								$title_link = str_replace('</span>','',str_replace('<span>','',$_link->getTitle()));
+								$span_id = "ma2-cart";
+							endif;
+                        ?>
+						<a href="<?php echo $_link->getUrl(); ?>" title="<?php echo $title_link; ?>" <?php echo $_link->getAParams(); ?>>
+							<span id="<?php echo $span_id; ?>">
+								<?php echo $_link->getLabel(); ?>
+							</span>
+						</a>
+                        <?php echo $_link->getAfterText(); ?>
+                    </li>
+        		<?php }?>
+                <?php endif;?>
+            <?php endforeach; ?>
+        </ul>    
+    </div>
+    <div class="omg-icon-link">
+		<?php 
+			$srcIconCart = "";
+			$preStyle = Mage::getStoreConfig("theme_options/general/preset_styles");
+			$cssCart = 'ma2-cart';
+			$PresetSession = Mage::getSingleton('core/session')->getData('PresetSession');
+			if(isset($PresetSession) && !empty($PresetSession)):			
+				$srcIconCart = $this->getSkinUrl('images/cart-'.$PresetSession.'.png');
+				$cssCart .= '-'.$PresetSession;					
+			else:			
+				if(isset($preStyle) && !empty($preStyle)):					
+					$srcIconCart = $this->getSkinUrl('images/cart-'.$preStyle.'.png');				
+				else:							
+					$srcIconCart =  $this->getSkinUrl('images/cart.png');	
+				endif;	
+			endif;	
+		?>
+        <img src="<?php echo $srcIconCart;?>" alt="<?php echo $this->getResultImgCart('alt');?>" width="33" height="38" class="omg-icon-img" />    
+    </div>
+</div>
+<script>
+		$('ma2-checkout').addClassName('ma2-checkout');			
+		$('ma2-cart').addClassName('ma2-cart');
+</script>
+<?php endif; ?>

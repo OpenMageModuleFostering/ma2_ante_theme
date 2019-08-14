@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>	
+<!-- 		<reference name="head">
+			<action method="addCss"><css>css/ma2_featuredproducts/featuredproducts.css</css></action>
+		</reference> -->
+        <!-- <reference name="content">
+            <block type="FeaturedProducts/product_list" name="featured_product_list" template="ma2_featuredproducts/featuredproducts.phtml" />
+        </reference> -->
+    </default>
+</layout>

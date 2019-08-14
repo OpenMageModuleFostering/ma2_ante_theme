@@ -1,0 +1,231 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/* IE 6 only */
+* html .validation-advice { height:13px; }
+* html .error-msg,
+* html .success-msg,
+* html .note-msg,
+* html .notice-msg { height:24px; }
+* html .main { height:400px; }
+* html .account-login .content { height:240px; }
+.block li.item,
+.block-poll li,
+.opc li.section { vertical-align:top; }
+* html .window-overlay { background:#ccc; filter:alpha(opacity=50); }
+/* Doubled Margin Fixes */
+.product-view .product-img-box .more-views li,
+.product-view .box-tags .form-add .input-box,
+.sp-methods select.month { display:inline; }
+/********** < Start fix css navigation styles */
+#nav{position:relative; z-index:9999;}
+#nav li a { zoom:1; }
+#nav li { vertical-align:top; }
+li a {  
+    display: block;  
+	float: left;  
+    clear: left;  	
+}
+li {  
+    display: inline;  
+} 
+ul#nav li #nav li {  
+    display: inline;  
+} 
+ul#nav li.level0 ul.level0 li.level1 a,
+ul#nav li.level0 ul.level0 li.level1 a:hover{
+	posittion:relative;
+	height:24px;
+}
+ul#nav li.level0 ul.level0 li,
+ul#nav li.level0 ul.level0 li:hover
+{
+	height:24px;
+}	
+ul#nav li.level0 ul.level0 li.level1 ul.level1
+{
+	position:absolute;
+	left:55px;
+	top:28px;
+}
+#nav ul li a, 
+.ma2-preset-style-blue #nav ul li a, 
+.ma2-preset-style-green #nav ul li a, 
+.ma2-preset-style-yellow #nav ul li a
+{	
+	background: none no-repeat scroll 170px 19px transparent;
+}
+/********** < End fix css navigation styles */
+/* start fix css category products */
+/* ================================= */
+.pro-cus-titl { display:inline; }
+.product-title{ height:38px; }
+.products-grid{margin-bottom: 28px;}
+ul.products-grid{position:relative;display:inline;}
+ul.products-grid li.item{float:left; text-align:left; position:relative;display:inline;}
+ul.products-grid li.item .item-content .product-title ,
+ul.products-grid li.item .item-content .short-description-product {display:inline;}
+.item-content{width:90%;}
+.product-title, .short-description-product, .border-style, .actions{display:block;}
+.free_shipping-right{float:left;}
+.breadcrumbs{width:100%;}
+ul#ma2-nav-breadcrum li,
+ul#ma2-nav-breadcrumb li,
+ul#ma2-nav-breadcrumb li { display:inline; float:left; text-align:left; position:relative; margir-left:25px; }
+.f-fix-first{width:65%;}
+.f-fix-last{width:28%;}
+.pages ol li.current,
+.pages ol li { display:inline; float:left;	}
+ol#products-list, ol.products-list { margin-left:0px; }
+.pages ol{text-align:center; margin:0 auto; display:block; }
+.category-products-widget ul.products-grid,
+.category-products-widget ul#products-grid-1
+{margin-bottom:20px;}
+.ma2-detail{margin-top:0px;}
+.ma2-preset-style-blue ul#nav level0 ul.level0 li,
+.ma2-preset-style-blue ul#nav level0 ul.level0 li.parent,
+.ma2-preset-style-blue ul#nav level0 ul.level0 li.level1 { background: url(../images/menuactive-blue.png) #ff4c29 repeat-x 0px 0px; }
+.header .form-search button.button span span ,
+.ma2-preset-style-blue .header .form-search button.button span span ,
+.ma2-preset-style-green .header .form-search button.button span span ,
+.ma2-preset-style-yellow .header .form-search button.button span span
+{
+	font-size:0;
+}
+.item-content{padding-bottom:0px;}
+.products-grid{margin-bottom:0px;}
+.info-products{padding: 10px 18px 0 0; position: relative;}
+.ma2-preset-style-green ul#nav level0 ul.level0 li{background: url(../images/menuactive-green.png) #ff4c29 repeat-x 0px 0px;}
+.ma2-preset-style-yellow ul#nav level0 ul.level0 li{background: url(../images/menuactive-yellow.png) #ff4c29 repeat-x 0px 0px;}
+.img-product
+{
+	width:100%; float:left; display: block; margin-bottom:10px;
+}
+.product-title
+{
+width:100%; float:left; display: block; min-height:36px; margin-bottom:10px;
+}
+.short-description-product
+{
+width:100%; float:left; display: block; margin-bottom:10px;
+}
+.actions
+{
+	position:none;
+}
+/* end fix css category products */
+/* ================================= */
+select { margin-bottom:1px; }
+input.radio { width:13px; height:13px; }
+input.checkbox { width:13px; height:13px; }
+button.button { height:26px; }
+button.button span { position:relative; padding-top:1px;}
+button.btn-checkout { height:40px; }
+#opc-review .sp-methods .input-box { float:left; }
+.form-list label { position:relative; z-index:0; }
+.form-list label.required em { position:absolute; top:0; right:-8px; }
+table { scrollbar-face-color:expression(runtimeStyle.scrollbarFaceColor = '#fff', cellSpacing = 0); }
+.product-view .product-img-box .zoom.disabled { filter:alpha(opacity=30); }
+.gift-messages-form { position:relative; zoom:1; }
+.tool-tip .btn-close a { margin:0; }
+.product-view .box-tags .product-tags li,
+.footer li { padding:0 4px 0 7px; }
+.product-options dd .time-picker select { margin:0; padding:0; }
+/* Clearer */
+.clearer { display:block; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
+/* Clears and hasLayout fixes */
+.header-container,
+.header-container .top-container,
+.header,
+.header .quick-access,
+#nav,
+.main,
+.footer,
+.footer-container .bottom-container,
+.col-main,
+.col2-set,
+.col3-set,
+.col3-layout .product-options-bottom .price-box,
+.col4-set,
+.messages li,
+.search-autocomplete li,
+.block,
+.block .block-content,
+.block .actions,
+.block li.item,
+.block-poll li,
+.block-poll .label,
+.block-layered-nav .currently li,
+.block-account .block-content li a,
+.mini-products-list .product-details,
+.page-title,
+.rss-title h1,
+.products-grid,
+.products-list li.item,
+.box-account .box-head,
+.dashboard .box .box-title,
+.box-reviews li.item,
+.box-tags li.item,
+.pager,
+.sorter,
+.ratings,
+.add-to-box,
+.add-to-cart,
+.product-essential,
+.product-collateral,
+.product-view .product-img-box .more-views ul,
+.product-view .box-tags .form-add,
+.product-view .product-shop .short-description,
+.product-view .box-description,
+.product-options .options-list li,
+.product-options,
+.product-options-bottom,
+.truncated,
+.truncated .truncated_full_value,
+.product-review,
+.cart,
+.cart-collaterals,
+.cart .crosssell li.item,
+.cart .discount,
+.opc .step-title,
+.opc .step,
+.multiple-checkout,
+.sp-methods,
+.checkout-progress,
+.multiple-checkout .place-order,
+.form-list li,
+.form-list .field,
+.group-select li,
+.buttons-set,
+.page-print .print-head,
+.cart-tax-total,
+.advanced-search-summary,
+.advanced-search-summary p,
+.gift-messages-form .item,
+.send-friend .form-list li p,
+.centinel .authentication { zoom:1; }
+/*OMG*/
+/* Hover Fix */
+iframe.hover-fix { position:absolute; left:-1px; top:-1px; z-index:-1; background:transparent; filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0); }

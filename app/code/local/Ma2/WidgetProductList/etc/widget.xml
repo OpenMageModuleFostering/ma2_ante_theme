@@ -1,0 +1,512 @@
+<?xml version="1.0"?>
+<widgets>
+    <Featured type="WidgetProductList/Featured" translate="name description" module="WidgetProductList">
+        <name>Ma2 WidgetProductList - Featured (Ma2_FeaturedProducts required!)</name>
+        <description type="desc">List of featured products. This need Ma2_FeaturedProduct installed and actived.</description>
+        <parameters>
+            <widget_title translate="label description">
+                <required>0</required>
+                <visible>1</visible>
+                <label>Frontend Title</label>
+                <value>Featured Products</value>
+                <type>text</type>
+                <description>The frontend widget instance title</description>
+            </widget_title>
+            <show_widget_title translate="label description">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Display Frontend Title</label>
+                <description>Choose NO to hide the frontend widget instance title.</description>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_widget_title>
+            <products_count translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Maximum number of products</label>
+                <value>6</value>
+                <type>text</type>
+            </products_count>
+            <sort_by translate="label">
+                <visible>1</visible>
+                <label>Sort by</label>
+                <type>select</type>
+                <values>
+                    <price translate="label">
+                        <value>price</value>
+                        <label>Price</label>
+                    </price>
+                    <name translate="label">
+                        <value>name</value>
+                        <label>Name</label>
+                    </name>
+                    <created_at translate="label">
+                        <value>created_at</value>
+                        <label>Created date</label>
+                    </created_at>
+                </values>
+            </sort_by>
+            <sort_dir translate="label">
+                <visible>1</visible>
+                <label>Sort direction</label>
+                <type>select</type>
+                <values>
+                    <asc translate="label">
+                        <value>ASC</value><label>ASC</label>
+                    </asc>
+                    <desc translate="label">
+                        <value>DESC</value><label>DESC</label>
+                    </desc>
+                </values>
+            </sort_dir>
+            <list_type translate="label">
+                <visible>1</visible>
+                <label>Display mode (grid, list)</label>
+                <type>select</type>
+                <values>
+                    <grid_type translate="label">
+                        <label>Grid</label>
+                        <value>grid</value>
+                    </grid_type>
+                    <list_type translate="label">
+                        <label>List</label>
+                        <value>list</value>
+                    </list_type>
+                </values>
+            </list_type>
+            <column_count>
+                <required>0</required>
+                <visible>1</visible>
+                <label>Number of products per row</label>
+                <value>6</value>
+                <type>text</type>
+                <depends>
+                  <list_type><value>grid</value></list_type>
+                </depends>
+            </column_count>
+            <show_addtocart translate="label">
+               <visible>1</visible>
+                <label> Show Add To Cart button</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_addtocart>
+            <show_details translate="label">
+               <visible>1</visible>
+                <label> Show Details button</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_details>
+            <show_price translate="label">
+               <visible>1</visible>
+                <label>Show Price</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_price>
+            <show_short_description translate="label">
+               <visible>1</visible>
+                <label>Show short description</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_short_description>
+            <short_description_limit>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Short description words limit</label>
+              <type>text</type>
+              <depends>
+                <show_short_description><value>1</value></show_short_description>
+              </depends>
+            </short_description_limit>
+            <template>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Select template</label>
+                <type>select</type>
+                <values>
+                     <default translate="label">
+                        <value>ma2_widgetproductlist/featured/default.phtml</value>
+                        <label>Default Template</label>
+                    </default>
+                    <sidebar translate="label">
+                        <value>ma2_widgetproductlist/featured/sidebar.phtml</value>
+                        <label>sidebar</label>
+                    </sidebar>
+                </values>
+            </template>
+        </parameters>
+    </Featured>
+    
+    <New type="WidgetProductList/New" translate="name description" module="WidgetProductList">
+        <name>Ma2 WidgetProductList - New</name>
+        <description type="desc">List of new products</description>
+        <parameters>
+            <widget_title translate="label description">
+                <required>0</required>
+                <visible>1</visible>
+                <label>Frontend Title</label>
+                <value>New Products</value>
+                <type>text</type>
+                <description>The frontend widget instance title</description>
+            </widget_title>
+            <show_widget_title translate="label description">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Display Frontend Title</label>
+                <description>Choose NO to hide the frontend widget instance title.</description>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_widget_title>
+            <products_count translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Maximum number of products</label>
+                <value>6</value>
+                <type>text</type>
+            </products_count>
+            <sort_by translate="label">
+                <visible>1</visible>
+                <label>Sort by</label>
+                <type>select</type>
+                <values>
+                    <price translate="label">
+                        <value>price</value>
+                        <label>Price</label>
+                    </price>
+                    <name translate="label">
+                        <value>name</value>
+                        <label>Name</label>
+                    </name>
+                    <created_at translate="label">
+                        <value>created_at</value>
+                        <label>Created date</label>
+                    </created_at>
+                </values>
+            </sort_by>
+            <sort_dir translate="label">
+                <visible>1</visible>
+                <label>Sort direction</label>
+                <type>select</type>
+                <values>
+                  <asc translate="label">
+                    <value>asc</value><label>ASC</label>
+                  </asc>
+                  <desc translate="label">
+                    <value>desc</value><label>DESC</label>
+                  </desc>
+                </values>
+            </sort_dir>
+            <list_type translate="label">
+                <visible>1</visible>
+                <label>Display mode (grid, list)</label>
+                <type>select</type>
+                <values>
+                    <grid_type translate="label">
+                        <label>Grid</label>
+                        <value>grid</value>
+                    </grid_type>
+                    <list_type translate="label">
+                        <label>List</label>
+                        <value>list</value>
+                    </list_type>
+                </values>
+            </list_type>
+            <column_count>
+                <required>0</required>
+                <visible>1</visible>
+                <label>Number of products per row</label>
+                <value>6</value>
+                <type>text</type>
+                <depends>
+                  <list_type><value>grid</value></list_type>
+                </depends>
+            </column_count>
+            <show_addtocart translate="label">
+               <visible>1</visible>
+                <label> Show Add To Cart button</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_addtocart>
+            <show_details translate="label">
+               <visible>1</visible>
+                <label> Show Details button</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_details>
+            <show_price translate="label">
+               <visible>1</visible>
+                <label>Show Price</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_price>
+            <show_short_description translate="label">
+               <visible>1</visible>
+                <label>Show short description</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_short_description>
+            <short_description_limit>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Short description words limit</label>
+              <type>text</type>
+              <depends>
+                <show_short_description><value>1</value></show_short_description>
+              </depends>
+            </short_description_limit>
+            <template>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Select template</label>
+                <type>select</type>
+                <values>
+                    <default translate="label">
+                       <value>ma2_widgetproductlist/new/default.phtml</value>
+                        <label>Default Template</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+    </New>
+    
+    <BestSelling type="WidgetProductList/BestSelling" translate="name description" module="WidgetProductList">
+        <name>Ma2 WidgetProductList - Best Selling</name>
+        <description type="desc">List of best selling products</description>
+        <parameters>
+            <widget_title translate="label description">
+                <required>0</required>
+                <visible>1</visible>
+                <label>Frontend Title</label>
+                <value>Best Products</value>
+                <type>text</type>
+                <description>The frontend widget instance title</description>
+            </widget_title>
+            <show_widget_title translate="label description">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Display Frontend Title</label>
+                <description>Choose NO to hide the frontend widget instance title.</description>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_widget_title>
+            <products_count translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Maximum number of products</label>
+                <value>6</value>
+                <type>text</type>
+            </products_count>
+            <list_type translate="label">
+                <visible>1</visible>
+                <label>Display mode (grid, list)</label>
+                <type>select</type>
+                <values>
+                    <grid_type translate="label">
+                        <label>Grid</label>
+                        <value>grid</value>
+                    </grid_type>
+                    <list_type translate="label">
+                        <label>List</label>
+                        <value>list</value>
+                    </list_type>
+                </values>
+            </list_type>
+            <column_count>
+                <required>0</required>
+                <visible>1</visible>
+                <label>Number of products per row</label>
+                <value>6</value>
+                <type>text</type>
+                <depends>
+                  <list_type><value>grid</value></list_type>
+                </depends>
+            </column_count>
+            <show_addtocart translate="label">
+               <visible>1</visible>
+                <label> Show Add To Cart button</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_addtocart>
+            <show_details translate="label">
+               <visible>1</visible>
+                <label> Show Details button</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_details>
+            <show_price translate="label">
+               <visible>1</visible>
+                <label>Show Price</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_price>
+            <show_short_description translate="label">
+               <visible>1</visible>
+                <label>Show short description</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_short_description>
+            <short_description_limit>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Short description words limit</label>
+              <type>text</type>
+              <depends>
+                <show_short_description><value>1</value></show_short_description>
+              </depends>
+            </short_description_limit>
+            <template>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Select template</label>
+                <type>select</type>
+                <values>
+                    <default translate="label">
+                        <value>ma2_widgetproductlist/bestselling/default.phtml</value>
+                        <label>Default Template</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+    </BestSelling>
+    
+    <CustomProducts type="WidgetProductList/Custom" translate="name description" module="WidgetProductList">
+        <name>Ma2 WidgetProductList - Custom Selected</name>
+        <description type="desc">List of custom selected products. Show the products you chose only.</description>
+        <parameters>
+            <widget_title translate="label description">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Frontend Title</label>
+                <value>Custom Products</value>
+                <type>text</type>
+                <description>The frontend widget instance title</description>
+            </widget_title>
+            <show_widget_title translate="label description">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Display Frontend Title</label>
+                <description>Choose NO to hide the frontend widget instance title.</description>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_widget_title>
+            <ids translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Select products</label>
+                <type>label</type>
+                <helper_block>
+                    <type>WidgetProductList/adminhtml_catalog_product_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Products...</open>
+                        </button>
+                    </data>
+                </helper_block>
+            </ids>
+            <sort_by translate="label">
+                <visible>1</visible>
+                <label>Sort by</label>
+                <type>select</type>
+                <values>
+                  <price translate="label">
+                    <value>price</value><label>Price</label>
+                  </price>
+                  <name translate="label">
+                    <value>name</value><label>Name</label>
+                  </name>
+                  <created_at translate="label">
+                    <value>created_at</value><label>Created date</label>
+                  </created_at>
+                </values>
+            </sort_by>
+            <sort_dir translate="label">
+                <visible>1</visible>
+                <label>Sort direction</label>
+                <type>select</type>
+                <values>
+                  <asc translate="label">
+                    <value>asc</value><label>ASC</label>
+                  </asc>
+                  <desc translate="label">
+                    <value>desc</value><label>DESC</label>
+                  </desc>
+                </values>
+            </sort_dir>
+            <list_type translate="label">
+                <visible>1</visible>
+                <label>Display mode (grid, list)</label>
+                <type>select</type>
+                <values>
+                    <grid_type translate="label">
+                        <label>Grid</label>
+                        <value>grid</value>
+                    </grid_type>
+                    <list_type translate="label">
+                        <label>List</label>
+                        <value>list</value>
+                    </list_type>
+                </values>
+            </list_type>
+            <column_count>
+                <required>0</required>
+                <visible>1</visible>
+                <label>Number of products per row</label>
+                <value>6</value>
+                <type>text</type>
+                <depends>
+                  <list_type><value>grid</value></list_type>
+                </depends>
+            </column_count>
+            <show_addtocart translate="label">
+               <visible>1</visible>
+                <label> Show Add To Cart button</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_addtocart>
+            <show_details translate="label">
+                <visible>1</visible>
+                <label> Show Details button</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_details>
+            <show_price translate="label">
+                <visible>1</visible>
+                <label>Show Price</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_price>
+            <show_short_description translate="label">
+                <visible>1</visible>
+                <label>Show short description</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_short_description>
+            <short_description_limit>
+              <required>0</required>
+              <visible>1</visible>
+              <label>Short description words limit</label>
+              <type>text</type>
+              <depends>
+                <show_short_description><value>1</value></show_short_description>
+              </depends>
+            </short_description_limit>
+            <show_icon translate="label">
+              <visible>1</visible>
+              <label>Show icon Sale</label>
+              <type>select</type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+            </show_icon>
+            <template>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Select template</label>
+                <type>select</type>
+                <values>
+                    <default translate="label">
+                        <value>ma2_widgetproductlist/custom/default.phtml</value>
+                        <label>Default Template</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+    </CustomProducts>
+</widgets>
